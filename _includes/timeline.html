@@ -1,0 +1,17 @@
+<div class="mb-4">
+  <div class="timeline-body">
+    {% for item in site.data.timeline %}
+    <div class="timeline-item">
+      <div class="timeline-item-content">
+        <h3>{{ item.title }}</h3>
+        <p class="date">{{ item.company }} &bull; {{ item.startdate }} — {{ item.enddate }}</p>
+        <ul class="timeline-tasks">
+          {% for item in item.description %}
+          <li>{{ item.task }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,29 @@
+- title: Technical Writer
+  company: Talend
+  startdate: October 2016
+  enddate: Present
+  description: 
+    - task: Developed, wrote and updated installation, deployment and administration documentation for Talend products in DITA format
+    - task: Developed, wrote and updated end-user documentation for data quality tools in DocBook and DITA formats
+    - task: Migrated content from DocBook to DITA
+    - task: Created and maintained, with technical writers, a taxonomy to better classify concepts covered in the documentation and improve content findability on the documentation portal
+    - task: Created DITA-OT plugins involving XSLT transformation
+    - task: Revamped the DITA-OT plugin for PDF output files in accordance with the graphic standards set out by Talend
+
+- title: User Assistance Developer Intern
+  company: Dassault Systèmes
+  startdate: April 2016
+  enddate: October 2016
+  description:
+    - task: Developed, wrote and updated the installation, deployment and administration documentation for the 3DEXPERIENCE Platform, in DITA format using XMetaL and Microsoft Expression Web
+    - task: Managed the build and the delivery of the installation, deployment and administration documentation for the 3DEXPERIENCE Platform, with the help of the internship supervisor
+    - task: Analyzed and validated specifications
+
+- title: Technical Writer Intern
+  company: SATELEC S.A.S. - Acteon Group
+  startdate: April 2015
+  enddate: September 2015
+  description:
+    - task: Developed, wrote and updated instructions for use of electromedical devices to improve user experience (in French)
+    - task: Established agreed terminology to be used in instructions for use
+    - task: Created CSS stylesheets to customize MadCap Flare's PDF output files in accordance with the graphic standards set out by Acteon
