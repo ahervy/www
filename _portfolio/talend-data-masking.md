@@ -14,7 +14,7 @@ outcome:
 
 Users were confused about the behavior of some data masking functions available in the tool.
 
-The [existing documentation](https://help.talend.com/reader/shared/960d161d-f6b3-41ed-b32e-df481bf46012/root){: target="_blank" rel="noopener noreferrer"} was not helpful enough itlisted only some of the functions available in the tool and did not provide many examples.
+The [existing documentation](https://help.talend.com/reader/shared/960d161d-f6b3-41ed-b32e-df481bf46012/root){: target="_blank" rel="noopener noreferrer"} was not helpful enough because it listed only some of the functions available in the tool and did not provide many examples.
 
 ## Objective
 
