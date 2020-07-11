@@ -3,7 +3,12 @@ $primary: #3000f0;
 $theme-colors: ("primary": $primary);
 
 // Make headings bolder
-$headings-font-weight: 800 !default;
+$headings-font-weight: 800;
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: $headings-font-weight;
+}
 
 // Change default focus
 :focus {
