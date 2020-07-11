@@ -9,15 +9,16 @@ outcome:
     https://help.talend.com/reader/shared/41b6b3c4-7d37-49cb-a8a7-1c9ba32504dd/root
   desc: Created documentation
 ---
+{::options auto_ids="false" /}
 
-## Issue
+### Issue
 
 Data quality tools are quite hard to understand for new users. The existing documentation was adapted to advanced users, but it was too technical for new users.
 
-## Objective
+### Objective
 
 Help new users get started with the data matching process.
 
-## Solution
+### Solution
 
 Providing descriptive documentation, which includes key data matching concepts and a description of each data matching phase for new users.

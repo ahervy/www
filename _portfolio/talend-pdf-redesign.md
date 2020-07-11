@@ -10,15 +10,16 @@ outcome:
   url: /assets/pdf/new-pdf-manual.pdf
   desc: PDF manual
 ---
+{::options auto_ids="false" /}
 
-## Issue
+### Issue
 
 The company was refreshing its brand image. As a result, the [current PDF deliverables](/assets/pdf/old-pdf-manual.pdf){: target="_blank" rel="noopener noreferrer"} have become visually outdated.
 
-## Objective
+### Objective
 
 Publishing PDF deliverables with an updated look and feel in English, French, Japanese, and Chinese (simplified).
 
-## Solution
+### Solution
 
 Enhancing the current PDF customization plugin of the DITA Open Toolkit, using XSL/XSL-FO customizations.
