@@ -4,7 +4,7 @@ title: Hey, I'm Arnaud. Nice to meet you!
 permalink: /
 ---
 
-![Arnaud Hervy](/assets/images/arnaud.jpg){: .rounded-circle .float-right .p-3}
+![Arnaud Hervy](/assets/images/arnaud.jpg){: .rounded-circle .float-right .p-2}
 
 I'm a technical writer based in Nantes, France. I craft technical documentation to bridge the gap between people and technology.
 
