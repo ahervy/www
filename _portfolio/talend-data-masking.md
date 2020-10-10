@@ -1,5 +1,6 @@
 ---
 layout: page
+sitemap: false
 title: Reference documentation for a data masking tool
 type: portfolio
 company: Talend

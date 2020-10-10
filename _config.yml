@@ -19,6 +19,16 @@ collections:
     output: true
     permalink: /portfolio/:name/
 
+plugins:
+  - jekyll-sitemap
+
+defaults:
+  -
+    scope:
+      path: "assets/pdf/*.pdf"
+    values:
+      sitemap: false
+
 # Build settings
 
 # Exclude from processing.

@@ -1,5 +1,6 @@
 ---
 layout: page
+sitemap: false
 title: Data matching process online help
 type: portfolio
 company: Talend

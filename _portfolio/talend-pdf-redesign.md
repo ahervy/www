@@ -1,5 +1,6 @@
 ---
 layout: page
+sitemap: false
 title: PDF output customization via the DITA Open Toolkit
 type: portfolio
 company: Talend
