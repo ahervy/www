@@ -2,12 +2,33 @@
 $primary: #3000f0;
 $theme-colors: ("primary": $primary);
 
+a {
+  color: $primary;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+a:hover {
+  color: #0069d9;
+  text-decoration: underline;
+}
+
+.bg-primary {
+  background-color: $primary !important;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: $primary;
+  border-color: $primary;
+}
+
 // Make headings bolder
-$headings-font-weight: 800;
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-weight: $headings-font-weight;
+  font-weight: 800;
 }
 
 // Change default focus
