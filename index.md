@@ -1,6 +1,7 @@
 ---
 layout: home
 title: Hey, I'm Arnaud. Nice to meet you!
+description: I'm Arnaud Hervy, a technical writer based in Nantes.
 permalink: /
 ---
 

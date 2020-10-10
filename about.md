@@ -1,6 +1,7 @@
 ---
 layout: page
 title: About
+description: My name is Arnaud Hervy, and I'm a France-based technical writer.
 permalink: /about/
 ---
 
