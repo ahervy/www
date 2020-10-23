@@ -5,7 +5,7 @@
   {% assign key = entry | first %}
   {% if sm[key].id %}
   <a class="text-light" href="{{ sm[key].href }}{{ sm[key].id }}" title="{{ sm[key].title }} (open in new window)"
-    target="_blank" rel="noopener noreferrer"><span class="fa {{ sm[key].fa-icon }} fa-lg" aria-hidden="true"></span></a>
+    target="_blank" rel="noopener noreferrer"><span class="fab {{ sm[key].fa-icon }} fa-lg" aria-hidden="true"></span></a>
   {% endif %}
   {% endfor %}
   {% endif %}
