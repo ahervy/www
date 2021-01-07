@@ -9,7 +9,7 @@ snippet: >-
   identity
 outcome:
   url: /assets/pdf/new-pdf-manual.pdf
-  desc: PDF manual
+  desc: View update PDF manual
 ---
 {::options auto_ids="false" /}
 
