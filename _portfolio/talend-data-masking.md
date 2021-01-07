@@ -8,7 +8,7 @@ snippet: Rewrite of outdated content to create an exhaustive reference documenta
 outcome:
   url: >-
     https://help.talend.com/reader/shared/fc6317a2-0bb2-4fa0-8777-71fb0b09c67c/root
-  desc: Revamped documentation
+  desc: View revamped documentation
 ---
 {::options auto_ids="false" /}
 
