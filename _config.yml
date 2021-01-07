@@ -14,8 +14,7 @@ sass:
 
 collections:
   portfolio:
-    output: true
-    permalink: /portfolio/:name/
+    output: false
 
 plugins:
   - jekyll-sitemap
