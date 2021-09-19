@@ -7,7 +7,7 @@ company: Talend
 snippet: Rewrite of outdated content to create an exhaustive reference documentation
 outcome:
   url: >-
-    https://help.talend.com/reader/shared/fc6317a2-0bb2-4fa0-8777-71fb0b09c67c/root
+    /assets/html/data-masking-functions.html
   desc: View revamped documentation
 ---
 {::options auto_ids="false" /}
@@ -16,7 +16,7 @@ outcome:
 
 Users were confused about the behavior of some data masking functions available in the tool.
 
-The [existing documentation](https://help.talend.com/reader/shared/960d161d-f6b3-41ed-b32e-df481bf46012/root){: target="_blank" rel="noopener noreferrer"} was not helpful enough because it listed only some of the functions available in the tool and did not provide many examples.
+The [existing documentation](/assets/html/initial-docs-data-masking-functions.html){: target="_blank" rel="noopener noreferrer"} was not helpful enough because it listed only some of the functions available in the tool and did not provide many examples.
 
 ### Objective
 
