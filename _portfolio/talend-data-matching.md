@@ -7,7 +7,7 @@ company: Talend
 snippet: Describe the data matching process to help new users ramp up
 outcome:
   url: >-
-    https://help.talend.com/reader/shared/41b6b3c4-7d37-49cb-a8a7-1c9ba32504dd/root
+    /assets/html/data-matching.html
   desc: View created documentation
 ---
 {::options auto_ids="false" /}
