@@ -1,9 +1,10 @@
 - title: Technical Writer
   company: Opendatasoft
   startdate: December 2020
-  enddate: Present
+  enddate: September 2021
   description: 
     - task: Developed, wrote, and updated end-user and developer documentation for a SaaS product using docs-as-code workflows
+    - task: Implemented Matomo analytics to measure user interaction with Opendatasoft's documentation portal
 
 - title: Technical Writer
   company: Talend
