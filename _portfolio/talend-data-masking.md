@@ -20,8 +20,13 @@ The [existing documentation](/assets/html/initial-docs-data-masking-functions.ht
 
 ### Objective
 
-Describe all the available functions with their specifities and provide end users with examples.
+Describing all the available functions with their specifities and provide end users with examples.
 
 ### Solution
 
-Providing a thematically organized function reference documentation, which includes a description of each function, the availables methods, the parameters users can pass, and examples.
+Providing a thematically organized function reference documentation, which includes the following elements:
+
+- A description of each function
+- The availables methods
+- The parameters users can pass
+- Examples
