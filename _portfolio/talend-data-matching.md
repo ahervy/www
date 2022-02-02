@@ -1,7 +1,7 @@
 ---
 layout: page
 sitemap: false
-title: Data matching process online help
+title: Process overview
 type: portfolio
 company: Talend
 snippet: Describe the data matching process to help new users ramp up
@@ -14,12 +14,18 @@ outcome:
 
 ### Issue
 
-Data quality tools are quite hard to understand for new users. The existing documentation was adapted to advanced users, but it was too technical for new users.
+Data quality tools are quite hard to understand for new users.
+The data matching process includes different phases that new users may not know.
+
+The existing documentation was adapted to advanced users, but it was too technical for new users.
 
 ### Objective
 
-Help new users get started with the data matching process.
+Helping new users get started with the data matching process.
 
 ### Solution
 
-Providing descriptive documentation, which includes key data matching concepts and a description of each data matching phase for new users.
+Providing a descriptive overview of the process which includes the following elements:
+
+- Key data matching concepts
+- A description of each data matching phase
