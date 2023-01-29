@@ -1,4 +1,20 @@
 - title: Technical Writer
+  company: 360Learning
+  startdate: June 2022
+  enddate: Present
+  description: 
+    - task: Developed, wrote, and updated end-user and developer documentation for a SaaS product
+    - task: Translated end-user documentation from English into French
+    - task: Worked on technical requirements for translation management implementation
+
+- title: Technical Writer
+  company: Ansys
+  startdate: February 2022
+  enddate: May 2022
+  description: 
+    - task: Worked with internal teams on documentation requirements for autonomous vehicle simulation and testing software
+
+- title: Technical Writer
   company: Opendatasoft
   startdate: December 2020
   enddate: September 2021
