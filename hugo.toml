@@ -3,6 +3,11 @@ languageCode = "en-us"
 title = "Arnaud Hervy"
 theme = ["PaperMod"]
 
+[services]
+
+  [services.googleAnalytics]
+  ID = "-5S0Q36K0Z8"
+
 [params]
 env = "production"
 title = "Arnaud Hervy"
