@@ -1,4 +1,14 @@
-_site
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
+### macOS ###
+# DS_Store files
+.DS_Store
+themes/.DS_Store
+
+### Hugo ###
+# Generated files by hugo
+/public/
+/resources/_gen/
+/assets/jsconfig.json
+hugo_stats.json
+
+# Temporary lock file while building
+/.hugo_build.lock 
