@@ -6,7 +6,7 @@ theme = ["PaperMod"]
 [services]
 
   [services.googleAnalytics]
-  ID = "-5S0Q36K0Z8"
+  ID = "G-5S0Q36K0Z8"
 
 [params]
 env = "production"
