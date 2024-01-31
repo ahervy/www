@@ -26,7 +26,7 @@ title = "Arnaud Hervy"
     url = "/about/"
     
     [[params.profileMode.buttons]]
-    name = "See my writing"
+    name = "See my work"
     url = "/portfolio/"
 
   [[params.socialIcons]]
