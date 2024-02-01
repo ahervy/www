@@ -2,6 +2,7 @@ baseURL = "https://arnaudhervy.com/"
 languageCode = "en-us"
 title = "Arnaud Hervy"
 theme = ["PaperMod"]
+pluralizelisttitles = false
 
 [services]
 
