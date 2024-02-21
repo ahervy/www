@@ -7,7 +7,7 @@ This case study focuses on the creation of [step-by-step procedures](/samples/st
 
 ## Challenge
 
-Our platform previously required users to rely on our Support team to manage their API keys. To empower users, we added a new feature allowing them to manage their API keys. Clear and concise instructions were crucial to ensure a smooth transition.
+Our platform previously required users to rely on our Support team to manage their API keys. To empower users, we added a new feature allowing them to manage their API keys. To make the transition smoother, I was tasked with creating clear and concise instructions.
 
 ## Solution
 
