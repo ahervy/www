@@ -12,6 +12,7 @@ pluralizelisttitles = false
 [params]
 env = "production"
 title = "Arnaud Hervy"
+ShowBreadCrumbs = true
 
   [params.profileMode]
   enabled = true
