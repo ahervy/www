@@ -5,7 +5,7 @@ tags = ["technical writing", "portfolio"]
 
 This case study focuses on the creation of a [user-friendly guide](/samples/new-feature-announcement.html 'guide announcing a major navigation overhaul I created in HTML format') that helps the transition during a navigation revamp on a platform. This case study is based on my real-world experience documenting a product.
 
-## Challenge
+## Context
 
 Our platform's navigation, while initially intuitive, had become outdated due to feature growth. A complete overhaul was planned to streamline the user journey.
 
