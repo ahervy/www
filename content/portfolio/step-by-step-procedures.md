@@ -1,15 +1,19 @@
 +++
-title = 'Empowering users: Streamlined API Key management'
+title = 'Documentation for self-managed API keys'
 tags = ["technical writing", "portfolio"]
 +++
 
 This case study focuses on the creation of [step-by-step procedures](/samples/step-by-step-procedures.html 'step-by-step procedures I created in HTML format') that guide users through tasks related to a new feature. This case study is based on my real-world experience documenting a product.
 
-## Challenge
+## Context
 
-Our platform previously required users to rely on our Support team to manage their API keys. To empower users, we added a new feature allowing them to manage their API keys. To make the transition smoother, I was tasked with creating clear and concise instructions.
+Users had to contact our Support team to manage their API keys, which was inconvenient. To empower users and improve their experience, we launched a new feature allowing them to manage their API keys.
 
-## Solution
+## My role
+
+To support this feature launch, I was tasked with creating clear and concise instructions.
+
+## Process
 
 1. Understanding the context and users: I started by reviewing the product brief and user stories. Then, I worked with the product manager and customer success team to understand what users already know about API keys. We found out our users were tech-savvy. So, we decided to create content on aspects like one-time visibility, revocation, and impacts.
 3. Exploring the feature: I tested the feature on our platform and used Postman. I covered everything – creating the API key, revoking it, and seeing how it affects integrations.

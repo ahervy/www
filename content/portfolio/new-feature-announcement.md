@@ -1,15 +1,19 @@
 +++
-title = 'Navigating change with ease: A user guide success story'
+title = 'User guide for a smooth navigation revamp'
 tags = ["technical writing", "portfolio"]
 +++
 
-This case study focuses on the creation of a [user-friendly guide](/samples/new-feature-announcement.html 'guide announcing a major navigation overhaul I created in HTML format') that helps the transition during a navigation revamp on a platform. The guide is designed to prepare users for the upcoming changes. This case study is based on my real-world experience documenting a product.
+This case study focuses on the creation of a [user-friendly guide](/samples/new-feature-announcement.html 'guide announcing a major navigation overhaul I created in HTML format') that helps the transition during a navigation revamp on a platform. This case study is based on my real-world experience documenting a product.
 
 ## Challenge
 
-Our platform's complex navigation needed a complete revamp. We knew that big changes could be confusing for users. To make the transition smoother, I was tasked with creating a user-friendly guide before the release.
+Our platform's navigation, while initially intuitive, had become outdated due to feature growth. A complete overhaul was planned to streamline the user journey.
 
-## Solution
+## My role
+
+We knew that big changes could be confusing for users. To make the transition smoother, I was tasked with creating a user-friendly guide before the release. This guide aimed to prepare users for the upcoming navigation revamp and minimize confusion.
+
+## Process
 
 1. Understanding the context: I started by reviewing the product brief. Then, I worked with product managers to understand the navigation changes and new interface terms.
 2. Exploring the new navigation: I tested the new navigation on test platforms, experiencing and recording the changes.
