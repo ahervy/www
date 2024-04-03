@@ -33,7 +33,6 @@ I create content to help users easily navigate products, including:
 
 ### Empowering users
 
-I believe clear communication is key!  When things are easy to understand, users feel more in control. That's why I use both UX writing and technical writing to help users can get the most out of products:
+I believe clear communication is key.
 
-- I help users navigate apps and websites with clear instructions.
-- I explain tech stuff in plain language, so it's not scary.
+When things are easy to understand, users feel more in control. That's why I use both UX writing and technical writing to help users get the most out of products.
