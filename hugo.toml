@@ -17,7 +17,7 @@ ShowBreadCrumbs = true
   [params.profileMode]
   enabled = true
   title = "Arnaud Hervy"
-  subtitle = "Technical writer, in the process of getting a UX writer certification"
+  subtitle = "Technical writer and certified UX writer"
   imageUrl = "/profile-picture.jpg"
   imageTitle = "Profile picture"
   imageWidth = 120
