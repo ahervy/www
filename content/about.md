@@ -4,22 +4,24 @@ title = 'About me'
 
 ## Hello, I'm Arnaud 👋
 
-**I'm a technical writer** living in Nantes, France.
-In simple terms, I decode technical stuff and explain it in plain language.
-
-**I'm also learning UX writing** to create clear, concise, and helpful conversations that enhance the user experience with products.
+**I'm a technical writer and UX writer** living in Nantes, France.
+In simple terms, I take complicated tech stuff and explain it in a way that's easy to understand. I recently obtained my certification in UX writing to further enhance the user experience through clear, concise, and helpful conversations.
 
 ## What I do
 
-**Making things simple:**
-I make tech easy to understand.
-As a technical writer, my role is to break down complex stuff and make it simple for all users.
+### Making things simple
 
-**Collaborating with teams:**
+As a technical writer, I break down complex stuff and make it simple for all users.
+
+As a UX writer, I write the words you see on apps and websites, like buttons, labels, and messages. My goal is to help users get things done easily.
+
+### Collaborating with teams
+
 I collaborate with developers, designers, product managers, and more.
-Together, we make sure that products work well and are explained in a way that all users can understand.
+Together, we make sure that products are easy to navigate and explained in a way that all users can understand.
 
-**Crafting useful resources:**
+### Crafting user-centered resources
+
 I create content to help users easily navigate products, including:
 
 - Step-by-step procedures
@@ -29,6 +31,9 @@ I create content to help users easily navigate products, including:
 
 ## Why I do it
 
-**Empowering users:**
-Good documentation is like a map, helping users find what they need when they need it.
-I make tech less scary and more user-friendly.
+### Empowering users
+
+I believe clear communication is key!  When things are easy to understand, users feel more in control. That's why I use both UX writing and technical writing to help users can get the most out of products:
+
+- I help users navigate apps and websites with clear instructions.
+- I explain tech stuff in plain language, so it's not scary.
