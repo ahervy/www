@@ -4,11 +4,6 @@ title = "Arnaud Hervy"
 theme = ["PaperMod"]
 pluralizelisttitles = false
 
-[services]
-
-  [services.googleAnalytics]
-  ID = "G-5S0Q36K0Z8"
-
 [params]
 env = "production"
 title = "Arnaud Hervy"
@@ -38,9 +33,6 @@ ShowBreadCrumbs = true
   [[params.socialIcons]]
   name = "LinkedIn"
   url = "https://www.linkedin.com/in/arnaudhervy/"
-
-[params.analytics.google]
-SiteVerificationTag = "G-5S0Q36K0Z8"
 
 [[menu.main]]
 identifier = "about"
