@@ -1,61 +1,36 @@
 baseURL = "https://arnaudhervy.com/"
-languageCode = "en-us"
-title = "Arnaud Hervy"
-theme = ["PaperMod"]
+languageCode = 'en-us'
+theme = ["limpide"]
 pluralizelisttitles = false
+title = "Arnaud Hervy"
 
-[services]
-
-  [services.googleAnalytics]
-  ID = "G-5S0Q36K0Z8"
 
 [params]
-env = "production"
-title = "Arnaud Hervy"
-ShowBreadCrumbs = true
+  env = "production"
+  author = "Arnaud Hervy"
+  description = "Technical writer and certified UX writer"
+  introText = "I'm a technical writer and certified UX writer."
 
-  [params.profileMode]
-  enabled = true
-  title = "Arnaud Hervy"
-  subtitle = "Technical writer and certified UX writer"
-  imageUrl = "/profile-picture.jpg"
-  imageTitle = "Profile picture"
-  imageWidth = 120
-  imageHeight = 120
-
-    [[params.profileMode.buttons]]
-    name = "Get to know me"
+  [[params.introButtons]]
+    label = "Get to know me"
     url = "/about/"
-    
-    [[params.profileMode.buttons]]
-    name = "See my work"
+
+  [[params.introButtons]]
+    label = "See my work"
     url = "/portfolio/"
 
-  [[params.socialIcons]]
-  name = "Github"
-  url = "https://github.com/ahervy"
+[menu]
+  [[menu.main]]
+    name = 'About'
+    url = '/about/'
+    weight = 10
 
-  [[params.socialIcons]]
-  name = "LinkedIn"
-  url = "https://www.linkedin.com/in/arnaudhervy/"
+  [[menu.main]]
+    name = "Portfolio"
+    url = "/portfolio/"
+    weight = 20
 
-[params.analytics.google]
-SiteVerificationTag = "G-5S0Q36K0Z8"
-
-[[menu.main]]
-identifier = "about"
-name = "About me"
-url = "/about/"
-weight = 10
-
-[[menu.main]]
-identifier = "portfolio"
-name = "Portfolio"
-url = "/portfolio/"
-weight = 20
-
-[[menu.main]]
-identifier = "contact"
-name = "Contact"
-url = "/contact/"
-weight = 30
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 30
