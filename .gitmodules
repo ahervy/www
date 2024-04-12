@@ -3,4 +3,4 @@
 	url = https://github.com/adityatelange/hugo-PaperMod.git
 [submodule "themes/limpide"]
 	path = themes/limpide
-	url = git@github.com:ahervy/limpide.git
+	url = https://github.com/ahervy/limpide.git
