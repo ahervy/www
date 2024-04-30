@@ -3,31 +3,31 @@ title = 'User guide for a smooth navigation revamp'
 tags = ["technical writing", "portfolio"]
 +++
 
-This case study focuses on the creation of a [user-friendly guide](/samples/new-feature-announcement.html 'guide announcing a major navigation overhaul I created in HTML format') that helps the transition during a navigation revamp on a platform. This case study is based on my real-world experience documenting a product.
+This case study is about the creation of a [user-friendly guide](/samples/new-feature-announcement.html 'guide announcing a major navigation revamp in HTML format') that helps the transition during a navigation revamp on a platform. This case study is based on a product I documented.
 
 ## Context
 
-Our platform's navigation, while initially intuitive, had become outdated due to feature growth. A complete overhaul was planned to streamline the user journey.
+Our platform's navigation had become confusing for users due to the growing number of features. A revamp was planned to improve the user experience.
 
 ## My role
 
-We knew that big changes could be confusing for users. To make the transition smoother, I was tasked with creating a user-friendly guide before the release. This guide aimed to prepare users for the upcoming navigation revamp and minimize confusion.
+To help with the transition, I was tasked with creating a guide to prepare users for the upcoming navigation revamp.
 
 ## Process
 
-1. Understanding the context: I started by reviewing the product brief. Then, I worked with product managers to understand the navigation changes and new interface terms.
-2. Exploring the new navigation: I tested the new navigation on test platforms, experiencing and recording the changes.
-3. Building the guide: I drafted clear descriptions of the changes and step-by-step instructions for finding features in their new location.
-4. Iterating: I worked with product and marketing teams to improve the guide. We made changes to wording, screenshots, and animated GIFs based on feedback and updates to the interface.
+1. Understanding the context: I started by reviewing the product brief. Then, I worked with product managers to understand the navigation changes and new interface concepts.
+2. Exploring the new navigation: I tested the new navigation on test platforms.
+3. Building the guide: I recorded and drafted step-by-step instructions for finding features in their new location.
+4. Iterating: I worked with product and marketing teams to improve the wording and visuals.
 
 ## Results
 
-- Empowered users: Users were informed and ready, making them more confident using the new navigation.
-- Reduced support: Step-by-step guidance meant fewer users needed customer support.
-- Enhanced trust: The guide became a reliable source of information, aligned with platform messaging and terminology.
+- Users were informed before the release.
+- Proactive communication reduced the need for customer support.
+- The guide became the single source of truth for internal and external users.
 
 ## Takeaways
 
-- Proactive communication with users is key for successful feature adoption.
-- Working with subject matter experts on content creation leads to clearer content and consistent messaging.
-- Testing ensures accurate and user-centric content.
+- Communicate with users before big feature releases. Such communication improves feature adoption.
+- Work with subject matter experts. This way, you can know users better and create content that helps them.
+- Test features and walk in the users' shoes to create accurate and suitable content.

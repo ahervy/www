@@ -1,32 +1,30 @@
 +++
-title = 'Documentation for self-managed API keys'
+title = 'Docs for self-managed API keys'
 tags = ["technical writing", "portfolio"]
 +++
 
-This case study focuses on the creation of [step-by-step procedures](/samples/step-by-step-procedures.html 'step-by-step procedures I created in HTML format') that guide users through tasks related to a new feature. This case study is based on my real-world experience documenting a product.
+This case study is about the creation of [step-by-step procedures](/samples/step-by-step-procedures.html 'step-by-step procedures in HTML format') that guide users through tasks related to a new feature. This case study is based on a product I documented.
 
 ## Context
 
-Users had to contact our Support team to manage their API keys, which was inconvenient. To empower users and improve their experience, we launched a new feature allowing them to manage their API keys.
+Users had to contact our Support team to manage their API keys, which was not convenient. To improve the user experience, we launched a feature allowing them to manage their API keys.
 
 ## My role
 
-To support this feature launch, I was tasked with creating clear and concise instructions.
+To support the launch of this feature, I was tasked with creating clear and concise instructions.
 
 ## Process
 
-1. Understanding the context and users: I started by reviewing the product brief and user stories. Then, I worked with the product manager and customer success team to understand what users already know about API keys. We found out our users were tech-savvy. So, we decided to create content on aspects like one-time visibility, revocation, and impacts.
-3. Exploring the feature: I tested the feature on our platform and used Postman. I covered everything – creating the API key, revoking it, and seeing how it affects integrations.
-4. Building the docs: I documented all the steps using Zendesk. Then, the product manager reviewed them before publishing.
+1. Understanding the feature and users: I started by reviewing the product brief and user stories. Then, I worked with the product manager and customer success team to understand what users know about API keys. I found out our users were tech-savvy. So, we decided to focus on aspects like one-time visibility, revocation, and impacts.
+3. Exploring the feature: I tested the feature on test platforms, using Postman. From creating the API key to seeing how revocation affects integrations, I explored the whole user journey.
+4. Building the docs: I documented all the steps using Zendesk Guide. Then, the product manager reviewed them publishing.
 
 ## Results
 
-- Self-help empowerment: These docs empowered users to manage API keys faster, reducing the need for customer support.
-- Step-by-step guidance: The complete set of instructions minimized errors, guiding users through the entire API key lifecycle.
-- Reliable content: A thorough review with the product manager ensured accurate content users can trust.
+- These docs helped users manage API keys themselves, reducing the need for customer support.
+- Reviewing the docs with the product manager ensured technically accurate content for users.
 
 ## Takeaways
 
-- Tailor documentation to the level of user expertise, ensuring clarity and relevance.
-- Hands-on exploration ensures accurate and reliable content that meets user needs.
-- Engaging with subject matter experts results in documentation that aligns with user expectations and product goals.
+- Work with subject matter experts. This way, you can know users better and tailor your content to their needs.
+- Test features and walk in the users' shoes to create accurate and suitable content.
