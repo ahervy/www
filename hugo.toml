@@ -23,7 +23,7 @@ ShowBreadCrumbs = true
     url = "/about/"
     
     [[params.profileMode.buttons]]
-    name = "See my work"
+    name = "View work samples"
     url = "/portfolio/"
 
   [[params.socialIcons]]
