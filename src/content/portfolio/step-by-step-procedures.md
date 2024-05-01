@@ -1,9 +1,14 @@
-+++
-title = 'Docs for self-managed API keys'
-tags = ["technical writing", "portfolio"]
-+++
-
-This case study is about the creation of [step-by-step procedures](/samples/step-by-step-procedures.html 'step-by-step procedures in HTML format') that guide users through tasks related to a new feature. This case study is based on a product I documented.
+---
+title: How-to guide for managing API keys
+publishDate: 2024-05-01 00:00:00
+img: /assets/step-by-step-procedures.png
+img_alt: Step by step procedures
+description: |
+  This case study is about the creation of step-by-step procedures that guide users through tasks related to a new feature. This case study is based on a product I documented.
+tags:
+  - technical writing
+  - portfolio
+---
 
 ## Context
 

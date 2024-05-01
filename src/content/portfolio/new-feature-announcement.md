@@ -1,9 +1,14 @@
-+++
-title = 'User guide for a smooth navigation revamp'
-tags = ["technical writing", "portfolio"]
-+++
-
-This case study is about the creation of a [user-friendly guide](/samples/new-feature-announcement.html 'guide announcing a major navigation revamp in HTML format') that helps the transition during a navigation revamp on a platform. This case study is based on a product I documented.
+---
+title: User guide for a smooth navigation revamp
+publishDate: 2024-05-01 00:00:00
+img: /assets/new-feature-announcement.png
+img_alt: A bright pink sheet of paper used to wrap flowers curves in front of rich blue background
+description: |
+  This case study is about the creation of a user-friendly guide that helps the transition during a navigation revamp on a platform. This case study is based on a product I documented.
+tags:
+  - technical writing
+  - portfolio
+---
 
 ## Context
 

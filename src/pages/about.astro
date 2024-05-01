@@ -1,0 +1,129 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import ContactCTA from "../components/ContactCTA.astro";
+import Hero from "../components/Hero.astro";
+---
+
+<BaseLayout title="About me | Arnaud Hervy" description="About Arnaud Hervy">
+	<div class="stack gap-20">
+		<main class="wrapper about">
+			<Hero
+				title="Hello, I’m Arnaud 👋"
+				tagline="I’m a French technical writer and UX writer living."
+			/>
+
+			<section>
+				<h2 class="section-title">I make things simple</h2>
+				<div class="content">
+					<p>
+						As a technical writer, I break down complex stuff and
+						make it simple for all users.
+					</p>
+					<p>
+						As a UX writer, I write the words you see on apps and
+						websites, like buttons, labels, and messages. My goal is
+						to help users get things done easily.
+					</p>
+				</div>
+			</section>
+			<section>
+				<h2 class="section-title">I collaborate with teams</h2>
+				<div class="content">
+					<p>
+						I collaborate with developers, designers, product
+						managers, and more. Together, we make sure that products
+						are easy to navigate and explained in a way that all
+						users can understand.
+					</p>
+				</div>
+			</section>
+			<section>
+				<h2 class="section-title">I craft user-centered resources</h2>
+				<div class="content">
+					<p>
+						I create content to help users easily navigate products,
+						including:
+					</p>
+					<ul>
+						<li>Step-by-step procedures</li>
+						<li>In-product communications</li>
+						<li>Copy for the user interface</li>
+						<li>API documentation</li>
+					</ul>
+				</div>
+			</section>
+			<section>
+				<h2 class="section-title">I empower users</h2>
+				<div class="content">
+					<p>I believe clear communication is key.</p>
+					<p>
+						When things are easy to understand, users feel more in
+						control. That’s why I use both UX writing and technical
+						writing to help users get the most out of products.
+					</p>
+				</div>
+			</section>
+		</main>
+
+		<ContactCTA />
+	</div>
+</BaseLayout>
+
+<style>
+	.about {
+		display: flex;
+		flex-direction: column;
+		gap: 3.5rem;
+	}
+
+	img {
+		margin-top: 1.5rem;
+		border-radius: 1.5rem;
+		box-shadow: var(--shadow-md);
+	}
+
+	section {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		color: var(--gray-200);
+	}
+
+	.section-title {
+		grid-column-start: 1;
+		font-size: var(--text-xl);
+		color: var(--gray-0);
+	}
+
+	.content {
+		grid-column: 2 / 4;
+	}
+
+	.content :global(a) {
+		text-decoration: 1px solid underline transparent;
+		text-underline-offset: 0.25em;
+		transition: text-decoration-color var(--theme-transition);
+	}
+
+	.content :global(a:hover),
+	.content :global(a:focus) {
+		text-decoration-color: currentColor;
+	}
+
+	@media (min-width: 50em) {
+		.about {
+			display: grid;
+			grid-template-columns: 1fr 60% 1fr;
+		}
+
+		.about > :global(:first-child) {
+			grid-column-start: 2;
+		}
+
+		section {
+			display: contents;
+			font-size: var(--text-lg);
+		}
+	}
+</style>
