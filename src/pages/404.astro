@@ -1,8 +1,11 @@
 ---
-import Hero from '../components/Hero.astro';
+// Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Component Imports
+import Hero from '../components/Hero.astro';
 ---
 
-<BaseLayout title="Not Found" description="404 Error — this page was not found">
-	<Hero title="Page Not Found" tagline="Not found" />
+<BaseLayout title="Page not found" description="404 Error — this page was not found">
+	<Hero title="This page was not found" tagline="Maybe you can find what you need from the homepage." />
 </BaseLayout>
