@@ -1,8 +1,8 @@
 ---
 title: How-to guide for managing API keys
 publishDate: 2024-05-01 00:00:00
-img: /assets/step-by-step-procedures.png
-img_alt: Step by step procedures
+img: /assets/how-to.png
+img_alt: ""
 description: |
   This case study is about the creation of step-by-step procedures that guide users through tasks related to a new feature. This case study is based on a product I documented.
 tags:
