@@ -7,7 +7,6 @@ description: |
   This case study is about the creation of a user-friendly guide that helps the transition during a navigation revamp on a platform. This case study is based on a product I documented.
 tags:
   - technical writing
-  - portfolio
 ---
 
 ## Context
