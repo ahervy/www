@@ -1,13 +1,12 @@
 ---
 title: How-to guide for managing API keys
 publishDate: 2024-05-01 00:00:00
-img: /assets/step-by-step-procedures.png
-img_alt: Step by step procedures
+img: /assets/how-to.png
+img_alt: ""
 description: |
   This case study is about the creation of step-by-step procedures that guide users through tasks related to a new feature. This case study is based on a product I documented.
 tags:
   - technical writing
-  - portfolio
 ---
 
 ## Context
@@ -22,12 +21,12 @@ To support the launch of this feature, I was tasked with creating clear and conc
 
 1. Understanding the feature and users: I started by reviewing the product brief and user stories. Then, I worked with the product manager and customer success team to understand what users know about API keys. I found out our users were tech-savvy. So, we decided to focus on aspects like one-time visibility, revocation, and impacts.
 3. Exploring the feature: I tested the feature on test platforms, using Postman. From creating the API key to seeing how revocation affects integrations, I explored the whole user journey.
-4. Building the docs: I documented all the steps using Zendesk Guide. Then, the product manager reviewed them publishing.
+4. Building the content: I documented all the steps using Zendesk Guide. Then, the product manager reviewed them publishing.
 
 ## Results
 
-- These docs helped users manage API keys themselves, reducing the need for customer support.
-- Reviewing the docs with the product manager ensured technically accurate content for users.
+- This content helped users manage API keys themselves, reducing the need for customer support.
+- Reviewing the content with the product manager ensured technically accurate content for users.
 
 ## Takeaways
 

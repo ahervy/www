@@ -1,13 +1,12 @@
 ---
 title: User guide for a navigation revamp
 publishDate: 2024-05-01 00:00:00
-img: /assets/new-feature-announcement.png
-img_alt: User guide for a navigation revamp
+img: /assets/user-guide.png
+img_alt: ""
 description: |
   This case study is about the creation of a user-friendly guide that helps the transition during a navigation revamp on a platform. This case study is based on a product I documented.
 tags:
   - technical writing
-  - portfolio
 ---
 
 ## Context
