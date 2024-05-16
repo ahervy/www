@@ -122,6 +122,7 @@
 	  url('/fonts/Mona-Sans.woff2') format('woff2-variations');
 	font-weight: 200 300 400 500 600 700 900;
 	font-stretch: 75% 125%;
+	font-display: swap;
   }
 
 html,
