@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-	title = 'Arnaud Hervy, Professional Technical Writer',
-	description = 'Arnaud Hervy is a professional technical writer. He simplifies complex information and crafts user-centered resources. With a collaborative approach, Arnaud works with cross-functional teams to empower users through clear content.',
+	title = 'Arnaud Hervy - Technical writer',
+	description = 'Experienced France-based technical writer specializing in technical documentation, API documentation, and UX writing. Turns complex info into easy-to-understand content.',
 } = Astro.props;
 ---
 
@@ -24,6 +24,32 @@ const {
 <link rel="icon" href="/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="canonical" href={Astro.url.href} />
+
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url.origin} />
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Arnaud Hervy",
+      "jobTitle": "Technical Writer & UX Specialist",
+      "url": "https://arnaudhervy.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Nantes",
+        "addressCountry": "France"
+      },
+      "sameAs": [
+        "https://github.com/ahervy",
+        "https://www.linkedin.com/in/arnaudhervy"
+      ]
+    }
+</script>
+
 <script is:inline>
 	// This code is inlined in the head to make dark mode instant & blocking.
 	const getThemePreference = () => {
