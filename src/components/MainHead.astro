@@ -1,5 +1,5 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 
 interface Props {
 	title?: string | undefined;
@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-	title = 'Arnaud Hervy - Technical Writer',
-	description = 'Experienced France-based technical writer specializing in technical documentation, API documentation, and UX writing. Turns complex info into easy-to-understand content.',
+	title = "Arnaud Hervy - Technical Writer",
+	description = "Experienced France-based technical writer specializing in technical documentation, API documentation, and UX writing. Turns complex info into easy-to-understand content.",
 } = Astro.props;
 ---
 
@@ -19,11 +19,17 @@ const {
 <title>{title}</title>
 
 <link rel="sitemap" href="/sitemap-index.xml" />
-<link rel="manifest" href="/manifest.webmanifest">
-<link rel="icon" href="/favicon.ico" sizes="32x32">
-<link rel="icon" href="/favicon.png" type="image/png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preload" href="/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="icon" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" href="/favicon.png" type="image/png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link
+	rel="preload"
+	href="/fonts/Mona-Sans.woff2"
+	as="font"
+	type="font/woff2"
+	crossorigin
+/>
 <link rel="canonical" href={Astro.url.href} />
 
 <meta property="og:title" content={title} />
@@ -31,42 +37,52 @@ const {
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url.origin} />
 
-<script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Arnaud Hervy",
-      "jobTitle": "Technical Writer",
-      "url": "https://arnaudhervy.com",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Nantes",
-        "addressCountry": "France"
-      },
-      "sameAs": [
-        "https://github.com/ahervy",
-        "https://www.linkedin.com/in/arnaudhervy"
-      ]
-    }
-</script>
+<script
+	type="application/ld+json"
+	set:html={JSON.stringify({
+		"@context": "https://schema.org",
+		"@type": "Person",
+		name: "Arnaud Hervy",
+		jobTitle: "Technical Writer",
+		url: "https://arnaudhervy.com",
+		address: {
+			"@type": "PostalAddress",
+			addressLocality: "Nantes",
+			addressCountry: "France",
+		},
+		sameAs: [
+			"https://github.com/ahervy",
+			"https://www.linkedin.com/in/arnaudhervy",
+		],
+	})}
+/>
 
 <script is:inline>
 	// This code is inlined in the head to make dark mode instant & blocking.
 	const getThemePreference = () => {
-		if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-			return localStorage.getItem('theme');
+		if (
+			typeof localStorage !== "undefined" &&
+			localStorage.getItem("theme")
+		) {
+			return localStorage.getItem("theme");
 		}
-		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+		return window.matchMedia("(prefers-color-scheme: dark)").matches
+			? "dark"
+			: "light";
 	};
-	const isDark = getThemePreference() === 'dark';
-	document.documentElement.classList[isDark ? 'add' : 'remove']('theme-dark');
+	const isDark = getThemePreference() === "dark";
+	document.documentElement.classList[isDark ? "add" : "remove"]("theme-dark");
 
-	if (typeof localStorage !== 'undefined') {
+	if (typeof localStorage !== "undefined") {
 		// Watch the document element and persist user preference when it changes.
 		const observer = new MutationObserver(() => {
-			const isDark = document.documentElement.classList.contains('theme-dark');
-			localStorage.setItem('theme', isDark ? 'dark' : 'light');
+			const isDark =
+				document.documentElement.classList.contains("theme-dark");
+			localStorage.setItem("theme", isDark ? "dark" : "light");
 		});
-		observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+		observer.observe(document.documentElement, {
+			attributes: true,
+			attributeFilter: ["class"],
+		});
 	}
 </script>
