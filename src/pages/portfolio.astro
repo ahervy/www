@@ -8,14 +8,14 @@ import PortfolioPreview from '../components/PortfolioPreview.astro';
 import Hero from '../components/Hero.astro';
 import Grid from '../components/Grid.astro';
 
-const projects = (await getCollection('portfolio')).sort(
-	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+const projects = (await getCollection("portfolio")).sort(
+	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
 );
 ---
 
 <BaseLayout
-	title="Arnaud Hervy's portfolio | Arnaud Hervy"
-	description="Explore Arnaud Hervy's portfolio showcasing his expertise in creating user-friendly documentation. Arnaud specializes in producing clear and concise content that helps users get the most out of products."
+	title="My Portfolio | Arnaud Hervy"
+	description="Explore Arnaud Hervy's portfolio: user guides, how-to guides, API documentation, and microcopy – all designed to help users get the most out of products and services."
 >
 	<div class="stack gap-20">
 		<main class="wrapper stack gap-8">
