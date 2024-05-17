@@ -9,7 +9,6 @@ import CallToAction from '../components/CallToAction.astro';
 import Grid from '../components/Grid.astro';
 import Hero from '../components/Hero.astro';
 import Icon from '../components/Icon.astro';
-import Pill from '../components/Pill.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
 
 // Page section components
@@ -35,13 +34,16 @@ import profilePicture from '../assets/profile-picture.jpg';
 		<div class="wrapper stack gap-8 lg:gap-20">
 			<header class="hero">
 				<Hero
-					title="Hello, my name is Arnaud Hervy"
-					tagline="I’m a technical writer based in Nantes, France. I take complicated tech stuff and explain it in a way that’s easy to understand. I just obtained my certification in UX writing to further enhance the user experience through helpful conversations."
+					title="Hello, I'm Arnaud Hervy"
+					tagline="I’m a technical writer based in Nantes, France. I explain products and services in a way that's easy to understand. With my new certification in UX writing, I can now further enhance the user experience by creating engaging and helpful conversations."
 					align="start"
-				>
-				</Hero>
-				
-				<Picture src={profilePicture} formats={['avif', 'webp']} alt="" />
+				/>
+
+				<Picture
+					src={profilePicture}
+					formats={["avif", "webp"]}
+					alt=""
+				/>
 			</header>
 
 			<Skills />
@@ -73,7 +75,6 @@ import profilePicture from '../assets/profile-picture.jpg';
 					</CallToAction>
 				</div>
 			</section>
-
 		</main>
 
 		<ContactCTA />
@@ -142,12 +143,12 @@ import profilePicture from '../assets/profile-picture.jpg';
 	@media (min-width: 50em) {
 		.section {
 			grid-template-columns: repeat(4, 1fr);
-			grid-template-areas: 'header header header header' 'gallery gallery gallery gallery';
+			grid-template-areas: 'header header header header' 'gallery gallery gallery gallery'
 			gap: 5rem;
 		}
 
 		.section.with-cta {
-			grid-template-areas: 'header header header cta' 'gallery gallery gallery gallery';
+			grid-template-areas: 'header header header cta' 'gallery gallery gallery gallery'
 		}
 
 		.section-header {
