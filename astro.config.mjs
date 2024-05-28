@@ -11,8 +11,8 @@ export default defineConfig({
   integrations: [
     sitemap({
       filter: (page) =>
-        page !== 'https://arnaudhervy.com/samples/how-to.html' &&
-        page !== 'https://arnaudhervy.com/samples/user-guide.html'
+        page !== 'https://arnaudhervy.com/samples/how-to/' &&
+        page !== 'https://arnaudhervy.com/samples/user-guide/'
     }),
   ],
 });
