@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage API Keys</title>
+    <style>
+        body {
+            font-family: var(--font-body);
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        h1,
+        h2 {
+            color: #007BFF;
+            margin-top: 20px;
+        }
+
+        p {
+            color: #555;
+        }
+
+        ul,
+        ol {
+            margin-bottom: 10px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        .alert {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .warning,
+        .important {
+            border: 1px solid #FFA500;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="https://arnaudhervy.com">Back to arnaudhervy.com</a>
+    </nav>
+
+    <section id="main-content">
+
+        <header>
+            <h1>Manage API Keys</h1>
+        </header>
+
+        <p>The Llama API authenticates requests using API Keys. These API keys represent the required credentials to use
+            the
+            Llama API.</p>
+        <p>Only Platform Administrators and Platform Owners can manage API keys.</p>
+
+        <h2 id="create-api-key">Create an API Key</h2>
+
+        <p>From your Admin account, you can create up to 10 API keys that carry the same access rights for use with the
+            platform.</p>
+        <ol>
+            <li>Go to your <strong>Admin</strong> account.</li>
+            <li>In the <strong>Platform settings</strong> section, click <strong>API</strong>.</li>
+            <li>Click <strong>Add API key</strong>.</li>
+            <li>When asked, enter a meaningful label for the API key. For example, indicate which integration uses this
+                API key.</li>
+            <li>Click <strong>Create</strong>.</li>
+            <li>Copy your API key somewhere safe.<br />
+                <p class="alert important">You can only view the API key once.
+                    If you lose this API key, you need to create a new one.</p>
+            </li>
+            <li>Click <strong>Close</strong>.</li>
+        </ol>
+
+        <h2 id="revoke-api-key">Revoke an API key</h2>
+        <p>If you no longer use an API or think an API key has been compromised, you can revoke it.</p>
+        <p class="alert warning">Once an API key is revoked, it is permanently deleted. Any associated integration stops
+            working.</p>
+        <ol>
+            <li>Go to your <strong>Admin</strong> account.</li>
+            <li>In the <strong>Platform settings</strong> section, click <strong>API</strong>.</li>
+            <li>Find the API key you want to revoke, then click <strong>Revoke</strong>.</li>
+            <li>When asked, click <strong>Yes, revoke</strong>.</li>
+        </ol>
+
+    </section>
+
+</body>
+
+</html>

@@ -8,5 +8,11 @@ export default defineConfig({
   output: 'server',
   adapter: netlify(),
   site: 'https://arnaudhervy.com',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      filter: (page) =>
+        page !== 'https://arnaudhervy.com/samples/how-to.html' &&
+        page !== 'https://arnaudhervy.com/samples/user-guide.html'
+    }),
+  ],
 });

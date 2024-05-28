@@ -1,10 +1,11 @@
 ---
 title: How-to guide for managing API keys
-publishDate: 2024-05-01 00:00:00
+publishDate: 2024-05-28 00:00:00
 img: /assets/how-to.png
-img_alt: ""
+img_alt: How-to guide for managing API keys in HTML format
 description: |
   This case study is about the creation of step-by-step procedures that guide users through tasks related to a new feature. This case study is based on a product I documented.
+meta_description: Technical writing case study about the creation of step-by-step procedures that guide users through tasks related to a new feature.
 tags:
   - technical writing
 ---
