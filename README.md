@@ -1,10 +1,10 @@
-# Personal Website
+# Technical Writing Portfolio
 
-This repository contains the source code for my personal website, hosted at [arnaudhervy.com](https://arnaudhervy.com).
+This repository contains the source code for my technical writing portoflio, hosted at [arnaudhervy.com](https://arnaudhervy.com).
 
 ## About
 
-This is the codebase for my personal website where I showcase my technical writing portfolio.
+This is the codebase for my technical writing portoflio where I showcase my technical writing skills.
 
 ## Technologies Used
 
