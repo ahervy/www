@@ -35,7 +35,7 @@ import profilePicture from '../assets/profile-picture.jpg';
 			<header class="hero">
 				<Hero
 					title="Arnaud Hervy - Technical Writer"
-					tagline="Looking for a technical writer to improve your product documentation? I can help!\nAs an experienced technical writer in the software industry, I can explain products and services in a way that's easy to understand.\nWhether you need knowledge base articles, guides, API documentation, or copy for user interfaces, I can help you create accurate, engaging, and helpful content for all users."
+					tagline="Looking to improve your technical documentation? I can help you!\nAs an experienced technical writer in the software industry, I create easy-to-understand guides, API documentation, user interface copy, and more for all users."
 					align="start"
 				/>
 
@@ -44,6 +44,12 @@ import profilePicture from '../assets/profile-picture.jpg';
 					formats={["avif", "webp"]}
 					alt=""
 				/>
+				<div class="hero-buttons">
+					<CallToAction href="/about/">
+						About me
+						<Icon icon="arrow-right" size="1.2em" />
+					</CallToAction>
+				  </div>
 			</header>
 
 			<Skills />
@@ -100,6 +106,10 @@ import profilePicture from '../assets/profile-picture.jpg';
 		border-radius: 1.5rem;
 	}
 
+	.hero-buttons {
+  		display: flex;		
+	}
+
 	@media (min-width: 50em) {
 		.hero {
 			display: grid;
@@ -119,7 +129,12 @@ import profilePicture from '../assets/profile-picture.jpg';
 			border-radius: 4.5rem;
 			object-fit: cover;
 		}
-	}
+
+		.hero-buttons {
+
+			margin-top: -3rem;
+		}
+}
 
 	/* ====================================================== */
 
