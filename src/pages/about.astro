@@ -3,73 +3,102 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 import ContactCTA from "../components/ContactCTA.astro";
 import Hero from "../components/Hero.astro";
+import { Picture } from "astro:assets";
+import profilePicture from "../assets/profile-picture.jpg";
 ---
 
 <BaseLayout
 	title="About Arnaud Hervy - Technical Writer"
-	description="Experienced technical writer based in France. Discover how Arnaud simplifies complex info into easy-to-understand content for all users."
+	description="Experienced technical writer based in Nantes, France. Discover how Arnaud turns complex info into easy-to-understand content for all users."
 >
 	<div class="stack gap-20">
 		<main class="wrapper about">
-			<Hero
-				title="Hello, I’m Arnaud 👋"
-				tagline="I’m a French technical writer."
+			<div class="hero-container">
+				<Hero
+					title="Hello, I'm Arnaud Hervy"
+					tagline="As an experienced technical writer in the software industry, I create easy-to-understand guides, API documentation, user interface copy, and more for all users.\nWith my new certification in UX writing, I can now further enhance the user experience by creating engaging and helpful conversations.\nBut what does that really mean?"
+				/>
+			</div>
+			<Picture
+				src={profilePicture}
+				formats={["avif", "webp"]}
+				alt="Profile picture of Arnaud Hervy, technical writer"
 			/>
 
 			<section>
-				<h2 class="section-title">I make things simple</h2>
+				<h2 class="section-title">Creating content for all users</h2>
 				<div class="content">
 					<p>
-						As a technical writer, I'm confortable with tech. I can
-						turn complex product and services into
-						easy-to-understand content for all users.
+						As a <strong>technical writer</strong>, I'm comfortable
+						with tech. I take complex product information and make
+						it clear and accessible for all users. Whether I create
+						user guides, knowledge base articles, or API
+						documentation, I ensure all users can understand and use
+						the content to get the most out of products.
 					</p>
 					<p>
-						As a UX writer, I write the words you see in apps and
-						websites, like buttons, labels, and messages.
+						As a <strong>UX writer</strong>, I write the words you
+						see in apps and websites, including buttons, labels, and
+						messages. My goal is to help users get things done
+						easily.
 					</p>
-					<p>My goal is to help users get things done easily.</p>
+					<p>
+						I'm not only a writer but also an <strong>empath</strong
+						>. My role is to understand users and their needs to
+						reward them with useful content.
+					</p>
 				</div>
 			</section>
+
 			<section>
-				<h2 class="section-title">I collaborate with teams</h2>
+				<h2 class="section-title">
+					Collaborating with cross-functional teams
+				</h2>
 				<div class="content">
 					<p>
 						I work closely with developers, designers, product
-						managers, and more. Together, we make sure that products
-						are easy to navigate and explained in a way that all
+						managers, and more. Together, we ensure that products
+						are easy to navigate and documented in a way that all
 						users can understand.
+					</p>
+					<p>
+						I also create meaningful connections to discover useful
+						info about products and the user experience to get
+						actionable data for better content.
 					</p>
 				</div>
 			</section>
+
 			<section>
-				<h2 class="section-title">I craft user-centered resources</h2>
+				<h2 class="section-title">Crafting user-centered resources</h2>
 				<div class="content">
 					<p>
 						I create a wide range of resources to help users easily
 						navigate products, including:
 					</p>
 					<ul>
-						<li>Step-by-step procedures</li>
-						<li>In-product communications</li>
-						<li>Copy for the user interface</li>
-						<li>API documentation</li>
+						<li>Step-by-step how-to guides</li>
+						<li>In-depth API documentation</li>
+						<li>
+							Engaging user interface copy for apps and websites
+						</li>
 					</ul>
 					<p>
-						<a href="/portfolio/" class="portfolio-link">
-							View my portfolio.
-						</a>
+						<a href="/portfolio/" class="portfolio-link"
+							>View my portfolio to see examples of my work.</a
+						>
 					</p>
 				</div>
 			</section>
+
 			<section>
-				<h2 class="section-title">I empower users</h2>
+				<h2 class="section-title">Empowering Users</h2>
 				<div class="content">
-					<p>I believe clear communication is key.</p>
 					<p>
-						When things are easy to understand, users feel more in
-						control. That’s why I use both UX writing and technical
-						writing to help users get the most out of products.
+						I believe clear communication is key. When things are
+						easy to understand, users feel more in control. That’s
+						why I use both technical writing and UX writing to help
+						users get the most out of products.
 					</p>
 				</div>
 			</section>
@@ -81,15 +110,15 @@ import Hero from "../components/Hero.astro";
 
 <style>
 	.about {
-		display: flex;
+		display: grid;
 		flex-direction: column;
 		gap: 3.5rem;
 	}
 
 	img {
-		margin-top: 1.5rem;
-		border-radius: 1.5rem;
-		box-shadow: var(--shadow-md);
+		aspect-ratio: 5 / 4;
+		border-radius: 4rem;
+		object-fit: cover;
 	}
 
 	section {
@@ -123,11 +152,24 @@ import Hero from "../components/Hero.astro";
 	@media (min-width: 50em) {
 		.about {
 			display: grid;
-			grid-template-columns: 1fr 60% 1fr;
+			grid-template-columns: 1fr 50% 1fr;
 		}
 
 		.about > :global(:first-child) {
-			grid-column-start: 2;
+			grid-column-start: 1;
+		}
+
+		.hero-container {
+			grid-column: 1 / span 2;
+			display: flex;
+			flex-direction: column;
+			align-items: start;
+			gap: 1rem;
+		}
+
+		.hero-container :global(h1),
+		.hero-container :global(p) {
+			text-align: start;
 		}
 
 		section {
