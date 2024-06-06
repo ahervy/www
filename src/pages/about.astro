@@ -16,7 +16,7 @@ import profilePicture from "../assets/profile-picture.jpg";
 			<div class="hero-container">
 				<Hero
 					title="Hello, I'm Arnaud Hervy"
-					tagline="As an experienced technical writer in the software industry, I create easy-to-understand guides, API documentation, user interface copy, and more for all users.\nWith my new certification in UX writing, I can now further enhance the user experience by creating engaging and helpful conversations.\nBut what does that really mean?"
+					tagline="As an experienced technical writer in the software industry, I create easy-to-understand guides, API documentation, user interface copy, and more for all users.\nWith my new certification in UX writing, I can further enhance the user experience by creating engaging and helpful conversations."
 				/>
 			</div>
 			<Picture
@@ -30,22 +30,21 @@ import profilePicture from "../assets/profile-picture.jpg";
 				<div class="content">
 					<p>
 						As a <strong>technical writer</strong>, I'm comfortable
-						with tech. I take complex product information and make
-						it clear and accessible for all users. Whether I create
-						user guides, knowledge base articles, or API
-						documentation, I ensure all users can understand and use
-						the content to get the most out of products.
+						with tech. I turn complex info into easy-to-understand
+						content for all users. Whether I create user guides,
+						knowledge base articles, or API documentation, all users
+						can understand the content to get the most out of
+						products.
 					</p>
 					<p>
 						As a <strong>UX writer</strong>, I write the words you
 						see in apps and websites, including buttons, labels, and
-						messages. My goal is to help users get things done
-						easily.
+						messages. My goal is to help users get things done.
 					</p>
 					<p>
 						I'm not only a writer but also an <strong>empath</strong
-						>. My role is to understand users and their needs to
-						reward them with useful content.
+						>. My role is to understand what users do and need to
+						provide them with useful content.
 					</p>
 				</div>
 			</section>
@@ -56,15 +55,13 @@ import profilePicture from "../assets/profile-picture.jpg";
 				</h2>
 				<div class="content">
 					<p>
-						I work closely with developers, designers, product
-						managers, and more. Together, we ensure that products
-						are easy to navigate and documented in a way that all
-						users can understand.
+						I work with developers, designers, and product managers.
+						Together, we make sure products are easy to navigate and
+						well-documented.
 					</p>
 					<p>
-						I also create meaningful connections to discover useful
-						info about products and the user experience to get
-						actionable data for better content.
+						I also connect with other teams to get info about
+						products and the user experience to improve content.
 					</p>
 				</div>
 			</section>
@@ -73,8 +70,8 @@ import profilePicture from "../assets/profile-picture.jpg";
 				<h2 class="section-title">Crafting user-centered resources</h2>
 				<div class="content">
 					<p>
-						I create a wide range of resources to help users easily
-						navigate products, including:
+						I create a wide range of resources to help users get the
+						most out of products, including:
 					</p>
 					<ul>
 						<li>Step-by-step how-to guides</li>
@@ -95,10 +92,10 @@ import profilePicture from "../assets/profile-picture.jpg";
 				<h2 class="section-title">Empowering Users</h2>
 				<div class="content">
 					<p>
-						I believe clear communication is key. When things are
-						easy to understand, users feel more in control. That’s
-						why I use both technical writing and UX writing to help
-						users get the most out of products.
+						Clear communication is essential. When things are easy
+						to understand, users feel more in control. That's why I
+						use both technical writing and UX writing to help users
+						achieve their goals.
 					</p>
 				</div>
 			</section>
@@ -147,6 +144,11 @@ import profilePicture from "../assets/profile-picture.jpg";
 	.content :global(a:hover),
 	.content :global(a:focus) {
 		text-decoration-color: currentColor;
+	}
+
+	.content > p:not(:last-child),
+	.content > ul {
+		margin-bottom: 0.5rem;
 	}
 
 	@media (min-width: 50em) {
