@@ -8,214 +8,226 @@ const ACCESS_KEY = import.meta.env.ACCESS_KEY; // Use environment variable for s
 	title="Contact Arnaud Hervy - Technical Writer"
 	description="Get in touch with Arnaud, an experienced technical writer based in Nantes, France, for your technical writing needs."
 >
-	<div class="stack gap-20"></div>
-	<main class="wrapper">
-		<div class="form-container">
-			<form
-				action="https://api.web3forms.com/submit"
-				method="POST"
-				id="form"
-				class="needs-validation"
-				novalidate
-			>
-				<input type="hidden" name="access_key" value={ACCESS_KEY} />
-				<input
-					type="hidden"
-					name="subject"
-					value="New Submission from Website Contact Form"
-				/>
-				<input type="hidden" name="botcheck" />
-				{/* Hidden botcheck */}
-				<div class="form-intro">
-					<h1>Contact</h1>
-					<p>
-						If you're interested in working together, send me a
-						message about your technical writing needs.
-					</p>
-				</div>
+	<div class="stack gap-20">
+		<main class="wrapper">
+			<div class="form-container">
+				<form
+					action="https://api.web3forms.com/submit"
+					method="POST"
+					id="form"
+					class="needs-validation"
+					novalidate
+				>
+					<input type="hidden" name="access_key" value={ACCESS_KEY} />
+					<input
+						type="hidden"
+						name="subject"
+						value="New Submission from Website Contact Form"
+					/>
+					<input type="hidden" name="botcheck" />
+					{/* Hidden botcheck */}
+					<div class="form-intro">
+						<h1>Contact</h1>
+						<p>
+							If you're interested in working together, send me a
+							message about your technical writing needs.
+						</p>
+					</div>
 
-				<div class="form-row">
-					<div class="form-field">
-						<label for="firstname">First name (required)</label>
-						<input
-							type="text"
-							name="name"
-							id="firstname"
-							required
-						/>
-						<div class="invalid-feedback">
-							Please enter your first name.
+					<div class="form-row">
+						<div class="form-field">
+							<label for="firstname">First name (required)</label>
+							<input
+								type="text"
+								name="name"
+								id="firstname"
+								required
+							/>
+							<div class="invalid-feedback">
+								Please enter your first name.
+							</div>
+						</div>
+						<div class="form-field">
+							<label for="lastname">Last name (required)</label>
+							<input
+								type="text"
+								name="last_name"
+								id="lastname"
+								required
+							/>
+							<div class="invalid-feedback">
+								Please enter your last name.
+							</div>
 						</div>
 					</div>
-					<div class="form-field">
-						<label for="lastname">Last name (required)</label>
-						<input
-							type="text"
-							name="last_name"
-							id="lastname"
-							required
-						/>
-						<div class="invalid-feedback">
-							Please enter your last name.
+
+					<div class="form-row">
+						<div class="form-field">
+							<label for="email">Email address (required)</label>
+							<input
+								type="email"
+								name="email"
+								id="email"
+								required
+							/>
+							<div class="invalid-feedback">
+								Please enter a valid email address.
+							</div>
+						</div>
+						<div class="form-field">
+							<label for="phone">Company name</label>
+							<input type="text" name="company" id="company" />
 						</div>
 					</div>
-				</div>
 
-				<div class="form-row">
 					<div class="form-field">
-						<label for="email">Email address (required)</label>
-						<input type="email" name="email" id="email" required />
+						<label for="message">Message (required)</label>
+						<textarea rows="5" name="message" id="message" required
+						></textarea>
 						<div class="invalid-feedback">
-							Please enter a valid email address.
+							Please enter your message.
 						</div>
 					</div>
-					<div class="form-field">
-						<label for="phone">Company name</label>
-						<input type="text" name="company" id="company" />
-					</div>
-				</div>
 
-				<div class="form-field">
-					<label for="message">Message (required)</label>
-					<textarea rows="5" name="message" id="message" required
-					></textarea>
-					<div class="invalid-feedback">
-						Please enter your message.
-					</div>
-				</div>
+					<button type="submit">Send Message</button>
+				</form>
+			</div>
+		</main>
+	</div>
 
-				<button type="submit">Send Message</button>
+	<script>
+		import "../scripts/formValidation.js";
+	</script>
 
-			</form>
-		</div>
-	</main>
-</BaseLayout>
-
-<script>
-	import "../scripts/formValidation.js";
-</script>
-
-<style>
-	.invalid-feedback,
-	.empty-feedback {
-		display: none;
-		font-size: var(--text-sm);
-		color: #dc3545;
-		margin-bottom: 1.5rem;
-	}
-
-	.was-validated :placeholder-shown:invalid ~ .empty-feedback {
-		display: block;
-	}
-
-	.was-validated :not(:placeholder-shown):invalid ~ .invalid-feedback {
-		display: block;
-	}
-
-	.is-invalid,
-	.was-validated :invalid {
-		border-color: #dc3545;
-	}
-
-	.form-container {
-		/* Styles for the new container */
-		display: flex;
-		justify-content: center; /* Horizontally center the form */
-		align-items: center; /* Vertically center the form */
-		min-height: 80vh; /* Ensure form is centered even with little content */
-	}
-
-	form {
-		/* Basic form styling */
-		max-width: 800px; /* Limit the form width */
-		width: 90%; /* Make the form responsive */
-		margin: 0 auto; /* Center the form horizontally */
-		padding: 1.25em;
-	}
-
-	.form-intro {
-		text-align: center; /* Center the text within the div */
-		margin-bottom: 1.5em; /* Add spacing below the instructions */
-	}
-
-	label {
-		/* Label styling */
-		display: block;
-		margin-bottom: 0.3125em;
-		font-weight: bold;
-	}
-
-	input[type="text"],
-	input[type="email"],
-	textarea {
-		/* Input and textarea styling */
-		width: 100%;
-		padding: 0.625em;
-		margin-bottom: 0.625em;
-		border: 3px solid #ccc;
-		border-radius: 3px;
-		box-sizing: border-box;
-	}
-
-	/* Style for the button to match the CTA */
-	button[type="submit"] {
-		position: relative; /* Necessary for the ::after overlay */
-		display: flex;
-		place-content: center;
-		text-align: center;
-		padding: 0.56em 2em;
-		gap: 0.8em;
-		color: var(--accent-text-over);
-		text-decoration: none;
-		line-height: 1.1;
-		border-radius: 999rem;
-		overflow: hidden;
-		background: var(--accent-regular);
-		white-space: nowrap; /* Prevent wrapping on small screens */
-		border: none; /* Remove default button border */
-		cursor: pointer;
-	}
-
-	.form-row {
-		/* New class to group name/email & last name/company */
-		display: flex;
-		flex-direction: column;
-		gap: 0.625em;
-	}
-
-	.form-field {
-		/* New class to style individual fields */
-		flex: 1; /* Make fields grow equally */
-	}
-
-	@media (min-width: 20em) {
-		button[type="submit"] {
-			font-size: var(--text-lg);
+	<style>
+		.invalid-feedback,
+		.empty-feedback {
+			display: none;
+			font-size: var(--text-sm);
+			color: #dc3545;
+			margin-bottom: 1.5rem;
 		}
-	}
 
-	button[type="submit"]::after {
-		content: "";
-		position: absolute;
-		inset: 0;
-		pointer-events: none;
-		transition: background-color var(--theme-transition);
-		mix-blend-mode: overlay;
-	}
+		.was-validated :placeholder-shown:invalid ~ .empty-feedback {
+			display: block;
+		}
 
-	button[type="submit"]:focus::after,
-	button[type="submit"]:hover::after {
-		background-color: hsla(var(--gray-999-basis), 0.3);
-	}
+		.was-validated :not(:placeholder-shown):invalid ~ .invalid-feedback {
+			display: block;
+		}
 
-	@media (min-width: 50em) {
+		.is-invalid,
+		.was-validated :invalid {
+			border-color: #dc3545;
+		}
+
+		.form-container {
+			/* Styles for the new container */
+			justify-content: center; /* Horizontally center the form */
+			align-items: center; /* Vertically center the form */
+			min-height: 80vh; /* Ensure form is centered even with little content */
+		}
+
+		h1 {
+			font-size: var(--text-4xl);
+			margin-bottom: 0.5rem;
+		}
+
+		form {
+			/* Basic form styling */
+			max-width: 600px; /* Limit the form width */
+			width: 90%; /* Make the form responsive */
+			margin: 0 auto; /* Center the form horizontally */
+		}
+
+		.form-intro {
+			text-align: start; /* Center the text within the div */
+			margin-bottom: 1.5em; /* Add spacing below the instructions */
+		}
+
+		label {
+			/* Label styling */
+			display: block;
+			margin-bottom: 0.3125em;
+			font-weight: bold;
+		}
+
+		input[type="text"],
+		input[type="email"],
+		textarea {
+			/* Input and textarea styling */
+			width: 100%;
+			padding: 0.625em;
+			margin-bottom: 0.625em;
+			border: 3px solid #ccc;
+			border-radius: 3px;
+			box-sizing: border-box;
+		}
+
+		/* Style for the button to match the CTA */
 		button[type="submit"] {
-			padding: 1.125rem 2.5rem;
-			font-size: var(--text-lg);
+			position: relative; /* Necessary for the ::after overlay */
+			display: flex;
+			place-content: center;
+			text-align: center;
+			padding: 0.56em 2em;
+			gap: 0.8em;
+			color: var(--accent-text-over);
+			text-decoration: none;
+			line-height: 1.1;
+			border-radius: 999rem;
+			overflow: hidden;
+			background: var(--accent-regular);
+			white-space: nowrap; /* Prevent wrapping on small screens */
+			border: none; /* Remove default button border */
+			cursor: pointer;
 		}
 
 		.form-row {
-			flex-direction: row; /* Revert to horizontal layout on larger screens */
+			/* New class to group name/email & last name/company */
+			display: flex;
+			flex-direction: column;
+			gap: 0.625em;
 		}
-	}
-</style>
+
+		.form-field {
+			/* New class to style individual fields */
+			flex: 1; /* Make fields grow equally */
+		}
+
+		@media (min-width: 20em) {
+			button[type="submit"] {
+				font-size: var(--text-lg);
+			}
+		}
+
+		button[type="submit"]::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			pointer-events: none;
+			transition: background-color var(--theme-transition);
+			mix-blend-mode: overlay;
+		}
+
+		button[type="submit"]:focus::after,
+		button[type="submit"]:hover::after {
+			background-color: hsla(var(--gray-999-basis), 0.3);
+		}
+
+		@media (min-width: 50em) {
+			button[type="submit"] {
+				padding: 1.125rem 2.5rem;
+				font-size: var(--text-lg);
+			}
+
+			h1 {
+				text-align: start;
+			}
+
+			.form-row {
+				flex-direction: row; /* Revert to horizontal layout on larger screens */
+			}
+		}
+	</style>
+</BaseLayout>
