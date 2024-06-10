@@ -13,17 +13,19 @@ import profilePicture from "../assets/profile-picture.jpg";
 >
 	<div class="stack gap-20 lg:gap-48">
 		<main class="wrapper about">
-			<div class="hero-container">
+			<header class="hero">
 				<Hero
 					title="Hello, I'm Arnaud Hervy"
 					tagline="As an experienced technical writer in the software industry, I create easy-to-understand guides, API documentation, user interface copy, and more for all users.\nWith my new certification in UX writing, I can further enhance the user experience by creating engaging and helpful conversations."
+					align="start"
 				/>
-			</div>
-			<Picture
-				src={profilePicture}
-				formats={["avif", "webp"]}
-				alt="Profile picture of Arnaud Hervy, technical writer"
-			/>
+
+				<Picture
+					src={profilePicture}
+					formats={["avif", "webp"]}
+					alt="Profile picture of Arnaud Hervy, technical writer"
+				/>
+			</header>
 
 			<section>
 				<h2 class="section-title">Creating content for all users</h2>
@@ -114,8 +116,8 @@ import profilePicture from "../assets/profile-picture.jpg";
 
 	img {
 		aspect-ratio: 5 / 4;
-		border-radius: 4rem;
 		object-fit: cover;
+		border-radius: 1.5rem;
 	}
 
 	section {
@@ -152,26 +154,24 @@ import profilePicture from "../assets/profile-picture.jpg";
 	}
 
 	@media (min-width: 50em) {
+		.hero {
+			display: grid;
+			grid-template-columns: 8fr 2fr;
+			grid-column: span 3;
+			gap: 2rem;
+			padding-inline: 2.5rem;
+			align-items: start;
+		}
+
+		img {
+			aspect-ratio: 3 / 4;
+			border-radius: 4.5rem;
+			object-fit: cover;
+		}
+
 		.about {
 			display: grid;
 			grid-template-columns: 1fr 50% 1fr;
-		}
-
-		.about > :global(:first-child) {
-			grid-column-start: 1;
-		}
-
-		.hero-container {
-			grid-column: 1 / span 2;
-			display: flex;
-			flex-direction: column;
-			align-items: start;
-			gap: 1rem;
-		}
-
-		.hero-container :global(h1),
-		.hero-container :global(p) {
-			text-align: start;
 		}
 
 		section {

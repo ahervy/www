@@ -37,19 +37,20 @@ import profilePicture from '../assets/profile-picture.jpg';
 					title="Arnaud Hervy - Technical Writer"
 					tagline="Looking to improve your technical documentation? I can help you!\nAs an experienced technical writer in the software industry, I create easy-to-understand guides, API documentation, user interface copy, and more for all users."
 					align="start"
-				/>
+					>
+					<div class="hero-buttons">
+						<CallToAction href="/about/">
+							Get to know me
+							<Icon icon="arrow-right" size="1.2em" />
+						</CallToAction>
+					</div>
+				</Hero>
 
 				<Picture
 					src={profilePicture}
 					formats={["avif", "webp"]}
-					alt=""
+					alt="Profile picture of Arnaud Hervy, technical writer"
 				/>
-				<div class="hero-buttons">
-					<CallToAction href="/about/">
-						Get to know me
-						<Icon icon="arrow-right" size="1.2em" />
-					</CallToAction>
-				  </div>
 			</header>
 
 			<Skills />
@@ -89,10 +90,16 @@ import profilePicture from '../assets/profile-picture.jpg';
 
 <style>
 	.hero {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+	.hero-buttons {
+    	display: flex;
+    	margin-top: auto;
+		align-self: center;
 	}
 
 	.roles {
@@ -102,39 +109,9 @@ import profilePicture from '../assets/profile-picture.jpg';
 	.hero img {
 		aspect-ratio: 5 / 4;
 		object-fit: cover;
-		object-position: top;
 		border-radius: 1.5rem;
 	}
 
-	.hero-buttons {
-  		display: flex;		
-	}
-
-	@media (min-width: 50em) {
-		.hero {
-			display: grid;
-			grid-template-columns: 8fr 2fr;
-			padding-inline: 2.5rem;
-		}
-
-		.roles {
-			margin-top: 0.5rem;
-			display: flex;
-			gap: 0.5rem;
-		}
-
-		.hero img {
-			aspect-ratio: 3 / 4;
-			border-radius: 4.5rem;
-			object-fit: cover;
-		}
-
-		.hero-buttons {
-			margin-top: -5rem;
-		}
-}
-
-	/* ====================================================== */
 
 	.section {
 		display: grid;
@@ -154,6 +131,30 @@ import profilePicture from '../assets/profile-picture.jpg';
 	}
 
 	@media (min-width: 50em) {
+		.hero {
+        	display: grid;
+        	grid-template-columns: 8fr 2fr;
+        	gap: 2rem;
+        	padding-inline: 2.5rem;
+        	align-items: start;
+   		}
+
+		.hero-buttons {
+			align-self: self-start;
+		}
+
+		.roles {
+			margin-top: 0.5rem;
+			display: flex;
+			gap: 0.5rem;
+		}
+
+		.hero img {
+			aspect-ratio: 3 / 4;
+			border-radius: 4.5rem;
+			object-fit: cover;
+		}
+
 		.section {
 			grid-template-columns: repeat(4, 1fr);
 			grid-template-areas: 'header header header header' 'gallery gallery gallery gallery'
@@ -186,6 +187,4 @@ import profilePicture from '../assets/profile-picture.jpg';
 			grid-area: cta;
 		}
 	}
-
-	/* ====================================================== */
 </style>
