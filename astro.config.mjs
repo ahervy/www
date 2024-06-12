@@ -15,4 +15,7 @@ export default defineConfig({
         page !== 'https://arnaudhervy.com/samples/user-guide/'
     }),
   ],
+  security: {
+    checkOrigin: true
+  },
 });
