@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const ACCESS_KEY = import.meta.env.ACCESS_KEY; // Use environment variable for security
+const ACCESS_KEY = import.meta.env.ACCESS_KEY; // Use environment variables for security
 ---
 
 <BaseLayout
@@ -24,7 +24,7 @@ const ACCESS_KEY = import.meta.env.ACCESS_KEY; // Use environment variable for s
 						name="subject"
 						value="New Submission from Website Contact Form"
 					/>
-					<input type="hidden" name="botcheck" />
+					<input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 					{/* Hidden botcheck */}
 					<div class="form-intro">
 						<h1>Contact</h1>
@@ -75,7 +75,7 @@ const ACCESS_KEY = import.meta.env.ACCESS_KEY; // Use environment variable for s
 							</div>
 						</div>
 						<div class="form-field">
-							<label for="phone">Company name</label>
+							<label for="company">Company</label>
 							<input type="text" name="company" id="company" />
 						</div>
 					</div>
@@ -89,9 +89,6 @@ const ACCESS_KEY = import.meta.env.ACCESS_KEY; // Use environment variable for s
 						</div>
 					</div>
 
-					<!-- hCaptcha Spam Protection -->
-					<div class="h-captcha" data-captcha="true"></div>
-
 					<button type="submit">Send Message</button>
 
 					<p id="result"></p>
@@ -100,11 +97,9 @@ const ACCESS_KEY = import.meta.env.ACCESS_KEY; // Use environment variable for s
 		</main>
 	</div>
 
-	<script>
+	<script is:inline>
 		import "../scripts/formValidation.js";
 	</script>
-	<!-- Required for hCaptcha -->
-	<script src="https://web3forms.com/client/script.js" async defer></script>
 
 	<style>
 		.invalid-feedback,
