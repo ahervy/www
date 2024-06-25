@@ -11,9 +11,9 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
-    "@astrojs/netlify": "^5.2.1",
-    "@astrojs/sitemap": "^3.1.5",
-    "astro": "^4.10.0",
+    "@astrojs/netlify": "^5.3.2",
+    "@astrojs/sitemap": "^3.1.6",
+    "astro": "^4.11.1",
     "typescript": "^5.4.5"
   }
 }
