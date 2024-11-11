@@ -156,13 +156,18 @@ import profilePicture from '../assets/profile-picture.jpg';
 		}
 
 		.section {
-			grid-template-columns: repeat(4, 1fr);
-			grid-template-areas: 'header header header header' 'gallery gallery gallery gallery'
-			gap: 5rem;
+  			display: grid;
+  			grid-template-columns: repeat(4, 1fr);
+  			grid-template-areas:
+    			"header header header header"
+    			"gallery gallery gallery gallery";
+  			gap: 5rem;
 		}
 
 		.section.with-cta {
-			grid-template-areas: 'header header header cta' 'gallery gallery gallery gallery'
+  			grid-template-areas:
+    			"header header header cta"
+    			"gallery gallery gallery gallery";
 		}
 
 		.section-header {
