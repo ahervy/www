@@ -1,21 +1,23 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import netlify from '@astrojs/netlify';
 
-import netlify from "@astrojs/netlify";
+const site = 'https://arnaudhervy.com';
+const excludedPages = [
+  `${site}/samples/how-to/`,
+  `${site}/samples/user-guide/`
+];
 
-// https://astro.build/config
 export default defineConfig({
-  output: 'static',
+  output: 'hybrid',
   adapter: netlify(),
-  site: 'https://arnaudhervy.com',
+  site,
   integrations: [
     sitemap({
-      filter: (page) =>
-        page !== 'https://arnaudhervy.com/samples/how-to/' &&
-        page !== 'https://arnaudhervy.com/samples/user-guide/'
+      filter: (page) => !excludedPages.includes(page),
     }),
   ],
   security: {
-    checkOrigin: true
+    checkOrigin: true,
   },
 });
