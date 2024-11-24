@@ -21,7 +21,7 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 <nav>
 	<div class="menu-header">
 		<a href="/" class="site-title">
-			<Icon icon="marker-circle" color="var(--accent-regular)" size="1.6em" gradient />
+			<Icon icon="marker-circle" color="var(--accent-regular)" size="1.6em" />
 			Arnaud Hervy – Technical Writer
 		</a>
 		<menu-button>
@@ -183,13 +183,12 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 		padding: 0.5rem;
 		font-size: 1.5rem;
 		color: var(--gray-300);
-		background: radial-gradient(var(--gray-900), var(--gray-800) 150%);
+		background: var(--gray-800);
 	}
 
 	.menu-button[aria-expanded='true'] {
 		color: var(--gray-0);
-		background: linear-gradient(180deg, var(--gray-600), transparent),
-			radial-gradient(var(--gray-900), var(--gray-800) 150%);
+		background: var(--gray-600)
 	}
 
 	.menu-button[hidden] {
@@ -200,7 +199,7 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 		position: absolute;
 		inset: -1px;
 		content: '';
-		background: var(--gradient-stroke);
+		background: var(--gray-800)
 		border-radius: 999rem;
 		z-index: -1;
 	}
