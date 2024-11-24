@@ -1,4 +1,4 @@
-/* Global variables */
+/* === Global Variables === */
 :root {
 	/* Colors */
 	--gray-0: #090b11;
@@ -115,6 +115,7 @@
 		0px 16px 16px rgba(255, 255, 255, 0.1), 0px 4px 9px rgba(255, 255, 255, 0.12);
 }
 
+/* === Base Styles === */
 html,
 body {
 	min-height: 100%;
@@ -176,8 +177,7 @@ h5 {
 	font-size: var(--text-xl);
 }
 
-/* Utilities */
-
+/* === Utilities === */
 .sr-only {
 	position: absolute;
 	width: 1px;

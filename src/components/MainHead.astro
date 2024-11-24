@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 interface Props {
 	title?: string | undefined;
 	description?: string | undefined;
@@ -16,10 +18,6 @@ const {
 <meta name="generator" content={Astro.generator} />
 <meta name="keywords" content="technical writer, UX writer, API documentation, user guides, software documentation, Arnaud Hervy, Nantes, France" />
 <title>{title}</title>
-
-<!-- Preload CSS and font -->
-<link rel="preload" href="/styles/global.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="/styles/global.css"></noscript>
 
 <!-- Other resources -->
 <link rel="sitemap" href="/sitemap-index.xml" />
