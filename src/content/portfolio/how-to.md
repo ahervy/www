@@ -1,6 +1,5 @@
 ---
 title: How-to guide for managing API keys
-publishDate: 2024-05-28 00:00:00
 img: /assets/how-to.webp
 img_alt: How-to guide for managing API keys in HTML format
 description: |

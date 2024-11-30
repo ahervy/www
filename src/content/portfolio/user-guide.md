@@ -1,6 +1,5 @@
 ---
 title: User guide for a navigation revamp
-publishDate: 2024-05-28 00:00:00
 img: /assets/user-guide.webp
 img_alt: User guide for a navigation revamp in HTML format
 description: |

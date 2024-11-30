@@ -1,6 +1,5 @@
 ---
 title: API documentation for a weather API
-publishDate: 2024-06-03 00:00:00
 img: /assets/api-docs.webp
 img_alt: Interactive API documentation and playground for OpenWeather's Current Weather API
 description: |
