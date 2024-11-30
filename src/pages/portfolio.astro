@@ -8,9 +8,12 @@ import PortfolioPreview from '../components/PortfolioPreview.astro';
 import Hero from '../components/Hero.astro';
 import Grid from '../components/Grid.astro';
 
-const projects = (await getCollection("portfolio")).sort(
-	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
-);
+const projects = (await getCollection("portfolio")).sort((a, b) => {
+  if (!b.data.publishDate || !a.data.publishDate) {
+    return 0; // Treat undefined dates as equal
+  }
+  return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
+})
 ---
 
 <BaseLayout

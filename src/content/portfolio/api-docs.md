@@ -1,7 +1,6 @@
 ---
 title: API documentation for a weather API
-publishDate: 2024-06-03 00:00:00
-img: /assets/api-docs.png
+img: /assets/api-docs.webp
 img_alt: Interactive API documentation and playground for OpenWeather's Current Weather API
 description: |
   This case study is about the rewriting of the API documentation for OpenWeather's Current Weather API, with a focus on developer experience.
