@@ -1,7 +1,7 @@
 ---
 title: User guide for a navigation revamp
 publishDate: 2024-05-28 00:00:00
-img: /assets/user-guide.png
+img: /assets/user-guide.webp
 img_alt: User guide for a navigation revamp in HTML format
 description: |
   This case study is about the creation of a user-friendly guide that helps the transition during a navigation revamp on a platform. This case study is based on a product I documented.
