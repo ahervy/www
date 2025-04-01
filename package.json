@@ -13,7 +13,7 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/netlify": "^6.2.3",
     "@astrojs/sitemap": "^3.3.0",
-    "astro": "^5.5.4",
+    "astro": "^5.5.5",
     "typescript": "^5.8.2"
   }
 }
