@@ -1,11 +1,52 @@
 ---
 // Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 // Component Imports
-import Hero from '../components/Hero.astro';
+import Hero from "../components/Hero.astro";
 ---
 
-<BaseLayout title="Page not found" description="404 Error — this page was not found">
-	<Hero title="This page was not found" tagline="Maybe you can find what you need from the homepage." />
+<BaseLayout
+	title="Page not found"
+	description="404 Error — this page was not found"
+>
+	<Hero
+		title="This page was not found"
+		tagline="Maybe you can find what you need from the homepage."
+	>
+		<div class="cta-wrapper">
+			<a href="/" class="cta">Go back home</a>
+		</div>
+	</Hero>
 </BaseLayout>
+
+<style>
+	.cta {
+		margin-top: 1rem;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: fit-content;
+		font-weight: 600;
+		color: var(--accent-text-over);
+		background-color: var(--accent-regular);
+		padding: 0.75rem 1.5rem;
+		border-radius: 999rem;
+		text-decoration: none;
+		transition: background-color 0.2s;
+	}
+
+	.cta:hover,
+	.cta:focus {
+		background-color: var(--accent-dark);
+	}
+
+	.cta-wrapper {
+		display: flex;
+		justify-content: center;
+	}
+
+	.tagline {
+		max-width: none;
+	}
+</style>
