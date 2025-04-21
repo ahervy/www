@@ -1,19 +1,19 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
-import ContactCTA from '../components/ContactCTA.astro';
-import PortfolioPreview from '../components/PortfolioPreview.astro';
-import Hero from '../components/Hero.astro';
-import Grid from '../components/Grid.astro';
+import ContactCTA from "../components/ContactCTA.astro";
+import PortfolioPreview from "../components/PortfolioPreview.astro";
+import Hero from "../components/Hero.astro";
+import Grid from "../components/Grid.astro";
 
 const projects = (await getCollection("portfolio")).sort((a, b) => {
-  if (!b.data.publishDate || !a.data.publishDate) {
-    return 0; // Treat undefined dates as equal
-  }
-  return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
-})
+	if (!b.data.publishDate || !a.data.publishDate) {
+		return 0; // Treat undefined dates as equal
+	}
+	return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
+});
 ---
 
 <BaseLayout
@@ -21,22 +21,27 @@ const projects = (await getCollection("portfolio")).sort((a, b) => {
 	description="User guides, how-to guides, API documentation, and microcopy – all designed to help users get the most out of products and services."
 >
 	<div class="stack gap-20 lg:gap-48">
-		<main class="wrapper stack gap-8">
+		<main class="wrapper stack gap-8" aria-labelledby="portfolio-title">
 			<Hero
 				title="My portfolio"
 				tagline="Explore my work samples to get an idea of the content I create."
 				align="start"
+				headingId="portfolio-title"
 			/>
+
 			<Grid variant="offset">
 				{
 					projects.map((project) => (
 						<li>
-							<PortfolioPreview project={project} />
+							<article>
+								<PortfolioPreview project={project} />
+							</article>
 						</li>
 					))
 				}
 			</Grid>
 		</main>
+
 		<ContactCTA />
 	</div>
 </BaseLayout>
