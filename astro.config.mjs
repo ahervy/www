@@ -3,21 +3,15 @@ import sitemap from '@astrojs/sitemap';
 import netlify from '@astrojs/netlify';
 
 const site = 'https://arnaudhervy.com';
-const excludedPages = [
-  `${site}/samples/how-to/`,
-  `${site}/samples/user-guide/`
-];
+const excludedPaths = ['/samples/how-to/', '/samples/user-guide/'];
 
 export default defineConfig({
-  output: 'server',
+  output: 'static',
   adapter: netlify(),
   site,
   integrations: [
     sitemap({
-      filter: (page) => !excludedPages.includes(page),
+      filter: (page) => !excludedPaths.includes(new URL(page).pathname),
     }),
   ],
-  security: {
-    checkOrigin: true,
-  },
 });
