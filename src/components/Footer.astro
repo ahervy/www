@@ -3,7 +3,7 @@ import Icon from './Icon.astro';
 const currentYear = new Date().getFullYear();
 ---
 
-<footer>
+<footer role="contentinfo">
 	<div class="group">
 		<p>
 			Designed & developed with <a href="https://astro.build/">Astro</a>
@@ -12,8 +12,8 @@ const currentYear = new Date().getFullYear();
 		<p>&copy; {currentYear} Arnaud Hervy</p>
 	</div>
 	<p class="socials">
-		<a href="https://github.com/ahervy"> GitHub</a>
-		<a href="https://www.linkedin.com/in/arnaudhervy/"> LinkedIn</a>
+		<a href="https://github.com/ahervy" aria-label="Visit Arnaud Hervy's GitHub profile"> GitHub</a>
+		<a href="https://www.linkedin.com/in/arnaudhervy/" aria-label="Visit Arnaud Hervy's LinkedIn profile"> LinkedIn</a>
 	</p>
 </footer>
 <style>
