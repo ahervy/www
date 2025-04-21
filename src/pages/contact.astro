@@ -96,9 +96,12 @@ const ACCESS_KEY = import.meta.env.ACCESS_KEY; // Use environment variables for 
 
 					<div class="h-captcha" data-captcha="true"></div>
 
-					<button type="submit">Send Message</button>
+					<button type="submit" aria-label="Send your message to Arnaud Hervy">
+						Send Message
+					</button>
+					
 
-					<p id="result"></p>
+					<p id="result" role="status" aria-live="polite"></p>
 				</form>
 			</div>
 		</main>
