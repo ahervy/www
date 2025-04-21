@@ -1,33 +1,32 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
 // Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 // Component Imports
-import CallToAction from '../components/CallToAction.astro';
-import Grid from '../components/Grid.astro';
-import Hero from '../components/Hero.astro';
-import Icon from '../components/Icon.astro';
-import PortfolioPreview from '../components/PortfolioPreview.astro';
+import CallToAction from "../components/CallToAction.astro";
+import Grid from "../components/Grid.astro";
+import Hero from "../components/Hero.astro";
+import Icon from "../components/Icon.astro";
+import PortfolioPreview from "../components/PortfolioPreview.astro";
 
 // Page section components
-import ContactCTA from '../components/ContactCTA.astro';
-import Skills from '../components/Skills.astro';
+import ContactCTA from "../components/ContactCTA.astro";
+import Skills from "../components/Skills.astro";
 
 // Content Fetching: List four most recent work projects
-const projects = (await getCollection('portfolio'))
-	.sort((a, b) => {
+const projects = (await getCollection("portfolio")).sort((a, b) => {
 	if (!b.data.publishDate || !a.data.publishDate) {
 		return 0; // Treat undefined dates as equal
 	}
 	return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
-	})
+});
 
 // Import the <Picture /> component
-import { Picture } from 'astro:assets';
+import { Picture } from "astro:assets";
 // Import profile picture
-import profilePicture from '../assets/profile-picture.jpg';
+import profilePicture from "../assets/profile-picture.jpg";
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/basics/astro-components/
@@ -41,9 +40,9 @@ import profilePicture from '../assets/profile-picture.jpg';
 					title="Arnaud Hervy - Technical Writer"
 					tagline="Looking to improve your technical documentation? I can help you!\nAs an experienced technical writer in the software industry, I create easy-to-understand guides, API documentation, user interface copy, and more for all users."
 					align="start"
-					>
+				>
 					<div class="hero-buttons">
-						<CallToAction href="/about/">
+						<CallToAction href="/about/" aria-label="Get to know Arnaud Hervy">
 							Get to know me
 							<Icon icon="arrow-right" size="1.2em" />
 						</CallToAction>
@@ -61,7 +60,7 @@ import profilePicture from '../assets/profile-picture.jpg';
 		</div>
 
 		<main class="wrapper stack gap-20 lg:gap-48">
-			<section class="section with-cta">
+			<section class="section with-cta" aria-labelledby="featured-work">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h2>Featured work</h2>
 					<p>Explore some of my work samples.</p>
@@ -72,7 +71,9 @@ import profilePicture from '../assets/profile-picture.jpg';
 						{
 							projects.map((project) => (
 								<li>
-									<PortfolioPreview project={project} />
+									<article>
+										<PortfolioPreview project={project} />
+									</article>
 								</li>
 							))
 						}
@@ -94,15 +95,15 @@ import profilePicture from '../assets/profile-picture.jpg';
 
 <style>
 	.hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-}
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2rem;
+	}
 
 	.hero-buttons {
-    	display: flex;
-    	margin-top: auto;
+		display: flex;
+		margin-top: auto;
 		align-self: center;
 	}
 
@@ -115,7 +116,6 @@ import profilePicture from '../assets/profile-picture.jpg';
 		object-fit: cover;
 		border-radius: 1.5rem;
 	}
-
 
 	.section {
 		display: grid;
@@ -136,12 +136,12 @@ import profilePicture from '../assets/profile-picture.jpg';
 
 	@media (min-width: 50em) {
 		.hero {
-        	display: grid;
-        	grid-template-columns: 8fr 2fr;
-        	gap: 2rem;
-        	padding-inline: 2.5rem;
-        	align-items: start;
-   		}
+			display: grid;
+			grid-template-columns: 8fr 2fr;
+			gap: 2rem;
+			padding-inline: 2.5rem;
+			align-items: start;
+		}
 
 		.hero-buttons {
 			align-self: self-start;
@@ -160,18 +160,18 @@ import profilePicture from '../assets/profile-picture.jpg';
 		}
 
 		.section {
-  			display: grid;
-  			grid-template-columns: repeat(4, 1fr);
-  			grid-template-areas:
-    			"header header header header"
-    			"gallery gallery gallery gallery";
-  			gap: 5rem;
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			grid-template-areas:
+				"header header header header"
+				"gallery gallery gallery gallery";
+			gap: 5rem;
 		}
 
 		.section.with-cta {
-  			grid-template-areas:
-    			"header header header cta"
-    			"gallery gallery gallery gallery";
+			grid-template-areas:
+				"header header header cta"
+				"gallery gallery gallery gallery";
 		}
 
 		.section-header {
