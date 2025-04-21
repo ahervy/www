@@ -11,11 +11,14 @@ const textLinks: { label: string; href: string }[] = [
 	{ label: 'Contact', href: '/contact/' },
 ];
 
-/** Icon links to social media — edit these with links to your profiles! */
+/** Icon links to social media */
 const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[] = [
 	{ label: 'GitHub', href: 'https://github.com/ahervy', icon: 'github-logo' },
 	{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/arnaudhervy/', icon: 'linkedin-logo' },
 ];
+
+// Fallback in case Astro.url is unavailable
+const pathname = Astro.url?.pathname ?? '/';
 ---
 
 <nav>
@@ -34,28 +37,28 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 		</menu-button>
 	</div>
 	<noscript>
-		<ul class="nav-items">
+		<ul class="nav-items" role="list">
 			{
-				textLinks.map(({ label, href }) => (
-					<li>
-						<a
-							aria-current={Astro.url.pathname === href}
-							class:list={[
-								'link',
-								{
-									active:
-										Astro.url.pathname === href ||
-										(href !== '/' && Astro.url.pathname.startsWith(href)),
-								},
-							]}
-							href={href}
-						>
-							{label}
-						</a>
-					</li>
-				))
+			  textLinks.map(({ label, href }) => (
+				<li>
+				  <a
+					aria-current={pathname === href}
+					class:list={[
+					  'link',
+					  {
+						active:
+						  pathname === href ||
+						  (href !== '/' && pathname.startsWith(href)),
+					  },
+					]}
+					href={href}
+				  >
+					{label}
+				  </a>
+				</li>
+			  ))
 			}
-		</ul>
+		  </ul>
 	</noscript>
 	<noscript>
 		<div class="menu-footer">
