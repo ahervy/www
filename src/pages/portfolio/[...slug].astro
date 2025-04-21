@@ -52,23 +52,27 @@ const { Content } = await entry.render();
 			</header>
 			<main class="wrapper">
 				<div class="stack gap-10 content">
-					<a 
-          class="card" 
-          href={entry.data.sample_url || `/samples/${entry.slug}/`} 
-          target={entry.data.sample_url ? "_blank" : "_self"} 
-          rel={entry.data.sample_url ? "noopener noreferrer" : ""}>
+					<a
+						class="card"
+						href={entry.data.sample_url ||
+							`/samples/${entry.slug}/`}
+						target={entry.data.sample_url ? "_blank" : "_self"}
+						rel={entry.data.sample_url ? "noopener noreferrer" : ""}
+					>
 						<span class="hint"
 							>Click the image to view the content in HTML format</span
 						>
 						<img
 							src={entry.data.img}
-							alt={entry.data.img_alt || ""}
+							alt={entry.data.img_alt ?? `Preview image for ${entry.data.title}`}
 							loading="lazy"
 							decoding="async"
 						/>
 					</a>
 					<div class="content">
-						<Content />
+						<article class="content">
+							<Content />
+						</article>
 					</div>
 				</div>
 			</main>
@@ -94,7 +98,7 @@ const { Content } = await entry.render();
 		transition: box-shadow var(--theme-transition);
 	}
 
-	.card:hover{
+	.card:hover {
 		box-shadow: var(--shadow-md);
 	}
 
