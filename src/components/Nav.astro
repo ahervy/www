@@ -1,6 +1,5 @@
 ---
 import Icon from './Icon.astro';
-import ThemeToggle from './ThemeToggle.astro';
 import type { iconPaths } from './IconPaths';
 
 /** Main menu items */
@@ -109,9 +108,6 @@ const pathname = Astro.url?.pathname ?? '/';
 				}
 			</div>
 
-			<div class="theme-toggle">
-				<ThemeToggle />
-			</div>
 		</div>
 	</div>
 </nav>
@@ -267,12 +263,6 @@ const pathname = Astro.url?.pathname ?? '/';
 	.social:hover,
 	.social:focus {
 		color: var(--accent-regular);
-	}
-
-	.theme-toggle {
-		display: flex;
-		align-items: center;
-		height: calc(var(--icon-size) + 2 * var(--icon-padding));
 	}
 
 	@media (min-width: 50em) {
