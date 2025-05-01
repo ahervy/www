@@ -51,22 +51,3 @@ const origin = Astro.url?.origin ?? 'https://arnaudhervy.com';
     sameAs: ["https://github.com/ahervy", "https://www.linkedin.com/in/arnaudhervy/"],
     image: "https://arnaudhervy.com/assets/profile-picture.jpg"
 })} is:inline />
-
-<!-- Dark Mode Script -->
-<script is:inline>
-  (function() {
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const savedTheme = localStorage.getItem("theme");
-    const theme = savedTheme || (prefersDark ? "dark" : "light");
-
-    document.documentElement.classList.toggle("theme-dark", theme === "dark");
-
-    if (typeof MutationObserver !== "undefined") {
-      const observer = new MutationObserver(() => {
-        const isDark = document.documentElement.classList.contains("theme-dark");
-        localStorage.setItem("theme", isDark ? "dark" : "light");
-      });
-      observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
-    }
-  })();
-</script>
