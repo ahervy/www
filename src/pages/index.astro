@@ -42,7 +42,10 @@ import profilePicture from "../assets/profile-picture.jpg";
 					align="start"
 				>
 					<div class="hero-buttons">
-						<CallToAction href="/about/" aria-label="Get to know Arnaud Hervy">
+						<CallToAction
+							href="/about/"
+							aria-label="Get to know Arnaud Hervy"
+						>
 							Get to know me
 							<Icon icon="arrow-right" size="1.2em" />
 						</CallToAction>
@@ -132,6 +135,15 @@ import profilePicture from "../assets/profile-picture.jpg";
 
 	.section-header h2 {
 		font-size: var(--text-2xl);
+	}
+
+	.cta {
+		display: grid;
+		place-items: center;
+	}
+
+	.cta a {
+		width: auto;
 	}
 
 	@media (min-width: 50em) {
