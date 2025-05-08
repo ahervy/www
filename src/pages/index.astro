@@ -56,6 +56,7 @@ import profilePicture from "../assets/profile-picture.jpg";
 					src={profilePicture}
 					formats={["avif", "webp"]}
 					alt="Profile picture of Arnaud Hervy, technical writer"
+					loading="eager"
 				/>
 			</header>
 
@@ -74,9 +75,7 @@ import profilePicture from "../assets/profile-picture.jpg";
 						{
 							projects.map((project) => (
 								<li>
-									<article>
-										<PortfolioPreview project={project} />
-									</article>
+									<PortfolioPreview project={project} />
 								</li>
 							))
 						}
@@ -134,7 +133,7 @@ import profilePicture from "../assets/profile-picture.jpg";
 	}
 
 	.section-header h2 {
-		font-size: var(--text-2xl);
+		font-size: var(--text-3xl);
 	}
 
 	.cta {
@@ -189,10 +188,6 @@ import profilePicture from "../assets/profile-picture.jpg";
 		.section-header {
 			grid-area: header;
 			font-size: var(--text-lg);
-		}
-
-		.section-header h2 {
-			font-size: var(--text-3xl);
 		}
 
 		.with-cta .section-header {
