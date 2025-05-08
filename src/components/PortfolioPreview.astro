@@ -1,8 +1,8 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from "astro:content";
 
 interface Props {
-	project: CollectionEntry<'portfolio'>;
+	project: CollectionEntry<"portfolio">;
 }
 
 const { data, slug } = Astro.props.project;
@@ -14,8 +14,15 @@ const { data, slug } = Astro.props.project;
 	aria-label={`Read more about project ${data.title}`}
 >
 	<span class="title">{data.title}</span>
-	<img src={data.img} alt={data.img_alt || ''} loading="lazy" decoding="async" />
+	<img
+		src={data.img}
+		alt={data.img_alt || ""}
+		loading="lazy"
+		decoding="async"
+	/>
 </a>
+
+<p class="summary">{data.summary}</p>
 
 <style>
 	.card {
@@ -48,6 +55,11 @@ const { data, slug } = Astro.props.project;
 		background: var(--accent-regular);
 		color: var(--accent-text-over);
 		border-radius: 0.375rem;
+	}
+
+	.summary {
+		margin-top: 0.5rem;
+		max-width: 100%;
 	}
 
 	img {
