@@ -11,21 +11,26 @@ const Heading = Astro.props.headingLevel || "h3";
 ---
 
 <article class="portfolio-card">
-	<a href={`/portfolio/${slug}/`} class="card-link" aria-label={`View project: ${data.title}`}></a>
+	<a
+		href={`/portfolio/${slug}/`}
+		class="card-link"
+		aria-label={`View project: ${data.title}`}></a>
 
 	<Heading class="title">{data.title}</Heading>
 
 	{data.summary && <p class="summary">{data.summary}</p>}
 
-	{data.img && (
-		<img
-			src={data.img}
-			alt={data.img_alt || data.title}
-			loading="lazy"
-			decoding="async"
-			class="preview-image"
-		/>
-	)}
+	{
+		data.img && (
+			<img
+				src={data.img}
+				alt={data.img_alt || data.title}
+				loading="lazy"
+				decoding="async"
+				class="preview-image"
+			/>
+		)
+	}
 </article>
 
 <style>
@@ -87,7 +92,6 @@ const Heading = Astro.props.headingLevel || "h3";
 	.portfolio-card:hover h3 {
 		text-decoration: underline;
 	}
-
 
 	@media (min-width: 50em) {
 		.portfolio-card {

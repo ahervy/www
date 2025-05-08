@@ -64,7 +64,8 @@ const { Content } = await entry.render();
 						>
 						<img
 							src={entry.data.img}
-							alt={entry.data.img_alt ?? `Preview image for ${entry.data.title}`}
+							alt={entry.data.img_alt ??
+								`Preview image for ${entry.data.title}`}
 							decoding="async"
 						/>
 					</a>
