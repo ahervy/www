@@ -5,6 +5,8 @@ img_alt: Interactive API documentation and playground for OpenWeather's Current 
 description: |
   This case study is about the rewriting of the API documentation for OpenWeather's Current Weather API, with a focus on developer experience.
 meta_description: API documentation with interactive examples, streamlined onboarding, and a focus on developer experience for OpenWeather's Current Weather API.
+summary: |
+  Improved onboarding and developer experience by rewriting OpenWeather’s Current Weather API docs with interactive examples.
 sample_url: https://arnaud.mintlify.app/introduction
 tags:
   - API documentation
