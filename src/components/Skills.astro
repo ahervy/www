@@ -2,7 +2,7 @@
 import Icon from "./Icon.astro";
 ---
 
-<section class="box skills">
+<section class="skills">
 	<header>
 		<h2>How I can help you</h2>
 	</header>
@@ -53,18 +53,11 @@ import Icon from "./Icon.astro";
 </section>
 
 <style>
-	.box {
-		border: 1px solid var(--gray-800);
-		border-radius: 0.75rem;
-		padding: 1.5rem;
-		background-color: var(--gray-999_40);
-		box-shadow: var(--shadow-sm);
-	}
-
 	.skills {
 		display: flex;
 		flex-direction: column;
 		gap: 3rem;
+		padding-block: 2rem;
 	}
 
 	.skill-grid {
@@ -90,12 +83,5 @@ import Icon from "./Icon.astro";
 	.skills p {
 		color: var(--gray-200);
 		font-size: var(--text-md);
-	}
-
-	@media (min-width: 50em) {
-		.box {
-			border-radius: 1.5rem;
-			padding: 2.5rem;
-		}
 	}
 </style>
