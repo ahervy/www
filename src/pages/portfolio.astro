@@ -1,17 +1,13 @@
 ---
 import { getCollection } from "astro:content";
-
 import BaseLayout from "../layouts/BaseLayout.astro";
-
 import ContactCTA from "../components/ContactCTA.astro";
 import PortfolioPreview from "../components/PortfolioPreview.astro";
 import Hero from "../components/Hero.astro";
 import Grid from "../components/Grid.astro";
 
 const projects = (await getCollection("portfolio")).sort((a, b) => {
-	if (!b.data.publishDate || !a.data.publishDate) {
-		return 0; // Treat undefined dates as equal
-	}
+	if (!b.data.publishDate || !a.data.publishDate) return 0;
 	return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
 });
 ---
@@ -22,12 +18,14 @@ const projects = (await getCollection("portfolio")).sort((a, b) => {
 >
 	<div class="stack gap-15 lg:gap-30">
 		<main class="wrapper stack gap-8">
-			<Hero
-				title="My portfolio"
-				tagline="Explore my work samples to get an idea of the content I create."
-				align="start"
-				headingId="portfolio-title"
-			/>
+			<header class="hero">
+				<Hero
+					title="My portfolio"
+					tagline="Explore my work samples to get an idea of the content I create."
+					align="start"
+					headingId="portfolio-title"
+				/>
+			</header>
 
 			<Grid variant="offset">
 				{
@@ -42,7 +40,6 @@ const projects = (await getCollection("portfolio")).sort((a, b) => {
 				}
 			</Grid>
 		</main>
-
 		<ContactCTA />
 	</div>
 </BaseLayout>
