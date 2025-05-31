@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-
 import ContactCTA from "../components/ContactCTA.astro";
 import Hero from "../components/Hero.astro";
 import { Picture } from "astro:assets";
@@ -12,7 +11,7 @@ import profilePicture from "../assets/profile-picture.jpg";
 	description="Experienced technical writer based in Nantes, France. Discover how Arnaud turns complex info into easy-to-understand content for all users."
 >
 	<div class="stack gap-15 lg:gap-30">
-		<main class="wrapper about">
+		<main class="wrapper about stack gap-8">
 			<header class="hero">
 				<Hero
 					title="Hello, I'm Arnaud Hervy"
@@ -24,6 +23,7 @@ import profilePicture from "../assets/profile-picture.jpg";
 					src={profilePicture}
 					formats={["avif", "webp"]}
 					alt="Profile picture of Arnaud Hervy, technical writer"
+					class="profile-img"
 				/>
 			</header>
 
@@ -83,9 +83,9 @@ import profilePicture from "../assets/profile-picture.jpg";
 						</li>
 					</ul>
 					<p>
-						<a href="/portfolio/" class="portfolio-link"
-							>View my portfolio to see examples of my work.</a
-						>
+						<a href="/portfolio/" class="portfolio-link">
+							View my portfolio to see examples of my work.
+						</a>
 					</p>
 				</div>
 			</section>
@@ -106,77 +106,3 @@ import profilePicture from "../assets/profile-picture.jpg";
 		<ContactCTA />
 	</div>
 </BaseLayout>
-
-<style>
-	.about {
-		display: grid;
-		flex-direction: column;
-		gap: 3.5rem;
-	}
-
-	img {
-		aspect-ratio: 5 / 4;
-		object-fit: cover;
-		border-radius: 1.5rem;
-	}
-
-	section {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-		color: var(--gray-200);
-	}
-
-	.section-title {
-		grid-column-start: 1;
-		font-size: var(--text-xl);
-		color: var(--gray-0);
-	}
-
-	.content {
-		grid-column: 2 / 4;
-	}
-
-	.content :global(a) {
-		text-decoration: 1px solid underline transparent;
-		text-underline-offset: 0.25em;
-		transition: text-decoration-color var(--theme-transition);
-	}
-
-	.content :global(a:hover),
-	.content :global(a:focus) {
-		text-decoration-color: currentColor;
-	}
-
-	.content > p:not(:last-child),
-	.content > ul {
-		margin-bottom: 0.5rem;
-	}
-
-	@media (min-width: 50em) {
-		.hero {
-			display: grid;
-			grid-template-columns: 8fr 2fr;
-			grid-column: span 3;
-			gap: 2rem;
-			padding-inline: 2.5rem;
-			align-items: start;
-		}
-
-		img {
-			aspect-ratio: 3 / 4;
-			border-radius: 4.5rem;
-			object-fit: cover;
-		}
-
-		.about {
-			display: grid;
-			grid-template-columns: 1fr 50% 1fr;
-		}
-
-		section {
-			display: contents;
-			font-size: var(--text-lg);
-		}
-	}
-</style>

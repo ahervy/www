@@ -3,7 +3,7 @@ title: How-to guide for managing API keys
 img: /assets/how-to.webp
 img_alt: How-to guide for managing API keys in HTML format
 description: |
-  This case study is about the creation of step-by-step procedures that guide users through tasks related to a new feature. This case study is based on a product I documented.
+  This case study is about the creation of step-by-step procedures that guide users through tasks related to a new feature.
 meta_description: Technical writing case study about the creation of step-by-step procedures that guide users through tasks related to a new feature.
 summary: Wrote a step-by-step guide to help users manage API keys independently, reducing support requests.
 tags:
