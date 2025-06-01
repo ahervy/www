@@ -352,6 +352,11 @@ h5 {
 	gap: 1rem;
 }
 
+.align-center {
+  text-align: center;
+  align-items: center;
+}
+
 .align-start {
 	text-align: left;
 	align-items: flex-start;
