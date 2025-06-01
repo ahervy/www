@@ -74,7 +74,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 					</div>
 
 					<!-- Honeypot field - moved inside form -->
-					<div class="form-field honeypot" style="display: none;">
+					<div class="form-field honeypot">
 						<label for="website">Website (leave empty)</label>
 						<input
 							type="text"
@@ -125,8 +125,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 			function showMessage(message, type = "error") {
 				result.innerHTML = message;
-				result.className =
-					type === "success" ? "text-green-500" : "text-red-500";
+				if (type === "success") {
+					result.classList.add("text-green-500");
+					result.classList.remove("text-red-500");
+				} else {
+					result.classList.add("text-red-500");
+					result.classList.remove("text-green-500");
+				}
 
 				// Auto-hide after 7s for success, 10s for errors
 				const hideDelay = type === "success" ? 7000 : 10000;
