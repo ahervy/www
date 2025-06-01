@@ -380,6 +380,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			transform: none;
 		}
 
+		.button-text.hidden,
+		.button-loading.hidden {
+			display: none;
+		}
+
+		.button-text.visible,
+		.button-loading.visible {
+			display: inline;
+		}
+
+		.button-text,
+		.button-loading {
+			transition: opacity 0.2s ease;
+		}
+
 		.form-row {
 			display: flex;
 			flex-direction: column;
