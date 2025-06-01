@@ -73,7 +73,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 						</div>
 					</div>
 
-					<!-- Honeypot field - moved inside form -->
 					<div class="form-field honeypot">
 						<label for="website">Website (leave empty)</label>
 						<input
@@ -102,7 +101,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 	</div>
 
 	<script is:inline>
-		// Enhanced contact form script
 		(function () {
 			"use strict";
 
@@ -155,7 +153,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 				event.preventDefault();
 				event.stopPropagation();
 
-				// Client-side validation with improved error handling
+				// Client-side validation with error handling
 				if (!form.checkValidity()) {
 					const firstInvalid = form.querySelector(":invalid");
 					if (firstInvalid) {
@@ -383,7 +381,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			flex: 1;
 		}
 
-		/* Improved honeypot hiding */
 		.honeypot {
 			position: absolute !important;
 			left: -9999px !important;
