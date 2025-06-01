@@ -145,8 +145,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 			function setLoading(isLoading) {
 				submitButton.disabled = isLoading;
-				buttonText.style.display = isLoading ? "none" : "inline";
-				buttonLoading.style.display = isLoading ? "inline" : "none";
+				if (isLoading) {
+					buttonText.classList.add("hidden");
+					buttonText.classList.remove("visible");
+					buttonLoading.classList.add("visible");
+					buttonLoading.classList.remove("hidden");
+				} else {
+					buttonText.classList.add("visible");
+					buttonText.classList.remove("hidden");
+					buttonLoading.classList.add("hidden");
+					buttonLoading.classList.remove("visible");
+				}
 			}
 
 			form.addEventListener("submit", async function (event) {
