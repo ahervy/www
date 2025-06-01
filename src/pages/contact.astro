@@ -1,7 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-const ACCESS_KEY = import.meta.env.ACCESS_KEY; // Use environment variables for security
 ---
 
 <BaseLayout
@@ -11,26 +9,7 @@ const ACCESS_KEY = import.meta.env.ACCESS_KEY; // Use environment variables for 
 	<div class="stack gap-15 lg:gap-30">
 		<main class="wrapper">
 			<div class="form-container">
-				<form
-					action="https://api.web3forms.com/submit"
-					method="POST"
-					id="form"
-					class="needs-validation"
-					novalidate
-				>
-					<input type="hidden" name="access_key" value={ACCESS_KEY} />
-					<input
-						type="hidden"
-						name="subject"
-						value="New Submission from Website Contact Form"
-					/>
-					<input
-						type="checkbox"
-						name="botcheck"
-						class="hidden"
-						style="display: none;"
-					/>
-					{/* Hidden botcheck */}
+				<form id="contactForm" class="needs-validation" novalidate>
 					<div class="form-intro">
 						<h1>Contact</h1>
 						<p>
@@ -94,12 +73,26 @@ const ACCESS_KEY = import.meta.env.ACCESS_KEY; // Use environment variables for 
 						</div>
 					</div>
 
-					<div class="h-captcha" data-captcha="true"></div>
+					<div class="form-field honeypot">
+						<label for="website">Website (leave empty)</label>
+						<input
+							type="text"
+							name="website"
+							id="website"
+							tabindex="-1"
+							autocomplete="off"
+						/>
+					</div>
 
-					<button type="submit" aria-label="Send your message to Arnaud Hervy">
-						Send message
+					<button
+						type="submit"
+						aria-label="Send your message to Arnaud Hervy"
+					>
+						<span class="button-text">Send message</span>
+						<span class="button-loading" style="display: none;"
+							>Sending...</span
+						>
 					</button>
-					
 
 					<p id="result" role="status" aria-live="polite"></p>
 				</form>
@@ -110,84 +103,180 @@ const ACCESS_KEY = import.meta.env.ACCESS_KEY; // Use environment variables for 
 	<script is:inline>
 		(function () {
 			"use strict";
-			/*
-			 * Form Validation
-			 */
 
-			// Fetch all the forms we want to apply custom validation styles to
-			const forms = document.querySelectorAll(".needs-validation");
+			const form = document.getElementById("contactForm");
 			const result = document.getElementById("result");
-			// Loop over them and prevent submission
-			Array.prototype.slice.call(forms).forEach(function (form) {
-				form.addEventListener(
-					"submit",
-					function (event) {
-						if (!form.checkValidity()) {
-							event.preventDefault();
-							event.stopPropagation();
+			const submitButton = form.querySelector('button[type="submit"]');
+			const buttonText = submitButton.querySelector(".button-text");
+			const buttonLoading = submitButton.querySelector(".button-loading");
 
-							form.querySelectorAll(":invalid")[0].focus();
-						} else {
-							/*
-							 * Form Submission using fetch()
-							 */
+			const WORKER_URL =
+				"https://contact-form-handler.arnaud-hervy.workers.dev";
 
-							const formData = new FormData(form);
-							event.preventDefault();
-							event.stopPropagation();
-							const object = {};
-							formData.forEach((value, key) => {
-								object[key] = value;
-							});
-							const json = JSON.stringify(object);
-							result.innerHTML = "Please wait...";
+			const ERROR_MESSAGES = {
+				network:
+					"Connection problem. Check your internet and try again.",
+				server: "Server error. Please try again in a few minutes.",
+				validation: "Please check your information and try again.",
+				unknown: "An unexpected error occurred. Please try again.",
+			};
 
-							fetch("https://api.web3forms.com/submit", {
-								method: "POST",
-								headers: {
-									"Content-Type": "application/json",
-									Accept: "application/json",
-								},
-								body: json,
-							})
-								.then(async (response) => {
-									let json = await response.json();
-									if (response.status == 200) {
-										result.innerHTML = json.message;
-										result.classList.remove(
-											"text-gray-500",
-										);
-										result.classList.add("text-green-500");
-									} else {
-										console.log(response);
-										result.innerHTML = json.message;
-										result.classList.remove(
-											"text-gray-500",
-										);
-										result.classList.add("text-red-500");
-									}
-								})
-								.catch((error) => {
-									console.log(error);
-									result.innerHTML = "Something went wrong!";
-								})
-								.then(function () {
-									form.reset();
-									form.classList.remove("was-validated");
-									setTimeout(() => {
-										result.style.display = "none";
-									}, 5000);
-								});
+			function showMessage(message, type = "error") {
+				result.innerHTML = message;
+				if (type === "success") {
+					result.classList.add("text-green-500");
+					result.classList.remove("text-red-500");
+				} else {
+					result.classList.add("text-red-500");
+					result.classList.remove("text-green-500");
+				}
+
+				// Auto-hide after 7s for success, 10s for errors
+				const hideDelay = type === "success" ? 7000 : 10000;
+				setTimeout(() => {
+					result.style.opacity = "0";
+					setTimeout(() => {
+						result.innerHTML = "";
+						result.className = "";
+						result.style.opacity = "1";
+					}, 300);
+				}, hideDelay);
+			}
+
+			function setLoading(isLoading) {
+				submitButton.disabled = isLoading;
+				if (isLoading) {
+					buttonText.classList.add("hidden");
+					buttonText.classList.remove("visible");
+					buttonLoading.classList.add("visible");
+					buttonLoading.classList.remove("hidden");
+				} else {
+					buttonText.classList.add("visible");
+					buttonText.classList.remove("hidden");
+					buttonLoading.classList.add("hidden");
+					buttonLoading.classList.remove("visible");
+				}
+			}
+
+			form.addEventListener("submit", async function (event) {
+				event.preventDefault();
+				event.stopPropagation();
+
+				// Client-side validation with error handling
+				if (!form.checkValidity()) {
+					const firstInvalid = form.querySelector(":invalid");
+					if (firstInvalid) {
+						firstInvalid.focus();
+					}
+					form.classList.add("was-validated");
+					return;
+				}
+
+				setLoading(true);
+				result.innerHTML = "";
+				result.className = "";
+
+				let timeoutId;
+
+				try {
+					const formData = new FormData(form);
+					const data = {};
+					formData.forEach((value, key) => {
+						data[key] = value.trim();
+					});
+
+					// Honeypot check - if filled, it's likely a bot
+					if (data.website) {
+						showMessage("Form submission failed. Please try again.");
+						return;
+					}
+
+					// Remove honeypot from data before sending
+					delete data.website;
+
+					// Additional client-side validation
+					if (!data.name || !data.last_name || !data.email || !data.message) {
+						showMessage(ERROR_MESSAGES.validation);
+						return;
+					}
+
+					// Send to Worker with timeout
+					const controller = new AbortController();
+					timeoutId = setTimeout(
+						() => controller.abort(),
+						30000,
+					); // 30s timeout
+
+					const response = await fetch(WORKER_URL, {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify(data),
+						signal: controller.signal,
+					});
+
+					if (!response.ok) {
+						// Specific error code handling
+						let errorMessage;
+						switch (response.status) {
+							case 400:
+								errorMessage = ERROR_MESSAGES.validation;
+								break;
+							case 429:
+								errorMessage =
+									"Too many attempts. Please wait before trying again.";
+								break;
+							case 500:
+							case 502:
+							case 503:
+								errorMessage = ERROR_MESSAGES.server;
+								break;
+							default:
+								errorMessage = ERROR_MESSAGES.unknown;
 						}
-						form.classList.add("was-validated");
-					},
-					false,
-				);
+						showMessage(errorMessage);
+						return;
+					}
+
+					const responseData = await response.json();
+
+					if (responseData.success) {
+						// Success
+						showMessage(
+							responseData.message ||
+								"Message sent successfully!",
+							"success",
+						);
+						form.reset();
+						form.classList.remove("was-validated");
+					} else {
+						// Server error with message
+						showMessage(
+							responseData.message || ERROR_MESSAGES.unknown,
+						);
+					}
+				} catch (error) {
+					console.error("Error sending form:", error);
+
+					// Handle specific error types
+					if (error.name === "AbortError") {
+						showMessage("Request timeout. Please try again.");
+					} else if (!navigator.onLine) {
+						showMessage(ERROR_MESSAGES.network);
+					} else {
+						showMessage(ERROR_MESSAGES.unknown);
+					}
+				} finally {
+					// Always cleanup timeout and reset loading state
+					if (timeoutId) {
+						clearTimeout(timeoutId);
+					}
+					setLoading(false);
+				}
 			});
 		})();
 	</script>
-
-	<script src="https://web3forms.com/client/script.js" async defer is:inline></script>
 
 	<style>
 		.invalid-feedback,
@@ -212,10 +301,9 @@ const ACCESS_KEY = import.meta.env.ACCESS_KEY; // Use environment variables for 
 		}
 
 		.form-container {
-			/* Styles for the new container */
-			justify-content: center; /* Horizontally center the form */
-			align-items: center; /* Vertically center the form */
-			min-height: 80vh; /* Ensure form is centered even with little content */
+			justify-content: center;
+			align-items: center;
+			min-height: 80vh;
 		}
 
 		h1 {
@@ -224,19 +312,17 @@ const ACCESS_KEY = import.meta.env.ACCESS_KEY; // Use environment variables for 
 		}
 
 		form {
-			/* Basic form styling */
-			max-width: 600px; /* Limit the form width */
-			width: 90%; /* Make the form responsive */
-			margin: 0 auto; /* Center the form horizontally */
+			max-width: 600px;
+			width: 90%;
+			margin: 0 auto;
 		}
 
 		.form-intro {
-			text-align: start; /* Center the text within the div */
-			margin-bottom: 1.5em; /* Add spacing below the instructions */
+			text-align: start;
+			margin-bottom: 1.5em;
 		}
 
 		label {
-			/* Label styling */
 			display: block;
 			margin-bottom: 0.3125em;
 			font-weight: bold;
@@ -245,20 +331,30 @@ const ACCESS_KEY = import.meta.env.ACCESS_KEY; // Use environment variables for 
 		input[type="text"],
 		input[type="email"],
 		textarea {
-			/* Input and textarea styling */
 			width: 100%;
 			padding: 0.625em;
 			margin-bottom: 0.625em;
 			border: 3px solid #ccc;
 			border-radius: 3px;
 			box-sizing: border-box;
+			transition: border-color 0.2s ease, box-shadow 0.2s ease;
 		}
 
-		/* Style for the button to match the CTA */
+		/* Improved focus states for better accessibility */
+		input[type="text"]:focus,
+		input[type="email"]:focus,
+		textarea:focus {
+			outline: 2px solid var(--accent-regular);
+			outline-offset: 2px;
+			border-color: var(--accent-regular);
+			box-shadow: 0 0 0 3px rgba(var(--accent-regular-rgb, 59, 130, 246), 0.1);
+		}
+
 		button[type="submit"] {
-			position: relative; /* Necessary for the ::after overlay */
+			position: relative;
 			display: flex;
 			place-content: center;
+			align-items: center;
 			text-align: center;
 			padding: 0.56em 2em;
 			gap: 0.8em;
@@ -268,21 +364,96 @@ const ACCESS_KEY = import.meta.env.ACCESS_KEY; // Use environment variables for 
 			border-radius: 999rem;
 			overflow: hidden;
 			background: var(--accent-regular);
-			white-space: nowrap; /* Prevent wrapping on small screens */
-			border: none; /* Remove default button border */
+			white-space: nowrap;
+			border: none;
 			cursor: pointer;
+			transition: opacity 0.3s ease, transform 0.2s ease;
+		}
+
+		button[type="submit"]:hover:not(:disabled) {
+			transform: translateY(-1px);
+		}
+
+		button[type="submit"]:disabled {
+			opacity: 0.7;
+			cursor: not-allowed;
+			transform: none;
+		}
+
+		.button-text.hidden,
+		.button-loading.hidden {
+			display: none;
+		}
+
+		.button-text.visible,
+		.button-loading.visible {
+			display: inline;
+		}
+
+		.button-text,
+		.button-loading {
+			transition: opacity 0.2s ease;
 		}
 
 		.form-row {
-			/* New class to group name/email & last name/company */
 			display: flex;
 			flex-direction: column;
 			gap: 0.625em;
 		}
 
 		.form-field {
-			/* New class to style individual fields */
-			flex: 1; /* Make fields grow equally */
+			flex: 1;
+		}
+
+		.honeypot {
+			position: absolute !important;
+			left: -9999px !important;
+			width: 1px !important;
+			height: 1px !important;
+			overflow: hidden !important;
+			clip: rect(0, 0, 0, 0) !important;
+			white-space: nowrap !important;
+		}
+
+		/* Status messages */
+		.text-green-500 {
+			color: #10b981;
+			font-weight: 500;
+		}
+
+		.text-red-500 {
+			color: #ef4444;
+			font-weight: 500;
+		}
+
+		#result {
+			margin-top: 1rem;
+			font-weight: 500;
+			transition: opacity 0.3s ease;
+			min-height: 1.5rem;
+		}
+
+		/* Loading animation */
+		.button-loading {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.button-loading::after {
+			content: "";
+			width: 16px;
+			height: 16px;
+			border: 2px solid transparent;
+			border-top-color: currentColor;
+			border-radius: 50%;
+			animation: spin 1s linear infinite;
+		}
+
+		@keyframes spin {
+			to {
+				transform: rotate(360deg);
+			}
 		}
 
 		@media (min-width: 20em) {
@@ -316,8 +487,20 @@ const ACCESS_KEY = import.meta.env.ACCESS_KEY; // Use environment variables for 
 			}
 
 			.form-row {
-				flex-direction: row; /* Revert to horizontal layout on larger screens */
+				flex-direction: row;
 			}
+		}
+
+		/* Enhanced error state styling */
+		.was-validated input:invalid,
+		.was-validated textarea:invalid {
+			border-color: #dc3545;
+			box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+		}
+
+		.was-validated input:valid,
+		.was-validated textarea:valid {
+			border-color: #28a745;
 		}
 	</style>
 </BaseLayout>
