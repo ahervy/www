@@ -325,6 +325,24 @@ h5 {
 	border-width: 0;
 }
 
+/* === Skip Link Utility === */
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  background: #fff;
+  color: var(--accent-regular);
+  z-index: 1000;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
 /* === Hero (wrapper) === */
 .hero {
 	display: flex;
@@ -451,4 +469,9 @@ h5 {
 		grid-area: cta;
 		place-items: center;
 	}
+}
+
+a:focus, button:focus, input:focus, textarea:focus {
+  outline: 2px solid var(--accent-regular);
+  outline-offset: 2px;
 }

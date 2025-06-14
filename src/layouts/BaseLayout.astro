@@ -20,6 +20,7 @@ const { title, description } = Astro.props;
 		<MainHead title={title} description={description} />
 	</head>
 	<body>
+		<a href="#main-content" class="sr-only sr-only-focusable" tabindex="0">Skip to main content</a>
 		<div>
 			<Nav />
 			<slot />
