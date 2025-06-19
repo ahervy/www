@@ -10,14 +10,16 @@ import Hero from "../components/Hero.astro";
 	title="Page not found"
 	description="404 Error — this page was not found"
 >
-	<Hero
-		title="This page was not found"
-		tagline="Maybe you can find what you need from the homepage."
-	>
-		<div class="cta-wrapper">
-			<a href="/" class="cta">Go back home</a>
-		</div>
-	</Hero>
+	<main id="main-content" tabindex="-1">
+		<Hero
+			title="This page was not found"
+			tagline="Maybe you can find what you need from the homepage."
+		>
+			<div class="cta-wrapper">
+				<a href="/" class="cta">Go back home</a>
+			</div>
+		</Hero>
+	</main>
 </BaseLayout>
 
 <style>
