@@ -9,7 +9,7 @@ interface Props {
 const { align = "center", tagline, title, headingId } = Astro.props;
 ---
 
-<div class={`hero-content stack gap-4 align-${align}`}>
+<div class="hero-content stack gap-4">
 	<div class="stack gap-2">
 		<h1 class="hero-title" id={headingId}>{title}</h1>
 		{tagline && <p class="hero-tagline">{tagline}</p>}
