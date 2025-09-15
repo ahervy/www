@@ -11,96 +11,25 @@ const Heading = Astro.props.headingLevel || "h3";
 ---
 
 <article class="portfolio-card">
-	<a
-		href={`/portfolio/${slug}/`}
-		class="card-link"
-		aria-label={`View project: ${data.title}`}></a>
+   <Heading class="title">{data.title}</Heading>
 
-	<Heading class="title">{data.title}</Heading>
+   {data.summary && <p class="summary">{data.summary}</p>}
 
-	{data.summary && <p class="summary">{data.summary}</p>}
-
-	{
-		data.img && (
-			<img
-				src={data.img}
-				alt={data.img_alt || data.title}
-				loading="lazy"
-				decoding="async"
-				class="preview-image"
-			/>
-		)
-	}
+   {
+	   data.img && (
+		   <img
+			   src={data.img}
+			   alt={data.img_alt || data.title}
+			   loading="lazy"
+			   decoding="async"
+			   class="preview-image"
+		   />
+	   )
+   }
+   <a
+	   href={`/portfolio/${slug}/`}
+	   class="card-link"
+	   aria-label={`View project: ${data.title}`}></a>
 </article>
 
-<style>
-	.portfolio-card {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		gap: 0.75rem;
-		padding: 1rem;
-		border: 1px solid var(--gray-800);
-		border-radius: 0.75rem;
-		background-color: var(--gray-900);
-		box-shadow: var(--shadow-md);
-		overflow: hidden;
-	}
 
-	.card-link {
-		position: absolute;
-		inset: 0;
-		z-index: 2;
-		text-indent: -9999px;
-		overflow: hidden;
-		white-space: nowrap;
-	}
-
-	.preview-image,
-	.title,
-	.summary {
-		position: relative;
-		z-index: 1;
-	}
-
-	.preview-image {
-		width: 100%;
-		max-height: 400px;
-		border-radius: 0.5rem;
-		object-fit: cover;
-		border: 1px solid var(--gray-800);
-		box-shadow: var(--shadow-xs);
-	}
-
-	.title {
-		margin: 0;
-		font-size: var(--text-xl);
-		color: var(--accent-regular);
-	}
-
-	.summary {
-		margin: 0;
-		font-size: var(--text-md);
-		color: var(--gray-200);
-	}
-
-	.portfolio-card:hover {
-		box-shadow: var(--shadow-lg);
-	}
-
-	.portfolio-card:hover h2,
-	.portfolio-card:hover h3 {
-		text-decoration: underline;
-	}
-
-	@media (min-width: 50em) {
-		.portfolio-card {
-			border-radius: 1.5rem;
-			padding: 2rem;
-		}
-
-		.preview-image {
-			border-radius: 1rem;
-		}
-	}
-</style>

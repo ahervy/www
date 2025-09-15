@@ -23,32 +23,12 @@ import Hero from "../components/Hero.astro";
 </BaseLayout>
 
 <style>
-	.cta {
-		margin-top: 1rem;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: fit-content;
-		font-weight: 600;
-		color: var(--accent-text-over);
-		background-color: var(--accent-regular);
-		padding: 0.75rem 1.5rem;
-		border-radius: 999rem;
-		text-decoration: none;
-		transition: background-color 0.2s;
-	}
+   .cta-wrapper {
+	   display: flex;
+	   justify-content: center;
+   }
 
-	.cta:hover,
-	.cta:focus {
-		background-color: var(--accent-dark);
-	}
-
-	.cta-wrapper {
-		display: flex;
-		justify-content: center;
-	}
-
-	:global(.tagline) {
-		max-width: none !important;
-	}
+   :global(.tagline) {
+	   max-width: none !important;
+   }
 </style>

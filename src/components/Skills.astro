@@ -7,7 +7,7 @@ import Icon from "./Icon.astro";
 		<h2>How I can help you</h2>
 	</header>
 	<div class="skill-grid">
-		<div class="stack gap-2 lg:gap-4">
+		<div class="stack gap-4 lg:gap-4">
 			<div class="skill-header">
 				<Icon
 					icon="article"
@@ -26,7 +26,7 @@ import Icon from "./Icon.astro";
 				<Icon
 					icon="terminal-window"
 					color="var(--accent-regular)"
-					size="2.5rem"
+					size="2rem"
 				/>
 				<h3>API documentation</h3>
 			</div>
@@ -52,36 +52,4 @@ import Icon from "./Icon.astro";
 	</div>
 </section>
 
-<style>
-	.skills {
-		display: flex;
-		flex-direction: column;
-		gap: 2rem;
-		padding-block: 1rem;
-	}
 
-	.skill-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		gap: 2rem;
-	}
-
-	.skill-header {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-	}
-
-	.skills h2 {
-		font-size: var(--text-3xl);
-	}
-
-	.skills h3 {
-		font-size: var(--text-xl);
-	}
-
-	.skills p {
-		color: var(--gray-200);
-		font-size: var(--text-md);
-	}
-</style>
