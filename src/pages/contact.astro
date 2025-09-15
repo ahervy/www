@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import CallToAction from "../components/CallToAction.astro";
 ---
 
 <BaseLayout
@@ -84,15 +85,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 						/>
 					</div>
 
-					<button
+					<CallToAction
 						type="submit"
-						aria-label="Send your message to Arnaud Hervy"
+						ariaLabel="Send your message to Arnaud Hervy"
 					>
 						<span class="button-text">Send message</span>
-						<span class="button-loading" style="display: none;"
-							>Sending...</span
-						>
-					</button>
+						<span class="button-loading hidden">Sending...</span>
+					</CallToAction>
 
 					<p id="result" role="status" aria-live="polite"></p>
 				</form>
@@ -353,25 +352,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 		button[type="submit"] {
 			position: relative;
 			display: flex;
-			place-content: center;
-			align-items: center;
-			text-align: center;
-			padding: 0.56em 2em;
-			gap: 0.8em;
-			color: var(--accent-text-over);
-			text-decoration: none;
-			line-height: 1.1;
-			border-radius: 999rem;
-			overflow: hidden;
-			background: var(--accent-regular);
 			white-space: nowrap;
 			border: none;
 			cursor: pointer;
-			transition: opacity 0.3s ease, transform 0.2s ease;
-		}
-
-		button[type="submit"]:hover:not(:disabled) {
-			transform: translateY(-1px);
 		}
 
 		button[type="submit"]:disabled {
@@ -434,27 +417,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 		}
 
 		/* Loading animation */
-		.button-loading {
-			display: inline-flex;
-			align-items: center;
-			gap: 0.5rem;
-		}
-
-		.button-loading::after {
-			content: "";
-			width: 16px;
-			height: 16px;
-			border: 2px solid transparent;
-			border-top-color: currentColor;
-			border-radius: 50%;
-			animation: spin 1s linear infinite;
-		}
-
-		@keyframes spin {
-			to {
-				transform: rotate(360deg);
-			}
-		}
 
 		@media (min-width: 20em) {
 			button[type="submit"] {
