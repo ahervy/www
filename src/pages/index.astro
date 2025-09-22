@@ -47,6 +47,11 @@ const projects = (await getCollection("portfolio")).sort((a, b) => {
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h2>Featured work</h2>
 					<p>Explore some of my work samples.</p>
+					<div class="hero-buttons">
+						<CallToAction href="/portfolio/">
+							View portfolio
+						</CallToAction>
+					</div>
 				</header>
 
 				<div class="gallery">
@@ -62,11 +67,6 @@ const projects = (await getCollection("portfolio")).sort((a, b) => {
 					</Grid>
 				</div>
 
-				<div class="hero-buttons">
-					<CallToAction href="/portfolio/">
-						View portfolio
-					</CallToAction>
-				</div>
 			</section>
 		</main>
 		<ContactCTA />
