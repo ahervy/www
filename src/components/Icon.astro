@@ -11,23 +11,24 @@ interface Props {
 const { color = 'currentcolor', icon, size } = Astro.props;
 const iconPath = iconPaths[icon];
 
+// Default icon size to 1em so icons scale with font-size when no explicit size provided.
+const sizeValue = size ?? '1em';
 const attrs: HTMLAttributes<'svg'> = {};
-if (size) attrs.style = { '--size': size };
+// Expose CSS variable and set width/height via inline style so callers can pass sizes like '1.2em' or '24px'.
+attrs.style = { '--size': sizeValue, width: 'var(--size)', height: 'var(--size)' };
 
 ---
 
 <svg
-	xmlns="http://www.w3.org/2000/svg"
-	width="40"
-	height="40"
-	viewBox="0 0 256 256"
-	aria-hidden="true"
-	stroke={color}
-	fill={color}
-	{...attrs}
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 256 256"
+    aria-hidden="true"
+    stroke={color}
+    fill={color}
+    {...attrs}
 >
-	<g set:html={iconPath} />
-	
+    <g set:html={iconPath} />
+
 </svg>
 
 
