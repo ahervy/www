@@ -21,6 +21,7 @@
 
 	/* Accent colors */
 	--accent-regular: #4f46e5;
+	--accent-regular-rgb: 79, 70, 229;
 	--accent-light: #818cf8;
 	--accent-dark: #3730a3;
 	--accent-overlay: hsla(245, 70%, 60%, 0.15);
@@ -672,16 +673,19 @@ form {
 /* ======================================================================== */
 /* === 8. COMPONENT-SPECIFIC MEDIA QUERIES =============================== */
 /* ======================================================================== */
+
 @media (min-width: 50em) {
 	h1 {
-		text-align: start;
-	}
+ 		text-align: start;
+ 	}
+ 
+ 	/* Lay out form rows horizontally on larger screens */
+ 	.form-row {
+ 		flex-direction: row;
+ 	}
 }
 
-.form-row {
-	flex-direction: row;
-}
-
+/* Hero and profile image layout */
 .hero {
 	display: grid;
 	grid-template-columns: 8fr 2fr;
@@ -690,14 +694,16 @@ form {
 	align-items: start;
 }
 
+/* Variant when no image is present */
 .hero--no-image {
-	display: grid;
-	grid-template-columns: 1fr;
+	display: flex;
+	flex-direction: column;
 }
 
 .profile-img {
-	aspect-ratio: 3 / 4;
-	border-radius: 4.5rem;
+ 	aspect-ratio: 5 / 4;
+ 	object-fit: cover;
+ 	border-radius: 1.5rem;
 }
 
 .section {
@@ -772,10 +778,23 @@ form {
 	border-radius: 1.5rem;
 }
 
-a:focus,
-button:focus,
 input:focus,
 textarea:focus {
-	outline: 2px solid var(--accent-regular);
-	outline-offset: 2px;
+ 	outline: 2px solid var(--accent-regular);
+ 	outline-offset: 2px;
+}
+
+/* Button overlay and focus/hover visual treatment used by forms and CTAs */
+button::after {
+ 	content: "";
+ 	position: absolute;
+ 	inset: 0;
+ 	pointer-events: none;
+ 	transition: background-color var(--theme-transition);
+ 	mix-blend-mode: overlay;
+}
+
+button.back-link:hover::after,
+button:hover::after {
+ 	background-color: hsla(var(--gray-999-basis), 0.3);
 }
