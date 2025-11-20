@@ -767,17 +767,6 @@ form {
 	display: inline-flex;
 }
 
-.hero--no-image {
-	display: flex;
-	flex-direction: column;
-}
-
-.profile-img {
-	aspect-ratio: 5 / 4;
-	object-fit: cover;
-	border-radius: 1.5rem;
-}
-
 input:focus,
 textarea:focus {
  	outline: 2px solid var(--accent-regular);

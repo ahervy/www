@@ -34,13 +34,13 @@ const origin = Astro.url?.origin ?? 'https://arnaudhervy.com';
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:type" content="website" />
-<meta property="og:url" content={origin} />
-<meta property="og:image" content="https://arnaudhervy.com/assets/profile-picture.jpg" />
+<meta property="og:url" content={url} />
+<meta property="og:image" content={`${origin}/assets/profile-picture.jpg`} />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
-<meta name="twitter:url" content={origin} />
-<meta name="twitter:image" content="https://arnaudhervy.com/assets/profile-picture.jpg" />
+<meta name="twitter:url" content={url} />
+<meta name="twitter:image" content={`${origin}/assets/profile-picture.jpg`} />
 
 <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
@@ -50,5 +50,5 @@ const origin = Astro.url?.origin ?? 'https://arnaudhervy.com';
     url,
     address: { "@type": "PostalAddress", addressLocality: "Nantes", addressCountry: "France" },
     sameAs: ["https://github.com/ahervy", "https://www.linkedin.com/in/arnaudhervy/"],
-    image: "https://arnaudhervy.com/assets/profile-picture.jpg"
+    image: `${origin}/assets/profile-picture.jpg`
 })} is:inline />
