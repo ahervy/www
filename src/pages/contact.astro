@@ -1,6 +1,6 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import CallToAction from "../components/CallToAction.astro";
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CallToAction from '../components/CallToAction.astro';
 ---
 
 <BaseLayout
@@ -14,50 +14,28 @@ import CallToAction from "../components/CallToAction.astro";
 					<div class="form-intro">
 						<h1>Contact</h1>
 						<p>
-							Send me a message about your technical writing needs
-							or any questions about my work.
+							Send me a message about your technical writing needs or any questions about my work.
 						</p>
 					</div>
 
 					<div class="form-row">
 						<div class="form-field">
 							<label for="firstname">First name (required)</label>
-							<input
-								type="text"
-								name="name"
-								id="firstname"
-								required
-							/>
-							<div class="invalid-feedback">
-								Please enter your first name.
-							</div>
+							<input type="text" name="name" id="firstname" required />
+							<div class="invalid-feedback">Please enter your first name.</div>
 						</div>
 						<div class="form-field">
 							<label for="lastname">Last name (required)</label>
-							<input
-								type="text"
-								name="last_name"
-								id="lastname"
-								required
-							/>
-							<div class="invalid-feedback">
-								Please enter your last name.
-							</div>
+							<input type="text" name="last_name" id="lastname" required />
+							<div class="invalid-feedback">Please enter your last name.</div>
 						</div>
 					</div>
 
 					<div class="form-row">
 						<div class="form-field">
 							<label for="email">Email address (required)</label>
-							<input
-								type="email"
-								name="email"
-								id="email"
-								required
-							/>
-							<div class="invalid-feedback">
-								Please enter a valid email address.
-							</div>
+							<input type="email" name="email" id="email" required />
+							<div class="invalid-feedback">Please enter a valid email address.</div>
 						</div>
 						<div class="form-field">
 							<label for="company">Company</label>
@@ -67,28 +45,16 @@ import CallToAction from "../components/CallToAction.astro";
 
 					<div class="form-field">
 						<label for="message">Message (required)</label>
-						<textarea rows="5" name="message" id="message" required
-						></textarea>
-						<div class="invalid-feedback">
-							Please enter your message.
-						</div>
+						<textarea rows="5" name="message" id="message" required></textarea>
+						<div class="invalid-feedback">Please enter your message.</div>
 					</div>
 
 					<div class="form-field honeypot">
 						<label for="website">Website (leave empty)</label>
-						<input
-							type="text"
-							name="website"
-							id="website"
-							tabindex="-1"
-							autocomplete="off"
-						/>
+						<input type="text" name="website" id="website" tabindex="-1" autocomplete="off" />
 					</div>
 
-					<CallToAction
-						type="submit"
-						ariaLabel="Send your message to Arnaud Hervy"
-					>
+					<CallToAction type="submit" ariaLabel="Send your message to Arnaud Hervy">
 						<span class="button-text">Send message</span>
 						<span class="button-loading hidden">Sending...</span>
 					</CallToAction>
@@ -101,43 +67,41 @@ import CallToAction from "../components/CallToAction.astro";
 
 	<script is:inline>
 		(function () {
-			"use strict";
+			'use strict';
 
-			const form = document.getElementById("contactForm");
-			const result = document.getElementById("result");
+			const form = document.getElementById('contactForm');
+			const result = document.getElementById('result');
 			const submitButton = form.querySelector('button[type="submit"]');
-			const buttonText = submitButton.querySelector(".button-text");
-			const buttonLoading = submitButton.querySelector(".button-loading");
+			const buttonText = submitButton.querySelector('.button-text');
+			const buttonLoading = submitButton.querySelector('.button-loading');
 
-			const WORKER_URL =
-				"https://contact-form-handler.arnaud-hervy.workers.dev";
+			const WORKER_URL = 'https://contact-form-handler.arnaud-hervy.workers.dev';
 
 			const ERROR_MESSAGES = {
-				network:
-					"Connection problem. Check your internet and try again.",
-				server: "Server error. Please try again in a few minutes.",
-				validation: "Please check your information and try again.",
-				unknown: "An unexpected error occurred. Please try again.",
+				network: 'Connection problem. Check your internet and try again.',
+				server: 'Server error. Please try again in a few minutes.',
+				validation: 'Please check your information and try again.',
+				unknown: 'An unexpected error occurred. Please try again.',
 			};
 
-			function showMessage(message, type = "error") {
+			function showMessage(message, type = 'error') {
 				result.innerHTML = message;
-				if (type === "success") {
-					result.classList.add("text-green-500");
-					result.classList.remove("text-red-500");
+				if (type === 'success') {
+					result.classList.add('text-green-500');
+					result.classList.remove('text-red-500');
 				} else {
-					result.classList.add("text-red-500");
-					result.classList.remove("text-green-500");
+					result.classList.add('text-red-500');
+					result.classList.remove('text-green-500');
 				}
 
 				// Auto-hide after 7s for success, 10s for errors
-				const hideDelay = type === "success" ? 7000 : 10000;
+				const hideDelay = type === 'success' ? 7000 : 10000;
 				setTimeout(() => {
-					result.style.opacity = "0";
+					result.style.opacity = '0';
 					setTimeout(() => {
-						result.innerHTML = "";
-						result.className = "";
-						result.style.opacity = "1";
+						result.innerHTML = '';
+						result.className = '';
+						result.style.opacity = '1';
 					}, 300);
 				}, hideDelay);
 			}
@@ -145,35 +109,35 @@ import CallToAction from "../components/CallToAction.astro";
 			function setLoading(isLoading) {
 				submitButton.disabled = isLoading;
 				if (isLoading) {
-					buttonText.classList.add("hidden");
-					buttonText.classList.remove("visible");
-					buttonLoading.classList.add("visible");
-					buttonLoading.classList.remove("hidden");
+					buttonText.classList.add('hidden');
+					buttonText.classList.remove('visible');
+					buttonLoading.classList.add('visible');
+					buttonLoading.classList.remove('hidden');
 				} else {
-					buttonText.classList.add("visible");
-					buttonText.classList.remove("hidden");
-					buttonLoading.classList.add("hidden");
-					buttonLoading.classList.remove("visible");
+					buttonText.classList.add('visible');
+					buttonText.classList.remove('hidden');
+					buttonLoading.classList.add('hidden');
+					buttonLoading.classList.remove('visible');
 				}
 			}
 
-			form.addEventListener("submit", async function (event) {
+			form.addEventListener('submit', async function (event) {
 				event.preventDefault();
 				event.stopPropagation();
 
 				// Client-side validation with error handling
 				if (!form.checkValidity()) {
-					const firstInvalid = form.querySelector(":invalid");
+					const firstInvalid = form.querySelector(':invalid');
 					if (firstInvalid) {
 						firstInvalid.focus();
 					}
-					form.classList.add("was-validated");
+					form.classList.add('was-validated');
 					return;
 				}
 
 				setLoading(true);
-				result.innerHTML = "";
-				result.className = "";
+				result.innerHTML = '';
+				result.className = '';
 
 				let timeoutId;
 
@@ -186,7 +150,7 @@ import CallToAction from "../components/CallToAction.astro";
 
 					// Honeypot check - if filled, it's likely a bot
 					if (data.website) {
-						showMessage("Form submission failed. Please try again.");
+						showMessage('Form submission failed. Please try again.');
 						return;
 					}
 
@@ -201,15 +165,12 @@ import CallToAction from "../components/CallToAction.astro";
 
 					// Send to Worker with timeout
 					const controller = new AbortController();
-					timeoutId = setTimeout(
-						() => controller.abort(),
-						30000,
-					); // 30s timeout
+					timeoutId = setTimeout(() => controller.abort(), 30000); // 30s timeout
 
 					const response = await fetch(WORKER_URL, {
-						method: "POST",
+						method: 'POST',
 						headers: {
-							"Content-Type": "application/json",
+							'Content-Type': 'application/json',
 						},
 						body: JSON.stringify(data),
 						signal: controller.signal,
@@ -223,8 +184,7 @@ import CallToAction from "../components/CallToAction.astro";
 								errorMessage = ERROR_MESSAGES.validation;
 								break;
 							case 429:
-								errorMessage =
-									"Too many attempts. Please wait before trying again.";
+								errorMessage = 'Too many attempts. Please wait before trying again.';
 								break;
 							case 500:
 							case 502:
@@ -242,25 +202,19 @@ import CallToAction from "../components/CallToAction.astro";
 
 					if (responseData.success) {
 						// Success
-						showMessage(
-							responseData.message ||
-								"Message sent successfully!",
-							"success",
-						);
+						showMessage(responseData.message || 'Message sent successfully!', 'success');
 						form.reset();
-						form.classList.remove("was-validated");
+						form.classList.remove('was-validated');
 					} else {
 						// Server error with message
-						showMessage(
-							responseData.message || ERROR_MESSAGES.unknown,
-						);
+						showMessage(responseData.message || ERROR_MESSAGES.unknown);
 					}
 				} catch (error) {
-					console.error("Error sending form:", error);
+					console.error('Error sending form:', error);
 
 					// Handle specific error types
-					if (error.name === "AbortError") {
-						showMessage("Request timeout. Please try again.");
+					if (error.name === 'AbortError') {
+						showMessage('Request timeout. Please try again.');
 					} else if (!navigator.onLine) {
 						showMessage(ERROR_MESSAGES.network);
 					} else {
@@ -276,5 +230,4 @@ import CallToAction from "../components/CallToAction.astro";
 			});
 		})();
 	</script>
-
 </BaseLayout>
