@@ -1,5 +1,4 @@
 ---
-
 interface Props {
 	href?: string;
 	target?: string;
@@ -19,29 +18,29 @@ const {
 	type = 'button',
 	disabled = false,
 	loading = false,
-	ariaLabel
+	ariaLabel,
 } = Astro.props;
 ---
 
-{href ? (
-	<a
-		href={href}
-		{...target ? { target } : {}}
-		{...rel ? { rel } : {}}
-		class={`cta${className ? ` ${className}` : ''}`}
-		aria-label={ariaLabel}
-	>
-		<slot />
-	</a>
-) : (
-	<button
-		type={type}
-		class={`cta${className ? ` ${className}` : ''}`}
-		disabled={disabled || loading}
-		aria-label={ariaLabel}
-	>
-		<slot />
-	</button>
-)}
-
-
+{
+	href ? (
+		<a
+			href={href}
+			{...(target ? { target } : {})}
+			{...(rel ? { rel } : {})}
+			class={`cta${className ? ` ${className}` : ''}`}
+			aria-label={ariaLabel}
+		>
+			<slot />
+		</a>
+	) : (
+		<button
+			type={type}
+			class={`cta${className ? ` ${className}` : ''}`}
+			disabled={disabled || loading}
+			aria-label={ariaLabel}
+		>
+			<slot />
+		</button>
+	)
+}

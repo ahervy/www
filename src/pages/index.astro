@@ -1,16 +1,16 @@
 ---
-import { getCollection } from "astro:content";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import CallToAction from "../components/CallToAction.astro";
-import Grid from "../components/Grid.astro";
-import Hero from "../components/Hero.astro";
-import PortfolioPreview from "../components/PortfolioPreview.astro";
-import ContactCTA from "../components/ContactCTA.astro";
-import Skills from "../components/Skills.astro";
-import { Picture } from "astro:assets";
-import profilePicture from "../assets/profile-picture.jpg";
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CallToAction from '../components/CallToAction.astro';
+import Grid from '../components/Grid.astro';
+import Hero from '../components/Hero.astro';
+import PortfolioPreview from '../components/PortfolioPreview.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Skills from '../components/Skills.astro';
+import { Picture } from 'astro:assets';
+import profilePicture from '../assets/profile-picture.jpg';
 
-const projects = (await getCollection("portfolio")).sort((a, b) => {
+const projects = (await getCollection('portfolio')).sort((a, b) => {
 	if (!b.data.publishDate || !a.data.publishDate) return 0;
 	return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
 });
@@ -26,14 +26,12 @@ const projects = (await getCollection("portfolio")).sort((a, b) => {
 					align="start"
 				>
 					<div class="hero-buttons">
-						<CallToAction href="/about/">
-							Get to know me
-						</CallToAction>
+						<CallToAction href="/about/"> Get to know me </CallToAction>
 					</div>
 				</Hero>
 				<Picture
 					src={profilePicture}
-					formats={["avif", "webp"]}
+					formats={['avif', 'webp']}
 					alt="Profile picture of Arnaud Hervy, technical writer"
 					class="profile-img"
 					loading="eager"
@@ -47,25 +45,21 @@ const projects = (await getCollection("portfolio")).sort((a, b) => {
 					<h2>Featured work</h2>
 					<p>Explore some of my work samples.</p>
 					<div class="hero-buttons">
-						<CallToAction href="/portfolio/">
-							View portfolio
-						</CallToAction>
+						<CallToAction href="/portfolio/"> View portfolio </CallToAction>
 					</div>
 				</header>
 
 				<div class="gallery">
 					<Grid variant="offset">
-						{projects.map((project) => (
-							<li>
-								<PortfolioPreview 
-									project={project} 
-									headingLevel="h3"
-								/>
-							</li>
-						))}
+						{
+							projects.map((project) => (
+								<li>
+									<PortfolioPreview project={project} headingLevel="h3" />
+								</li>
+							))
+						}
 					</Grid>
 				</div>
-
 			</section>
 		</main>
 		<ContactCTA />

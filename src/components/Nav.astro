@@ -37,26 +37,24 @@ const pathname = Astro.url?.pathname ?? '/';
 	<noscript>
 		<ul class="nav-items">
 			{
-			  textLinks.map(({ label, href }) => (
-				<li>
-				  <a
-					aria-current={pathname === href}
-					class:list={[
-					  'link',
-					  {
-						active:
-						  pathname === href ||
-						  (href !== '/' && pathname.startsWith(href)),
-					  },
-					]}
-					href={href}
-				  >
-					{label}
-				  </a>
-				</li>
-			  ))
+				textLinks.map(({ label, href }) => (
+					<li>
+						<a
+							aria-current={pathname === href}
+							class:list={[
+								'link',
+								{
+									active: pathname === href || (href !== '/' && pathname.startsWith(href)),
+								},
+							]}
+							href={href}
+						>
+							{label}
+						</a>
+					</li>
+				))
 			}
-		  </ul>
+		</ul>
 	</noscript>
 	<noscript>
 		<div class="menu-footer">
@@ -106,7 +104,6 @@ const pathname = Astro.url?.pathname ?? '/';
 					))
 				}
 			</div>
-
 		</div>
 	</div>
 </nav>
@@ -186,7 +183,7 @@ const pathname = Astro.url?.pathname ?? '/';
 
 	.menu-button[aria-expanded='true'] {
 		color: var(--gray-0);
-		background: var(--gray-600)
+		background: var(--gray-600);
 	}
 
 	.menu-button[hidden] {
@@ -197,7 +194,7 @@ const pathname = Astro.url?.pathname ?? '/';
 		position: absolute;
 		inset: -1px;
 		content: '';
-		background: var(--gray-800)
+		background: var(--gray-800);
 		border-radius: 999rem;
 		z-index: -1;
 	}
@@ -293,7 +290,6 @@ const pathname = Astro.url?.pathname ?? '/';
 			border: 0;
 			padding: 0.5rem 0.5625rem;
 			background: var(--gray-900);
-
 		}
 
 		.nav-items::before {

@@ -48,8 +48,9 @@
 	--text-5xl: 4.5rem;
 
 	/* Fonts */
-	--font-system: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	--font-system:
+		system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+		'Open Sans', 'Helvetica Neue', sans-serif;
 	--font-body: var(--font-system);
 	--font-brand: var(--font-system);
 
@@ -235,7 +236,7 @@ aside {
 	}
 }
 
-.grid>* {
+.grid > * {
 	height: 100%;
 }
 
@@ -255,12 +256,12 @@ aside {
 }
 
 /* Shift first item in each row vertically to create staggered effect. */
-.grid.offset> :global(:nth-child(odd)) {
+.grid.offset > :global(:nth-child(odd)) {
 	transform: translateY(var(--row-offset));
 }
 
 /* If last row contains only one item, display it in the second column. */
-.grid.offset> :global(:last-child:nth-child(odd)) {
+.grid.offset > :global(:last-child:nth-child(odd)) {
 	grid-column: 2 / 3;
 	transform: none;
 }
@@ -283,7 +284,9 @@ aside {
 	text-decoration: none;
 	border: none;
 	cursor: pointer;
-	transition: background-color 0.2s, color 0.2s;
+	transition:
+		background-color 0.2s,
+		color 0.2s;
 	appearance: none;
 }
 
@@ -294,7 +297,7 @@ aside {
 }
 
 .cta:disabled,
-.cta[aria-disabled="true"] {
+.cta[aria-disabled='true'] {
 	opacity: 0.7;
 	cursor: not-allowed;
 	pointer-events: none;
@@ -313,7 +316,9 @@ aside {
 	white-space: nowrap;
 	font-weight: 600;
 	text-decoration: none;
-	transition: background-color 0.2s, color 0.2s;
+	transition:
+		background-color 0.2s,
+		color 0.2s;
 }
 
 .button-loading {
@@ -323,11 +328,13 @@ aside {
 	border-radius: 999rem;
 	font-weight: 600;
 	text-decoration: none;
-	transition: background-color 0.2s, color 0.2s;
+	transition:
+		background-color 0.2s,
+		color 0.2s;
 }
 
 .button-loading::after {
-	content: "";
+	content: '';
 	width: 16px;
 	height: 16px;
 	border: 2px solid transparent;
@@ -533,8 +540,8 @@ h5 {
 /* ======================================================================== */
 /* === 7. FORMS =========================================================== */
 /* ======================================================================== */
-input[type="text"],
-input[type="email"],
+input[type='text'],
+input[type='email'],
 textarea {
 	width: 100%;
 	padding: 0.625em;
@@ -542,11 +549,13 @@ textarea {
 	border: 3px solid #ccc;
 	border-radius: 3px;
 	box-sizing: border-box;
-	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+	transition:
+		border-color 0.2s ease,
+		box-shadow 0.2s ease;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
+input[type='text']:focus,
+input[type='email']:focus,
 textarea:focus {
 	outline: 2px solid var(--accent-regular);
 	outline-offset: 2px;
@@ -554,7 +563,7 @@ textarea:focus {
 	box-shadow: 0 0 0 3px rgba(var(--accent-regular-rgb, 59, 130, 246), 0.1);
 }
 
-button[type="submit"] {
+button[type='submit'] {
 	position: relative;
 	display: flex;
 	white-space: nowrap;
@@ -562,7 +571,7 @@ button[type="submit"] {
 	cursor: pointer;
 }
 
-button[type="submit"]:disabled {
+button[type='submit']:disabled {
 	opacity: 0.7;
 	cursor: not-allowed;
 	transform: none;
@@ -639,11 +648,11 @@ button[type="submit"]:disabled {
 	margin-bottom: 1.5rem;
 }
 
-.was-validated :placeholder-shown:invalid~.empty-feedback {
+.was-validated :placeholder-shown:invalid ~ .empty-feedback {
 	display: block;
 }
 
-.was-validated :not(:placeholder-shown):invalid~.invalid-feedback {
+.was-validated :not(:placeholder-shown):invalid ~ .invalid-feedback {
 	display: block;
 }
 
@@ -676,13 +685,13 @@ form {
 
 @media (min-width: 50em) {
 	h1 {
- 		text-align: start;
- 	}
- 
- 	/* Lay out form rows horizontally on larger screens */
- 	.form-row {
- 		flex-direction: row;
- 	}
+		text-align: start;
+	}
+
+	/* Lay out form rows horizontally on larger screens */
+	.form-row {
+		flex-direction: row;
+	}
 }
 
 /* Hero and profile image layout */
@@ -701,24 +710,24 @@ form {
 }
 
 .profile-img {
- 	aspect-ratio: 5 / 4;
- 	object-fit: cover;
- 	border-radius: 1.5rem;
+	aspect-ratio: 5 / 4;
+	object-fit: cover;
+	border-radius: 1.5rem;
 }
 
 .section {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	grid-template-areas:
-		"header header header header"
-		"gallery gallery gallery gallery";
+		'header header header header'
+		'gallery gallery gallery gallery';
 	gap: 5rem;
 }
 
 .section.with-cta {
 	grid-template-areas:
-		"header header header cta"
-		"gallery gallery gallery gallery";
+		'header header header cta'
+		'gallery gallery gallery gallery';
 }
 
 .section-header {
@@ -769,21 +778,21 @@ form {
 
 input:focus,
 textarea:focus {
- 	outline: 2px solid var(--accent-regular);
- 	outline-offset: 2px;
+	outline: 2px solid var(--accent-regular);
+	outline-offset: 2px;
 }
 
 /* Button overlay and focus/hover visual treatment used by forms and CTAs */
 button::after {
- 	content: "";
- 	position: absolute;
- 	inset: 0;
- 	pointer-events: none;
- 	transition: background-color var(--theme-transition);
- 	mix-blend-mode: overlay;
+	content: '';
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	transition: background-color var(--theme-transition);
+	mix-blend-mode: overlay;
 }
 
 button.back-link:hover::after,
 button:hover::after {
- 	background-color: hsla(var(--gray-999-basis), 0.3);
+	background-color: hsla(var(--gray-999-basis), 0.3);
 }

@@ -1,35 +1,30 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import type { CollectionEntry } from 'astro:content';
 
 interface Props {
-	project: CollectionEntry<"portfolio">;
-	headingLevel?: "h2" | "h3" | "h4";
+	project: CollectionEntry<'portfolio'>;
+	headingLevel?: 'h2' | 'h3' | 'h4';
 }
 
 const { data, slug } = Astro.props.project;
-const Heading = Astro.props.headingLevel || "h3";
+const Heading = Astro.props.headingLevel || 'h3';
 ---
 
 <article class="portfolio-card">
-   <Heading class="title">{data.title}</Heading>
+	<Heading class="title">{data.title}</Heading>
 
-   {data.summary && <p class="summary">{data.summary}</p>}
+	{data.summary && <p class="summary">{data.summary}</p>}
 
-   {
-	   data.img && (
-		   <img
-			   src={data.img}
-			   alt={data.img_alt || data.title}
-			   loading="lazy"
-			   decoding="async"
-			   class="preview-image"
-		   />
-	   )
-   }
-   <a
-	   href={`/portfolio/${slug}/`}
-	   class="card-link"
-	   aria-label={`View project: ${data.title}`}></a>
+	{
+		data.img && (
+			<img
+				src={data.img}
+				alt={data.img_alt || data.title}
+				loading="lazy"
+				decoding="async"
+				class="preview-image"
+			/>
+		)
+	}
+	<a href={`/portfolio/${slug}/`} class="card-link" aria-label={`View project: ${data.title}`}></a>
 </article>
-
-

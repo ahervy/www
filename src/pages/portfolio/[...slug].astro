@@ -1,17 +1,17 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection } from 'astro:content';
 
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import ContactCTA from "../../components/ContactCTA.astro";
-import Icon from "../../components/Icon.astro";
-import CallToAction from "../../components/CallToAction.astro";
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import Icon from '../../components/Icon.astro';
+import CallToAction from '../../components/CallToAction.astro';
 
 interface Props {
-	entry: CollectionEntry<"portfolio">;
+	entry: CollectionEntry<'portfolio'>;
 }
 
 export async function getStaticPaths() {
-	const portfolio = await getCollection("portfolio");
+	const portfolio = await getCollection('portfolio');
 	return portfolio.map((entry) => ({
 		params: { slug: entry.slug },
 		props: { entry },
@@ -24,10 +24,7 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<BaseLayout
-	title={`${entry.data.title} | Arnaud Hervy`}
-	description={entry.data.meta_description}
->
+<BaseLayout title={`${entry.data.title} | Arnaud Hervy`} description={entry.data.meta_description}>
 	<div class="stack gap-15 lg:gap-30">
 		<div class="wrapper stack gap-8 lg:gap-20">
 			<header class="hero hero--no-image">
@@ -38,23 +35,22 @@ const { Content } = await entry.render();
 					<h1 class="hero-title">{entry.data.title}</h1>
 					<p class="content">{entry.data.description}</p>
 					<div class="hero-buttons">
-						{entry.data.sample_url ? (
-							<CallToAction
-								href={entry.data.sample_url}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="sample-pill"
-							>
-								View sample
-							</CallToAction>
-						) : (
-							<CallToAction
-								href={`/samples/${entry.slug}/`}
-								class="sample-pill"
-							>
-								View sample
-							</CallToAction>
-						)}
+						{
+							entry.data.sample_url ? (
+								<CallToAction
+									href={entry.data.sample_url}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="sample-pill"
+								>
+									View sample
+								</CallToAction>
+							) : (
+								<CallToAction href={`/samples/${entry.slug}/`} class="sample-pill">
+									View sample
+								</CallToAction>
+							)
+						}
 					</div>
 				</div>
 			</header>

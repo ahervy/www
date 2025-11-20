@@ -28,10 +28,9 @@ My goal was to revamp the documentation to help developers integrate the API qui
 2. Taking a developer-centric approach: while testing the API, I focused on the onboarding process and learning experience for developers.
 3. Analyzing the existing documentation: I identified ways to improve navigation, usability, and the developer experience.
 4. Building the content:
-
-    * I created an [OpenAPI definition](https://github.com/ahervy/api-docs/blob/main/api-reference/openapi.yaml) that describes the API.
-    * I used [Mintlify](https://mintlify.com/) to generate the API reference documentation and an interactive playground.
-    * I created a getting started guide and pages about the API, rate limits, and authentication methods.
+   - I created an [OpenAPI definition](https://github.com/ahervy/api-docs/blob/main/api-reference/openapi.yaml) that describes the API.
+   - I used [Mintlify](https://mintlify.com/) to generate the API reference documentation and an interactive playground.
+   - I created a getting started guide and pages about the API, rate limits, and authentication methods.
 
 ## Results
 
