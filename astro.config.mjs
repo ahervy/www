@@ -12,4 +12,8 @@ export default defineConfig({
       filter: (page) => !excludedPages.includes(new URL(page).pathname),
     }),
   ],
+  build: {
+    inlineStylesheets: 'auto',
+  },
+  compressHTML: true,
 });
