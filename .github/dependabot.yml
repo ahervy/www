@@ -22,7 +22,7 @@ updates:
     target-branch: "main"
 
   - package-ecosystem: "github-actions"
-    directory: "/.github/workflows"
+    directory: "/"
     schedule:
       interval: "weekly"
     commit-message:
