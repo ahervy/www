@@ -4,13 +4,31 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+      day: "sunday"
+      time: "04:00"
+      timezone: "UTC"
     groups:
       typescript-eslint:
         patterns:
           - "@typescript-eslint/*"
     commit-message:
-      prefix: "npm"
+      prefix: "chore(deps):"
     rebase-strategy: "auto"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 5
     assignees:
       - "ahervy"
+    labels:
+      - "dependencies"
+    target-branch: "main"
+
+  - package-ecosystem: "github-actions"
+    directory: "/.github/workflows"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "chore(deps):"
+    rebase-strategy: "auto"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+    target-branch: "main"
