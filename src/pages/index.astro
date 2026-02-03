@@ -17,16 +17,17 @@ const projects = (await getCollection('portfolio')).sort((a, b) => {
 ---
 
 <BaseLayout>
-	<div class="stack gap-15 lg:gap-30">
+	<main class="stack gap-10 lg:gap-20" id="main-content" tabindex="-1">
 		<div class="wrapper stack gap-8 lg:gap-20">
 			<header class="hero">
 				<Hero
 					title="Arnaud Hervy – Technical Writer"
-					tagline="Looking to improve your technical documentation? I can help you!\nAs an experienced technical writer in the software industry, I create easy-to-understand guides, API documentation, user interface copy, and more for all users."
+					tagline="I specialize in developer documentation for SaaS and APIs.\nI help teams ship clear API docs, quickstarts, and developer guides that reduce friction and speed up adoption."
 					align="start"
 				>
 					<div class="hero-buttons">
-						<CallToAction href="/about/"> Get to know me </CallToAction>
+						<CallToAction href="/portfolio/"> View portfolio </CallToAction>
+						<CallToAction href="/contact/"> Start a docs project </CallToAction>
 					</div>
 				</Hero>
 				<Picture
@@ -40,7 +41,46 @@ const projects = (await getCollection('portfolio')).sort((a, b) => {
 			</header>
 			<Skills />
 		</div>
-		<main class="wrapper stack gap-20 lg:gap-48" id="main-content" tabindex="-1">
+		<section class="wrapper stack gap-4">
+			<header class="section-header stack gap-2 lg:gap-4">
+				<h2>Best fit</h2>
+				<p>Teams with a real product and a growing developer audience.</p>
+			</header>
+			<ul class="content">
+				<li>API-first products that need clear reference, examples, and onboarding.</li>
+				<li>Developer platforms with SDKs, integrations, or complex auth flows.</li>
+				<li>SaaS teams seeing rising support load or low developer activation.</li>
+			</ul>
+		</section>
+		<section class="wrapper stack gap-8">
+			<header class="section-header stack gap-2 lg:gap-4">
+				<h2>How I work</h2>
+			</header>
+			<div class="skill-grid">
+				<div class="stack gap-4 lg:gap-4">
+					<h3>1. Diagnose</h3>
+					<p>
+						I review existing docs, the API surface, and common support questions to identify the
+						highest-friction areas.
+					</p>
+				</div>
+				<div class="stack gap-4 lg:gap-4">
+					<h3>2. Build</h3>
+					<p>
+						I create or overhaul reference, guides, and onboarding flows with clear examples and
+						task-driven structure.
+					</p>
+				</div>
+				<div class="stack gap-4 lg:gap-4">
+					<h3>3. Improve</h3>
+					<p>
+						I measure impact with activation and support signals, then iterate to keep docs aligned
+						with the product.
+					</p>
+				</div>
+			</div>
+		</section>
+		<section class="wrapper stack gap-10 lg:gap-20">
 			<section class="section with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h2>Featured work</h2>
@@ -62,7 +102,7 @@ const projects = (await getCollection('portfolio')).sort((a, b) => {
 					</Grid>
 				</div>
 			</section>
-		</main>
+		</section>
 		<ContactCTA />
-	</div>
+	</main>
 </BaseLayout>

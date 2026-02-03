@@ -6,7 +6,19 @@ description: |
   This case study is about the creation of a user-friendly guide that helps the transition during a navigation revamp on a platform.
 meta_description: Technical writing case study about the creation of a user-friendly guide that helps the transition during a navigation revamp on a platform.
 summary: |
-  Created a user guide to help users transition smoothly to a revamped platform navigation, reducing support needs.
+  Created a migration guide that helped teams adapt to new navigation with fewer support requests.
+audience: Existing customers navigating a UI redesign.
+role: Technical writer collaborating with product and marketing.
+deliverables:
+  - Navigation migration guide
+  - Before/after feature mapping
+  - Release communications draft
+tools:
+  - Google Docs
+  - Design prototypes
+outcomes:
+  - Reduced confusion during rollout
+  - Single source of truth for internal and external teams
 tags:
   - technical writing
 ---
@@ -15,9 +27,19 @@ tags:
 
 Our platform's navigation had become confusing for users due to the growing number of features. A revamp was planned to improve the user experience.
 
+## Problem
+
+Users risked losing key workflows during the navigation change, which could increase churn and support requests.
+
 ## My role
 
 To help with the transition, I was tasked with creating a guide to prepare users for the upcoming navigation revamp.
+
+## Approach
+
+- Mapped old-to-new navigation paths and common tasks.
+- Wrote a transition guide with before/after cues.
+- Coordinated review with product and marketing for consistency.
 
 ## Process
 
@@ -31,6 +53,11 @@ To help with the transition, I was tasked with creating a guide to prepare users
 - Users were informed before the release.
 - Proactive communication reduced the need for customer support.
 - The guide became the single source of truth for internal and external users.
+
+## Impact
+
+- Smoother adoption of the new navigation.
+- Lower support burden during rollout.
 
 ## Takeaways
 

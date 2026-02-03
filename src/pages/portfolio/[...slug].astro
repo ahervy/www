@@ -22,10 +22,53 @@ export const prerender = true;
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+const site = Astro.site?.toString() ?? 'https://arnaudhervy.com';
+const pageUrl = new URL(`/portfolio/${entry.slug}/`, site).toString();
+const imageUrl = entry.data.img ? new URL(entry.data.img, site).toString() : undefined;
+
+const detailItems = [
+	{ label: 'Audience', value: entry.data.audience },
+	{ label: 'Role', value: entry.data.role },
+	{
+		label: 'Deliverables',
+		value: entry.data.deliverables?.length ? entry.data.deliverables.join(', ') : undefined,
+	},
+	{
+		label: 'Tools',
+		value: entry.data.tools?.length ? entry.data.tools.join(', ') : undefined,
+	},
+	{
+		label: 'Outcomes',
+		value: entry.data.outcomes?.length ? entry.data.outcomes.join(', ') : undefined,
+	},
+	{
+		label: 'Tags',
+		value: entry.data.tags?.length ? entry.data.tags.join(', ') : undefined,
+	},
+].filter((item) => item.value);
+
+const jsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'CreativeWork',
+	headline: entry.data.title,
+	description: entry.data.meta_description ?? entry.data.description,
+	image: imageUrl,
+	author: {
+		'@type': 'Person',
+		name: 'Arnaud Hervy',
+	},
+	url: pageUrl,
+	about: entry.data.tags,
+};
 ---
 
-<BaseLayout title={`${entry.data.title} | Arnaud Hervy`} description={entry.data.meta_description}>
-	<div class="stack gap-15 lg:gap-30">
+<BaseLayout
+	title={`${entry.data.title} | Arnaud Hervy`}
+	description={entry.data.meta_description}
+	ogType="article"
+	ogImage={imageUrl}
+>
+	<div class="stack gap-10 lg:gap-20 project-stack">
 		<div class="wrapper stack gap-8 lg:gap-20">
 			<header class="hero hero--no-image">
 				<div class="stack gap-4 lg:gap-6">
@@ -57,18 +100,73 @@ const { Content } = await entry.render();
 		</div>
 		<main class="wrapper" id="main-content" tabindex="-1">
 			<div class="narrow">
+				{detailItems.length ? (
+					<section class="content-card">
+						<h2>Project overview</h2>
+						<dl class="detail-list">
+							{detailItems.map((item) => (
+								<div>
+									<dt>{item.label}</dt>
+									<dd>{item.value}</dd>
+								</div>
+							))}
+						</dl>
+					</section>
+				) : null}
 				<article class="content stack gap-4">
 					<Content />
 				</article>
 			</div>
 		</main>
-		<ContactCTA />
+		<div class="project-cta">
+			<ContactCTA />
+		</div>
 	</div>
+	<script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
 </BaseLayout>
 
 <style>
 	.narrow {
 		max-width: 65ch;
 		margin-inline: auto;
+	}
+
+	.content-card {
+		background: var(--gray-800);
+		border-radius: 1rem;
+		padding: 1.5rem;
+		margin-bottom: 2rem;
+	}
+
+	.detail-list {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 0.75rem;
+		margin: 1rem 0 0;
+	}
+
+	.detail-list div {
+		display: grid;
+		gap: 0.25rem;
+	}
+
+	.detail-list dt {
+		font-weight: 600;
+		color: var(--gray-100);
+	}
+
+	.detail-list dd {
+		margin: 0;
+		color: var(--gray-300);
+	}
+
+	.project-cta {
+		margin-top: 1.5rem;
+	}
+
+	@media (min-width: 50em) {
+		.project-cta {
+			margin-top: 2.5rem;
+		}
 	}
 </style>
