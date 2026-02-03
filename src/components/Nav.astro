@@ -27,7 +27,7 @@ const pathname = Astro.url?.pathname ?? '/';
 		</a>
 		<menu-button>
 			<template>
-				<button class="menu-button" aria-expanded="false">
+				<button class="menu-button" aria-expanded="false" aria-controls="menu-content">
 					<span class="sr-only">Menu</span>
 					<Icon icon="list" />
 				</button>
@@ -40,7 +40,7 @@ const pathname = Astro.url?.pathname ?? '/';
 				textLinks.map(({ label, href }) => (
 					<li>
 						<a
-							aria-current={pathname === href}
+							aria-current={pathname === href ? 'page' : undefined}
 							class:list={[
 								'link',
 								{
@@ -76,7 +76,7 @@ const pathname = Astro.url?.pathname ?? '/';
 				textLinks.map(({ label, href }) => (
 					<li>
 						<a
-							aria-current={Astro.url.pathname === href}
+							aria-current={Astro.url.pathname === href ? 'page' : undefined}
 							class:list={[
 								'link',
 								{
@@ -248,18 +248,18 @@ const pathname = Astro.url?.pathname ?? '/';
 		font-size: var(--icon-size);
 	}
 
-	.social {
-		display: flex;
-		padding: var(--icon-padding);
-		text-decoration: none;
-		color: var(--accent-dark);
-		transition: color var(--theme-transition);
-	}
+		.social {
+			display: flex;
+			padding: var(--icon-padding);
+			text-decoration: none;
+			color: var(--accent-regular);
+			transition: color var(--theme-transition);
+		}
 
-	.social:hover,
-	.social:focus {
-		color: var(--accent-regular);
-	}
+		.social:hover,
+		.social:focus {
+			color: var(--accent-dark);
+		}
 
 	@media (min-width: 50em) {
 		nav {

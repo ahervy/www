@@ -13,6 +13,11 @@ export const collections = {
 			img: z.string(),
 			img_alt: z.string().optional(),
 			sample_url: z.string().optional(),
+			audience: z.string().optional(),
+			role: z.string().optional(),
+			deliverables: z.array(z.string()).optional(),
+			tools: z.array(z.string()).optional(),
+			outcomes: z.array(z.string()).optional(),
 		}),
 	}),
 };

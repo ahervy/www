@@ -4,15 +4,20 @@ import '../styles/global.css';
 interface Props {
 	title?: string | undefined;
 	description?: string | undefined;
+	ogType?: string | undefined;
+	ogImage?: string | undefined;
 }
 
 const {
 	title = 'Arnaud Hervy - Technical Writer',
-	description = 'Experienced technical writer based in France. Turns complex info into easy-to-understand articles, guides, API documentation, or copy for user interfaces.',
+	description = 'Technical writer specializing in developer documentation. I turn complex software into clear API docs, guides, and onboarding that help devs succeed.',
+	ogType = 'website',
+	ogImage,
 } = Astro.props;
 
 const url = Astro.url?.href ?? 'https://arnaudhervy.com';
 const origin = Astro.url?.origin ?? 'https://arnaudhervy.com';
+const imageUrl = ogImage ?? `${origin}/assets/profile-picture.jpg`;
 ---
 
 <meta charset="UTF-8" />
@@ -21,7 +26,7 @@ const origin = Astro.url?.origin ?? 'https://arnaudhervy.com';
 <meta name="generator" content={Astro.generator} />
 <meta
 	name="keywords"
-	content="technical writer, UX writer, API documentation, user guides, software documentation, Arnaud Hervy, Nantes, France"
+	content="technical writer, developer documentation, API documentation, docs-as-code, developer experience, user guides, software documentation, Arnaud Hervy, Nantes, France"
 />
 <title>{title}</title>
 
@@ -37,14 +42,14 @@ const origin = Astro.url?.origin ?? 'https://arnaudhervy.com';
 <!-- Open Graph and Twitter meta tags -->
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:type" content="website" />
+<meta property="og:type" content={ogType} />
 <meta property="og:url" content={url} />
-<meta property="og:image" content={`${origin}/assets/profile-picture.jpg`} />
+<meta property="og:image" content={imageUrl} />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:url" content={url} />
-<meta name="twitter:image" content={`${origin}/assets/profile-picture.jpg`} />
+<meta name="twitter:image" content={imageUrl} />
 
 <script
 	type="application/ld+json"

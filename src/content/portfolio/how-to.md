@@ -5,7 +5,18 @@ img_alt: How-to guide for managing API keys in HTML format
 description: |
   This case study is about the creation of step-by-step procedures that guide users through tasks related to a new feature.
 meta_description: Technical writing case study about the creation of step-by-step procedures that guide users through tasks related to a new feature.
-summary: Wrote a step-by-step guide to help users manage API keys independently, reducing support requests.
+summary: Wrote a step-by-step guide that enabled developers to self-serve API key management and reduced support tickets.
+audience: API users with admin access and developer operations teams.
+role: Technical writer partnering with product and support.
+deliverables:
+  - How-to guide for creating and revoking API keys
+  - UI copy for key management warnings
+tools:
+  - Zendesk Guide
+  - Postman
+outcomes:
+  - Fewer support requests for key management
+  - Clearer understanding of revocation impacts
 tags:
   - technical writing
 ---
@@ -14,9 +25,19 @@ tags:
 
 Users had to contact our Support team to manage their API keys, which was not convenient. To improve the user experience, we launched a feature allowing them to manage their API keys.
 
+## Problem
+
+Key management was a support-heavy workflow, and users lacked clear instructions for safe creation and revocation.
+
 ## My role
 
 To support the launch of this feature, I was tasked with creating clear and concise instructions.
+
+## Approach
+
+- Mapped the end-to-end task flow and critical warnings.
+- Wrote a step-by-step guide with consistent terminology.
+- Validated accuracy with product and support.
 
 ## Process
 
@@ -28,6 +49,11 @@ To support the launch of this feature, I was tasked with creating clear and conc
 
 - This content helped users manage API keys themselves, reducing the need for customer support.
 - Reviewing the content with the product manager ensured technically accurate content for users.
+
+## Impact
+
+- Reduced support volume by enabling self-service key management.
+- Fewer user mistakes with clearer warnings and revocation guidance.
 
 ## Takeaways
 
