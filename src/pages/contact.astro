@@ -21,32 +21,62 @@ import CallToAction from '../components/CallToAction.astro';
 					<div class="form-row">
 						<div class="form-field">
 							<label for="firstname">First name (required)</label>
-							<input type="text" name="name" id="firstname" required />
-							<div class="invalid-feedback">Please enter your first name.</div>
+							<input
+								type="text"
+								name="name"
+								id="firstname"
+								autocomplete="given-name"
+								aria-describedby="firstname-error"
+								required
+							/>
+							<div class="invalid-feedback" id="firstname-error">Please enter your first name.</div>
 						</div>
 						<div class="form-field">
 							<label for="lastname">Last name (required)</label>
-							<input type="text" name="last_name" id="lastname" required />
-							<div class="invalid-feedback">Please enter your last name.</div>
+							<input
+								type="text"
+								name="last_name"
+								id="lastname"
+								autocomplete="family-name"
+								aria-describedby="lastname-error"
+								required
+							/>
+							<div class="invalid-feedback" id="lastname-error">Please enter your last name.</div>
 						</div>
 					</div>
 
 					<div class="form-row">
 						<div class="form-field">
 							<label for="email">Email address (required)</label>
-							<input type="email" name="email" id="email" required />
-							<div class="invalid-feedback">Please enter a valid email address.</div>
+							<input
+								type="email"
+								name="email"
+								id="email"
+								autocomplete="email"
+								aria-describedby="email-error"
+								required
+							/>
+							<div class="invalid-feedback" id="email-error">
+								Please enter a valid email address.
+							</div>
 						</div>
 						<div class="form-field">
 							<label for="company">Company</label>
-							<input type="text" name="company" id="company" />
+							<input type="text" name="company" id="company" autocomplete="organization" />
 						</div>
 					</div>
 
 					<div class="form-field">
 						<label for="message">Message (required)</label>
-						<textarea rows="5" name="message" id="message" required></textarea>
-						<div class="invalid-feedback">Please enter your message.</div>
+						<textarea
+							rows="5"
+							name="message"
+							id="message"
+							autocomplete="off"
+							aria-describedby="message-error"
+							required
+						></textarea>
+						<div class="invalid-feedback" id="message-error">Please enter your message.</div>
 					</div>
 
 					<div class="form-field honeypot">
