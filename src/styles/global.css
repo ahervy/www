@@ -731,22 +731,6 @@ form.needs-validation {
 	margin-bottom: 0;
 }
 
-.form-meta {
-	margin: 1rem 0 1.5rem;
-	padding: 1rem 1.25rem;
-	border-radius: 0.75rem;
-	background: rgba(79, 70, 229, 0.08);
-	color: var(--gray-200);
-}
-
-.form-meta p {
-	margin-bottom: 0.5rem;
-}
-
-.form-meta p:last-child {
-	margin-bottom: 0;
-}
-
 @media (min-width: 50em) {
 	form.needs-validation {
 		padding: 2.5rem 3rem;
