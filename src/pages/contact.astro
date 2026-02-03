@@ -14,7 +14,8 @@ import CallToAction from '../components/CallToAction.astro';
 					<div class="form-intro">
 						<h1>Contact</h1>
 						<p>
-							Send me a message about your technical writing needs or any questions about my work.
+							Tell me about your product, audience, and timeline. I’ll reply within 1–2 business
+							days.
 						</p>
 					</div>
 
@@ -29,7 +30,9 @@ import CallToAction from '../components/CallToAction.astro';
 								aria-describedby="firstname-error"
 								required
 							/>
-							<div class="invalid-feedback" id="firstname-error">Please enter your first name.</div>
+							<div class="invalid-feedback" id="firstname-error" role="alert">
+								Please enter your first name.
+							</div>
 						</div>
 						<div class="form-field">
 							<label for="lastname">Last name (required)</label>
@@ -41,7 +44,9 @@ import CallToAction from '../components/CallToAction.astro';
 								aria-describedby="lastname-error"
 								required
 							/>
-							<div class="invalid-feedback" id="lastname-error">Please enter your last name.</div>
+							<div class="invalid-feedback" id="lastname-error" role="alert">
+								Please enter your last name.
+							</div>
 						</div>
 					</div>
 
@@ -56,7 +61,7 @@ import CallToAction from '../components/CallToAction.astro';
 								aria-describedby="email-error"
 								required
 							/>
-							<div class="invalid-feedback" id="email-error">
+							<div class="invalid-feedback" id="email-error" role="alert">
 								Please enter a valid email address.
 							</div>
 						</div>
@@ -76,7 +81,9 @@ import CallToAction from '../components/CallToAction.astro';
 							aria-describedby="message-error"
 							required
 						></textarea>
-						<div class="invalid-feedback" id="message-error">Please enter your message.</div>
+						<div class="invalid-feedback" id="message-error" role="alert">
+							Please enter your message.
+						</div>
 					</div>
 
 					<div class="form-field honeypot">
@@ -151,13 +158,34 @@ import CallToAction from '../components/CallToAction.astro';
 				}
 			}
 
+			const fields = Array.from(form.querySelectorAll('input, textarea'));
+			const updateFieldValidity = (field) => {
+				if (field.matches(':invalid')) {
+					field.setAttribute('aria-invalid', 'true');
+				} else {
+					field.removeAttribute('aria-invalid');
+				}
+			};
+
+			fields.forEach((field) => {
+				field.addEventListener('input', () => updateFieldValidity(field));
+				field.addEventListener('blur', () => updateFieldValidity(field));
+			});
+
 			form.addEventListener('submit', async function (event) {
 				event.preventDefault();
 				event.stopPropagation();
 
 				// Client-side validation with error handling
+				fields.forEach((field) => field.removeAttribute('aria-invalid'));
+
 				if (!form.checkValidity()) {
 					const firstInvalid = form.querySelector(':invalid');
+					fields.forEach((field) => {
+						if (field.matches(':invalid')) {
+							field.setAttribute('aria-invalid', 'true');
+						}
+					});
 					if (firstInvalid) {
 						firstInvalid.focus();
 					}
