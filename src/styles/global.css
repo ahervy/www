@@ -713,9 +713,44 @@ button[type='submit']:disabled {
 }
 
 .form-container {
+	display: flex;
 	justify-content: center;
 	align-items: center;
 	min-height: 80vh;
+}
+
+form.needs-validation {
+	background: rgba(248, 250, 252, 0.9);
+	border: 1px solid rgba(15, 23, 42, 0.08);
+	box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+	border-radius: 1.25rem;
+	padding: 2rem;
+}
+
+.form-intro p {
+	margin-bottom: 0;
+}
+
+.form-meta {
+	margin: 1rem 0 1.5rem;
+	padding: 1rem 1.25rem;
+	border-radius: 0.75rem;
+	background: rgba(79, 70, 229, 0.08);
+	color: var(--gray-200);
+}
+
+.form-meta p {
+	margin-bottom: 0.5rem;
+}
+
+.form-meta p:last-child {
+	margin-bottom: 0;
+}
+
+@media (min-width: 50em) {
+	form.needs-validation {
+		padding: 2.5rem 3rem;
+	}
 }
 
 label {
