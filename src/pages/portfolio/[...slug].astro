@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection, render } from 'astro:content';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
@@ -13,7 +13,7 @@ interface Props {
 export async function getStaticPaths() {
 	const portfolio = await getCollection('portfolio');
 	return portfolio.map((entry) => ({
-		params: { slug: entry.slug },
+		params: { slug: entry.id },
 		props: { entry },
 	}));
 }
@@ -21,9 +21,9 @@ export async function getStaticPaths() {
 export const prerender = true;
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 const site = Astro.site?.toString() ?? 'https://arnaudhervy.com';
-const pageUrl = new URL(`/portfolio/${entry.slug}/`, site).toString();
+const pageUrl = new URL(`/portfolio/${entry.id}/`, site).toString();
 const imageUrl = entry.data.img ? new URL(entry.data.img, site).toString() : undefined;
 
 const detailItems = [
@@ -89,7 +89,7 @@ const jsonLd = {
 									View sample
 								</CallToAction>
 							) : (
-								<CallToAction href={`/samples/${entry.slug}/`} class="sample-pill">
+								<CallToAction href={`/samples/${entry.id}/`} class="sample-pill">
 									View sample
 								</CallToAction>
 							)
