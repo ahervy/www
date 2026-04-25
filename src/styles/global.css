@@ -4,39 +4,52 @@
 /* === 1. CSS VARIABLES =================================================== */
 /* ======================================================================== */
 :root {
-	/* Grayscale (light theme) */
-	--gray-0: #0a0c10;
-	--gray-50: #121720;
-	--gray-100: #1f2937;
+	/* Accessible light palette */
+	--color-text: #111827;
+	--color-heading: #1f2937;
+	--color-muted: #475569;
+	--color-border: #cbd5e1;
+	--color-border-strong: #94a3b8;
+	--color-surface: #ffffff;
+	--color-surface-muted: #eef2f6;
+	--color-background: #f8fafc;
+	--color-accent: #1d4ed8;
+	--color-accent-hover: #1e3a8a;
+	--color-accent-soft: #eff6ff;
+	--color-success: #047857;
+	--color-danger: #b91c1c;
+
+	/* Compatibility aliases */
+	--gray-0: var(--color-text);
+	--gray-50: var(--color-text);
+	--gray-100: var(--color-heading);
 	--gray-200: #334155;
-	--gray-300: #475569;
+	--gray-300: var(--color-muted);
 	--gray-400: #64748b;
-	--gray-500: #94a3b8;
-	--gray-600: #cbd5e1;
-	--gray-700: #e2e8f0;
-	--gray-800: #f1f5f9;
-	--gray-900: #f8fafc;
-	--gray-999: #ffffff;
+	--gray-500: var(--color-border-strong);
+	--gray-600: var(--color-border);
+	--gray-700: #d7dde5;
+	--gray-800: var(--color-surface-muted);
+	--gray-900: var(--color-background);
+	--gray-999: var(--color-surface);
 
 	--gray-999-basis: 0, 0%, 100%;
-	--gray-999_40: hsla(var(--gray-999-basis), 0.4);
+	--gray-999_40: rgba(255, 255, 255, 0.4);
 
-	/* Accent colors */
-	--accent-regular: #4f46e5;
-	--accent-regular-rgb: 79, 70, 229;
-	--accent-light: #818cf8;
-	--accent-dark: #3730a3;
-	--accent-overlay: hsla(245, 70%, 60%, 0.15);
-	--accent-subtle-overlay: hsla(245, 50%, 96%, 1);
-	--accent-text-over: var(--gray-999);
+	--accent-regular: var(--color-accent);
+	--accent-regular-rgb: 29, 78, 216;
+	--accent-light: #dbeafe;
+	--accent-dark: var(--color-accent-hover);
+	--accent-overlay: rgba(29, 78, 216, 0.12);
+	--accent-subtle-overlay: var(--color-accent-soft);
+	--accent-text-over: var(--color-surface);
 
-	/* Link colors */
-	--link-color: var(--accent-regular);
+	--link-color: var(--color-accent);
 
 	/* Shadows */
-	--shadow-sm: 0px 2px 4px rgba(10, 12, 16, 0.1);
-	--shadow-md: 0px 4px 8px rgba(10, 12, 16, 0.12), 0px 2px 4px rgba(10, 12, 16, 0.08);
-	--shadow-lg: 0px 8px 16px rgba(10, 12, 16, 0.12), 0px 4px 8px rgba(10, 12, 16, 0.08);
+	--shadow-sm: 0px 1px 2px rgba(17, 24, 39, 0.08);
+	--shadow-md: 0px 4px 12px rgba(17, 24, 39, 0.1);
+	--shadow-lg: 0px 12px 24px rgba(17, 24, 39, 0.12);
 
 	/* Typography */
 	--text-sm: 0.875rem;
@@ -50,8 +63,10 @@
 	--text-5xl: 4.5rem;
 
 	/* Fonts */
-	--font-body: 'Source Sans 3', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-	--font-brand: 'Source Sans 3', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	--font-body:
+		'Source Sans 3', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	--font-brand:
+		'Source Sans 3', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
 	/* Transition global */
 	--theme-transition: 0.2s ease-in-out;
@@ -68,9 +83,6 @@ body {
 
 body {
 	background-color: var(--gray-900);
-	background-image:
-		radial-gradient(circle at top left, rgba(79, 70, 229, 0.12), transparent 45%),
-		radial-gradient(circle at 20% 20%, rgba(129, 140, 248, 0.12), transparent 50%);
 	color: var(--gray-300);
 	font-family: var(--font-body);
 	-webkit-font-smoothing: antialiased;
@@ -135,7 +147,7 @@ aside {
 	overflow: visible;
 	clip: auto;
 	white-space: normal;
-	background: #fff;
+	background: var(--color-surface);
 	color: var(--accent-regular);
 	z-index: 1000;
 	padding: 0.5rem 1rem;
@@ -293,7 +305,7 @@ aside {
 		box-shadow 0.2s,
 		transform 0.2s;
 	appearance: none;
-	box-shadow: 0 12px 24px rgba(79, 70, 229, 0.25);
+	box-shadow: var(--shadow-md);
 }
 
 .cta:hover,
@@ -301,7 +313,7 @@ aside {
 	background-color: var(--accent-dark);
 	text-decoration: none;
 	transform: translateY(-2px);
-	box-shadow: 0 18px 30px rgba(79, 70, 229, 0.35);
+	box-shadow: var(--shadow-lg);
 }
 
 .cta:disabled,
@@ -363,10 +375,10 @@ aside {
 	flex-direction: column;
 	gap: 0.75rem;
 	padding: 1.25rem;
-	border: 1px solid rgba(203, 213, 225, 0.1);
+	border: 1px solid var(--gray-700);
 	border-radius: 1rem;
-	background: linear-gradient(180deg, rgba(248, 250, 252, 0.03), rgba(15, 23, 42, 0.2));
-	box-shadow: 0 12px 30px rgba(15, 23, 42, 0.2);
+	background: var(--gray-999);
+	box-shadow: var(--shadow-sm);
 	overflow: hidden;
 	position: relative;
 	transition:
@@ -377,8 +389,8 @@ aside {
 
 .portfolio-card:hover {
 	transform: translateY(-4px);
-	box-shadow: 0 20px 45px rgba(15, 23, 42, 0.28);
-	border-color: rgba(129, 140, 248, 0.45);
+	box-shadow: var(--shadow-md);
+	border-color: var(--accent-regular);
 }
 
 .portfolio-card:hover h2,
@@ -387,7 +399,7 @@ aside {
 }
 
 .portfolio-card:focus-within {
-	outline: 2px solid rgba(129, 140, 248, 0.6);
+	outline: 2px solid var(--accent-regular);
 	outline-offset: 3px;
 }
 
@@ -597,7 +609,7 @@ textarea {
 	width: 100%;
 	padding: 0.625em;
 	margin-bottom: 0.625em;
-	border: 3px solid #ccc;
+	border: 3px solid var(--color-border-strong);
 	border-radius: 3px;
 	box-sizing: border-box;
 	transition:
@@ -664,12 +676,12 @@ button[type='submit']:disabled {
 }
 
 .text-green-500 {
-	color: #10b981;
+	color: var(--color-success);
 	font-weight: 500;
 }
 
 .text-red-500 {
-	color: #ef4444;
+	color: var(--color-danger);
 	font-weight: 500;
 }
 
@@ -682,20 +694,20 @@ button[type='submit']:disabled {
 
 .was-validated input:invalid,
 .was-validated textarea:invalid {
-	border-color: #dc3545;
-	box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+	border-color: var(--color-danger);
+	box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.12);
 }
 
 .was-validated input:valid,
 .was-validated textarea:valid {
-	border-color: #28a745;
+	border-color: var(--color-success);
 }
 
 .invalid-feedback,
 .empty-feedback {
 	display: none;
 	font-size: var(--text-sm);
-	color: #dc3545;
+	color: var(--color-danger);
 	margin-bottom: 1.5rem;
 }
 
@@ -709,7 +721,7 @@ button[type='submit']:disabled {
 
 .is-invalid,
 .was-validated :invalid {
-	border-color: #dc3545;
+	border-color: var(--color-danger);
 }
 
 .form-container {
@@ -720,9 +732,9 @@ button[type='submit']:disabled {
 }
 
 form.needs-validation {
-	background: rgba(248, 250, 252, 0.9);
-	border: 1px solid rgba(15, 23, 42, 0.08);
-	box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+	background: var(--gray-999);
+	border: 1px solid var(--gray-700);
+	box-shadow: var(--shadow-md);
 	border-radius: 1.25rem;
 	padding: 2rem;
 }
@@ -867,5 +879,5 @@ button::after {
 
 button.back-link:hover::after,
 button:hover::after {
-	background-color: hsla(var(--gray-999-basis), 0.3);
+	background-color: rgba(255, 255, 255, 0.3);
 }
