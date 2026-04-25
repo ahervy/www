@@ -310,6 +310,7 @@ aside {
 
 .cta:hover,
 .cta:focus {
+	color: var(--accent-text-over);
 	background-color: var(--accent-dark);
 	text-decoration: none;
 	transform: translateY(-2px);
