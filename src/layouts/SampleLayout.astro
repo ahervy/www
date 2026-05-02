@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 interface Props {
 	title: string;
 	description: string;
@@ -50,84 +52,164 @@ const imageUrl = new URL(ogImage, site).toString();
 		<title>{title}</title>
 	</head>
 
-	<body>
-		<header>
-			<nav>
-				<a href={backHref}>← Back to case study</a>
+	<body class="sample-page">
+		<header class="sample-header">
+			<nav class="sample-nav" aria-label="Sample page navigation">
+				<a class="sample-back-link" href={backHref}>← Back to case study</a>
 			</nav>
 		</header>
 
-		<main id="main-content">
+		<main class="sample-document" id="main-content">
 			<slot />
 		</main>
 	</body>
 </html>
 
 <style is:global>
-	body {
-		font-family:
-			system-ui,
-			-apple-system,
-			BlinkMacSystemFont,
-			'Segoe UI',
-			Roboto,
-			Oxygen,
-			Ubuntu,
-			Cantarell,
-			'Open Sans',
-			'Helvetica Neue',
-			sans-serif;
-		margin: 20px;
-		background-color: #f8fafc;
-		color: #475569;
+	.sample-page {
+		color-scheme: light;
+		min-height: 100vh;
+		margin: 0;
+		padding: var(--space-5);
+		background-color: var(--color-background);
+		color: var(--color-muted);
+		font-family: var(--font-body);
 	}
 
-	main {
-		background-color: #ffffff;
-		padding: 20px;
-		border-radius: 8px;
-		border: 1px solid #cbd5e1;
-		box-shadow: 0 1px 2px rgba(17, 24, 39, 0.08);
-		max-width: 800px;
-		margin: 0 auto;
-		margin-bottom: 20px;
+	.sample-header {
+		max-width: 50rem;
+		margin: 0 auto var(--space-4);
 	}
 
-	h1,
-	h2,
-	h3 {
-		color: #1d4ed8;
-		margin-top: 20px;
+	.sample-nav {
+		display: flex;
 	}
 
-	ul,
-	ol {
-		margin-bottom: 10px;
+	.sample-back-link {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-2);
+		color: var(--link-color);
+		font-size: var(--text-base);
+		font-weight: 600;
+		text-decoration: underline;
+		text-decoration-color: currentColor;
+		text-underline-offset: var(--space-1);
+		transition: color var(--theme-transition);
 	}
 
-	li {
-		margin-bottom: 5px;
+	.sample-back-link:hover,
+	.sample-back-link:focus {
+		color: var(--accent-dark);
 	}
 
-	img {
+	.sample-page a:focus-visible {
+		outline: 2px solid var(--accent-regular);
+		outline-offset: 3px;
+		border-radius: var(--radius-sm);
+	}
+
+	.sample-document {
+		max-width: 50rem;
+		margin: 0 auto var(--space-5);
+		padding: var(--space-5);
+		background-color: var(--surface-card-background);
+		border: var(--surface-card-border);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--surface-card-shadow);
+	}
+
+	.sample-document h1,
+	.sample-document h2,
+	.sample-document h3 {
+		color: var(--accent-regular);
+		line-height: 1.2;
+		margin: var(--space-5) 0 var(--space-2);
+		font-family: var(--font-body);
+		font-weight: 700;
+	}
+
+	.sample-document h1:first-child,
+	.sample-document h2:first-child,
+	.sample-document h3:first-child {
+		margin-top: 0;
+	}
+
+	.sample-document h1 {
+		font-size: var(--text-3xl);
+	}
+
+	.sample-document h2 {
+		font-size: var(--text-2xl);
+	}
+
+	.sample-document h3 {
+		font-size: var(--text-xl);
+	}
+
+	.sample-document p,
+	.sample-document ul,
+	.sample-document ol {
+		margin-bottom: var(--space-3);
+	}
+
+	.sample-document ul,
+	.sample-document ol {
+		padding-left: var(--space-5);
+	}
+
+	.sample-document li {
+		margin-bottom: var(--space-2);
+	}
+
+	.sample-document strong {
+		color: var(--color-heading);
+		font-weight: 700;
+	}
+
+	.sample-document a {
+		color: var(--link-color);
+		text-underline-offset: var(--space-1);
+		transition: color var(--theme-transition);
+	}
+
+	.sample-document a:hover,
+	.sample-document a:focus {
+		color: var(--accent-dark);
+	}
+
+	.sample-document img {
 		width: 100%;
 		height: auto;
 		display: block;
+		border-radius: var(--radius-md);
 	}
 
-	.alert {
-		padding: 10px;
-		margin-bottom: 15px;
-		border-radius: 5px;
+	.sample-document .alert {
+		padding: var(--space-3);
+		margin-bottom: var(--space-4);
+		border: var(--surface-card-border);
+		border-radius: var(--radius-md);
 	}
 
-	.important {
-		border: 1px solid #1d4ed8;
-		font-weight: bold;
+	.sample-document .important {
+		border-color: var(--accent-regular);
+		font-weight: 700;
 	}
 
-	.warning {
-		border: 1px solid #b91c1c;
-		font-weight: bold;
+	.sample-document .warning {
+		border-color: var(--color-danger);
+		color: var(--color-text);
+		font-weight: 700;
+	}
+
+	@media (min-width: 50em) {
+		.sample-page {
+			padding: var(--space-8);
+		}
+
+		.sample-document {
+			padding: var(--space-8);
+		}
 	}
 </style>
