@@ -2,9 +2,15 @@
 title: Helping users adapt to a navigation redesign
 img: /assets/user-guide.webp
 img_alt: User guide for a navigation revamp in HTML format
-description: Created a migration guide for a navigation revamp to help existing users keep their workflows and find features after the UI change.
-meta_description: Navigation migration case study showing task-based guidance, before/after mapping, and release-ready communication for existing SaaS users.
-summary: Created a migration guide to help users find features after a navigation redesign, using task-based paths and before/after mapping
+description: |
+  Created a migration guide for a navigation revamp to help existing users keep their workflows and find features after
+  the UI change.
+meta_description: |
+  Navigation migration case study showing task-based guidance, before/after mapping, and release-ready communication for
+  existing SaaS users.
+summary: |
+  Created a migration guide to help users find features after a navigation redesign, using task-based paths and
+  before/after mapping
 audience: Existing customers navigating a UI redesign
 role: Technical writer collaborating with product and marketing
 deliverables:
@@ -17,14 +23,15 @@ tools:
 outcomes:
   - Clear mapping from old to new navigation for common tasks
   - Single reference used by support, product, and customers
-  - Reduced confusion during rollout through pre-release guidance
+  - Pre-release guidance available for changed task paths
 tags:
   - technical writing
 ---
 
 ## Context
 
-The product introduced a redesigned navigation to accommodate a growing set of features. Existing users relied on established paths and muscle memory to complete tasks.
+The product introduced a redesigned navigation to accommodate a growing set of features.
+Existing users relied on established paths and muscle memory to complete tasks.
 
 ## Problem
 
@@ -38,7 +45,8 @@ Without preparation, users have to relearn the product under time pressure.
 
 ## My role
 
-I created a migration guide to preserve key workflows and give users a clear path from the old navigation to the new one.
+I documented the migration path, preserving key workflows and providing a clear transition from the old navigation to
+the new one.
 
 ## Approach
 
@@ -56,17 +64,18 @@ I created a migration guide to preserve key workflows and give users a clear pat
 
 ## What changed
 
-- Users can locate features after the redesign using task-based paths
-- Support and product teams reference a single guide during rollout
-- Guidance is available before and at release, not after issues appear
+- Users can find features after the redesign without relearning the interface
+- Support and product teams rely on a single guide during rollout
+- Guidance is available before release, reducing reactive support
 
 ## Evidence
 
-No internal metrics were available. Improvements are based on:
+No rollout analytics or support-volume metrics were available for this case study.
+The evidence is based on the content structure:
 
-- Fewer steps to locate features for common tasks
-- Consistent answers provided by support and product teams
-- Reduced ambiguity through explicit before/after mapping
+- Old-to-new navigation paths mapped for high-frequency tasks
+- Before/after cues reduce reliance on memory during transition
+- A shared reference aligns support, product, and customer communication
 
 ## Takeaways
 
