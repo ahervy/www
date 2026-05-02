@@ -29,6 +29,10 @@ import Hero from '../components/Hero.astro';
 						Use this form for technical writing roles, recruiter conversations, or relevant
 						developer documentation opportunities.
 					</p>
+					<p>
+						Prefer LinkedIn? You can also contact me on
+						<a href="https://www.linkedin.com/in/arnaudhervy/">LinkedIn</a>.
+					</p>
 				</div>
 
 				<div class="form-field">
@@ -110,7 +114,7 @@ import Hero from '../components/Hero.astro';
 			};
 
 			function showMessage(message, type = 'error') {
-				result.innerHTML = message;
+				result.textContent = message;
 				if (type === 'success') {
 					result.classList.add('text-green-500');
 					result.classList.remove('text-red-500');
@@ -124,7 +128,7 @@ import Hero from '../components/Hero.astro';
 				setTimeout(() => {
 					result.style.opacity = '0';
 					setTimeout(() => {
-						result.innerHTML = '';
+						result.textContent = '';
 						result.className = '';
 						result.style.opacity = '1';
 					}, 300);
@@ -182,7 +186,7 @@ import Hero from '../components/Hero.astro';
 				}
 
 				setLoading(true);
-				result.innerHTML = '';
+				result.textContent = '';
 				result.className = '';
 
 				let timeoutId;
