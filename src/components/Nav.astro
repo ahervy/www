@@ -130,7 +130,7 @@ const pathname = Astro.url?.pathname ?? '/';
 			// Toggle menu visibility when the menu button is clicked.
 			btn.addEventListener('click', () => setExpanded(!!menu.hidden));
 
-			const mediaQueries = window.matchMedia('(min-width: 50em)');
+			const mediaQueries = window.matchMedia('(min-width: 60em)');
 
 			menu.querySelectorAll('a').forEach((link) => {
 				link.addEventListener('click', () => {
@@ -277,7 +277,7 @@ const pathname = Astro.url?.pathname ?? '/';
 		color: var(--accent-dark);
 	}
 
-	@media (min-width: 50em) {
+	@media (min-width: 60em) {
 		nav {
 			display: grid;
 			grid-template-columns: 1fr auto 1fr;
@@ -346,12 +346,6 @@ const pathname = Astro.url?.pathname ?? '/';
 			box-shadow: none;
 		}
 
-		.socials {
-			display: none;
-		}
-	}
-
-	@media (min-width: 60em) {
 		.socials {
 			display: flex;
 			justify-content: flex-end;
