@@ -17,6 +17,7 @@ const {
 
 const url = Astro.url?.href ?? 'https://arnaudhervy.com';
 const origin = Astro.url?.origin ?? 'https://arnaudhervy.com';
+const personId = `${origin}/#arnaud-hervy`;
 const imageUrl = ogImage ?? `${origin}/assets/profile-picture.jpg`;
 ---
 
@@ -24,10 +25,6 @@ const imageUrl = ogImage ?? `${origin}/assets/profile-picture.jpg`;
 <meta name="description" content={description} />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="generator" content={Astro.generator} />
-<meta
-	name="keywords"
-	content="technical writer, developer documentation, API documentation, docs-as-code, developer experience, user guides, software documentation, Arnaud Hervy, Nantes, France"
-/>
 <title>{title}</title>
 
 <link rel="canonical" href={url} />
@@ -56,11 +53,36 @@ const imageUrl = ogImage ?? `${origin}/assets/profile-picture.jpg`;
 	set:html={JSON.stringify({
 		'@context': 'https://schema.org',
 		'@type': 'Person',
+		'@id': personId,
 		name: 'Arnaud Hervy',
 		jobTitle: 'Technical Writer',
-		url,
+		url: origin,
 		address: { '@type': 'PostalAddress', addressLocality: 'Nantes', addressCountry: 'France' },
 		sameAs: ['https://github.com/ahervy', 'https://www.linkedin.com/in/arnaudhervy/'],
+		knowsAbout: [
+			'API documentation',
+			'Developer documentation',
+			'Developer onboarding',
+			'OpenAPI',
+			'CLI documentation',
+			'SDK documentation',
+			'Documentation architecture',
+		],
+		hasOccupation: {
+			'@type': 'Occupation',
+			name: 'Technical Writer',
+			occupationLocation: {
+				'@type': 'Country',
+				name: 'France',
+			},
+			skills: [
+				'API documentation',
+				'Developer onboarding',
+				'Technical writing',
+				'OpenAPI documentation',
+				'Documentation architecture',
+			],
+		},
 		image: `${origin}/assets/profile-picture.jpg`,
 	})}
 	is:inline

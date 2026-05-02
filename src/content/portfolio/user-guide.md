@@ -3,7 +3,7 @@ title: Helping users adapt to a navigation redesign
 img: /assets/user-guide.webp
 img_alt: User guide for a navigation revamp in HTML format
 description: Created a migration guide for a navigation revamp to help existing users keep their workflows and find features after the UI change.
-meta_description: Technical writing case study about the creation of a user-friendly guide that helps the transition during a navigation revamp on a platform.
+meta_description: Navigation migration case study showing task-based guidance, before/after mapping, and release-ready communication for existing SaaS users.
 summary: Created a migration guide to help users find features after a navigation redesign, using task-based paths and before/after mapping
 audience: Existing customers navigating a UI redesign
 role: Technical writer collaborating with product and marketing
