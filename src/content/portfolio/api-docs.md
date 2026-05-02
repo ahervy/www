@@ -6,7 +6,8 @@ description: |
   Redesigned API documentation to provide a clear path to first API call, using a task-focused quickstart and OpenAPI-based reference.
 meta_description: API documentation with interactive examples, streamlined onboarding, and a focus on developer experience for OpenWeather's Current Weather API.
 summary: |
-  Rebuilt API documentation to provide a clear path to first API call, using an OpenAPI-based reference and task-focused quickstart.audience: Backend and frontend developers integrating current weather data.
+  Rebuilt API documentation to provide a clear path to first API call, using an OpenAPI-based reference and task-focused quickstart  
+audience: Backend and frontend developers integrating current weather data.
 role: Technical writer and documentation strategist.
 deliverables:
   - OpenAPI specification
