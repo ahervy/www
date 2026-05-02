@@ -70,7 +70,8 @@
 			margin-bottom: 5px;
 		}
 
-		img {
+		img,
+		video {
 			width: 100%;
 			height: auto;
 			display: block;
@@ -102,7 +103,17 @@
 			Use this overview to understand where key elements moved in the interface.
 		</p>
 
-		<img src="/assets/new-nav-overview.png" alt="Overview of the new navigation" />
+		<picture>
+			<source srcset="/assets/new-nav-overview.webp" type="image/webp" />
+			<img
+				src="/assets/new-nav-overview.png"
+				alt="Overview of the new navigation"
+				width="1200"
+				height="662"
+				loading="lazy"
+				decoding="async"
+			/>
+		</picture>
 
 		<h3 id="new-top-nav">New top navigation menu</h3>
 		<p>
@@ -129,7 +140,19 @@
 			On the homepage or any group page, select the <strong>Users</strong> filter to view user
 			stats.
 		</p>
-		<img src="/assets/new-nav-user-stats.gif" alt="User stats filter demonstration" />
+		<video
+			controls
+			loop
+			muted
+			playsinline
+			preload="metadata"
+			poster="/assets/new-nav-user-stats-poster.webp"
+			width="1200"
+			height="772"
+			aria-label="User stats filter demonstration"
+		>
+			<source src="/assets/new-nav-user-stats.mp4" type="video/mp4" />
+		</video>
 		<h2>Access dashboard data</h2>
 		<p>Administrators, Coaches, Authors, and Owners can now:</p>
 		<ul>
@@ -137,7 +160,19 @@
 			<li>and switch to the "Stats" view to view quick insights.</li>
 		</ul>
 		<p>
-			<img src="/assets/new-nav-chips.gif" alt="Dashboard data access demonstration" />
+			<video
+				controls
+				loop
+				muted
+				playsinline
+				preload="metadata"
+				poster="/assets/new-nav-chips-poster.webp"
+				width="1200"
+				height="772"
+				aria-label="Dashboard data access demonstration"
+			>
+				<source src="/assets/new-nav-chips.mp4" type="video/mp4" />
+			</video>
 		</p>
 		<p>
 			If you are a learner, your homepage and group pages remain unchanged.
