@@ -73,55 +73,57 @@ const jsonLd = {
 	ogImage={imageUrl}
 >
 	<div class="stack gap-10 lg:gap-20 project-stack">
-		<div class="wrapper stack gap-8 lg:gap-20">
-			<header class="hero hero--no-image">
-				<div class="stack gap-4 lg:gap-6">
-					<a class="back-link" href="/portfolio/">
-						<Icon icon="arrow-left" /> Case studies
-					</a>
-					<h1 class="hero-title">{entry.data.title}</h1>
-					<p class="content">{entry.data.description}</p>
-					<div class="hero-buttons">
-						{
-							entry.data.sample_url ? (
-								<CallToAction
-									href={entry.data.sample_url}
-									target="_blank"
-									rel="noopener noreferrer"
-									class="sample-pill"
-								>
-									View sample
-								</CallToAction>
-							) : (
-								<CallToAction href={`/samples/${entry.id}/`} class="sample-pill">
-									View sample
-								</CallToAction>
-							)
-						}
+		<main class="stack gap-8 lg:gap-20" id="main-content" tabindex="-1">
+			<div class="wrapper">
+				<header class="hero hero--no-image">
+					<div class="stack gap-4 lg:gap-6">
+						<a class="back-link" href="/portfolio/">
+							<Icon icon="arrow-left" /> Case studies
+						</a>
+						<h1 class="hero-title">{entry.data.title}</h1>
+						<p class="content">{entry.data.description}</p>
+						<div class="hero-buttons">
+							{
+								entry.data.sample_url ? (
+									<CallToAction
+										href={entry.data.sample_url}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="sample-pill"
+									>
+										View sample
+									</CallToAction>
+								) : (
+									<CallToAction href={`/samples/${entry.id}/`} class="sample-pill">
+										View sample
+									</CallToAction>
+								)
+							}
+						</div>
 					</div>
+				</header>
+			</div>
+			<div class="wrapper">
+				<div class="narrow">
+					{
+						detailItems.length ? (
+							<section class="content-card">
+								<h2>Project overview</h2>
+								<dl class="detail-list">
+									{detailItems.map((item) => (
+										<div>
+											<dt>{item.label}</dt>
+											<dd>{item.value}</dd>
+										</div>
+									))}
+								</dl>
+							</section>
+						) : null
+					}
+					<article class="content stack gap-4">
+						<Content />
+					</article>
 				</div>
-			</header>
-		</div>
-		<main class="wrapper" id="main-content" tabindex="-1">
-			<div class="narrow">
-				{
-					detailItems.length ? (
-						<section class="content-card">
-							<h2>Project overview</h2>
-							<dl class="detail-list">
-								{detailItems.map((item) => (
-									<div>
-										<dt>{item.label}</dt>
-										<dd>{item.value}</dd>
-									</div>
-								))}
-							</dl>
-						</section>
-					) : null
-				}
-				<article class="content stack gap-4">
-					<Content />
-				</article>
 			</div>
 		</main>
 		<div class="project-cta">
