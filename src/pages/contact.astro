@@ -100,9 +100,20 @@ import Hero from '../components/Hero.astro';
 
 			const form = document.getElementById('contactForm');
 			const result = document.getElementById('result');
-			const submitButton = form.querySelector('button[type="submit"]');
-			const buttonText = submitButton.querySelector('.button-text');
-			const buttonLoading = submitButton.querySelector('.button-loading');
+			const submitButton = form?.querySelector('button[type="submit"]');
+			const buttonText = submitButton?.querySelector('.button-text');
+			const buttonLoading = submitButton?.querySelector('.button-loading');
+
+			if (
+				!(form instanceof HTMLFormElement) ||
+				!(result instanceof HTMLElement) ||
+				!(submitButton instanceof HTMLButtonElement) ||
+				!(buttonText instanceof HTMLElement) ||
+				!(buttonLoading instanceof HTMLElement)
+			) {
+				console.error('Contact form initialization failed: required elements are missing.');
+				return;
+			}
 
 			const WORKER_URL = 'https://contact-form-handler.arnaud-hervy.workers.dev';
 
@@ -123,16 +134,16 @@ import Hero from '../components/Hero.astro';
 					result.classList.remove('text-green-500');
 				}
 
-				// Auto-hide after 7s for success, 10s for errors
-				const hideDelay = type === 'success' ? 7000 : 10000;
-				setTimeout(() => {
-					result.style.opacity = '0';
+				if (type === 'success') {
 					setTimeout(() => {
-						result.textContent = '';
-						result.className = '';
-						result.style.opacity = '1';
-					}, 300);
-				}, hideDelay);
+						result.style.opacity = '0';
+						setTimeout(() => {
+							result.textContent = '';
+							result.className = '';
+							result.style.opacity = '1';
+						}, 300);
+					}, 7000);
+				}
 			}
 
 			function setLoading(isLoading) {
@@ -150,7 +161,9 @@ import Hero from '../components/Hero.astro';
 				}
 			}
 
-			const fields = Array.from(form.querySelectorAll('input, textarea'));
+			const fields = Array.from(form.querySelectorAll('input, textarea')).filter(
+				(field) => field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement
+			);
 			const updateFieldValidity = (field) => {
 				if (field.matches(':invalid')) {
 					field.setAttribute('aria-invalid', 'true');
@@ -178,7 +191,7 @@ import Hero from '../components/Hero.astro';
 							field.setAttribute('aria-invalid', 'true');
 						}
 					});
-					if (firstInvalid) {
+					if (firstInvalid instanceof HTMLElement) {
 						firstInvalid.focus();
 					}
 					form.classList.add('was-validated');
@@ -263,7 +276,7 @@ import Hero from '../components/Hero.astro';
 					console.error('Error sending form:', error);
 
 					// Handle specific error types
-					if (error.name === 'AbortError') {
+					if (error instanceof Error && error.name === 'AbortError') {
 						showMessage('Request timeout. Please try again.');
 					} else if (!navigator.onLine) {
 						showMessage(ERROR_MESSAGES.network);
