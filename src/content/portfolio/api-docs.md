@@ -10,7 +10,7 @@ meta_description: |
   OpenWeather's Current Weather API.
 summary: |
   Improved API onboarding by creating a clear path to first API call, using an OpenAPI-based reference and task-focused
-  quickstart  
+  quickstart
 audience: Backend and frontend developers integrating current weather data
 role: Technical writer and documentation strategist
 deliverables:

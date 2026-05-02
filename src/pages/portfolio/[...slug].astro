@@ -100,19 +100,21 @@ const jsonLd = {
 		</div>
 		<main class="wrapper" id="main-content" tabindex="-1">
 			<div class="narrow">
-				{detailItems.length ? (
-					<section class="content-card">
-						<h2>Project overview</h2>
-						<dl class="detail-list">
-							{detailItems.map((item) => (
-								<div>
-									<dt>{item.label}</dt>
-									<dd>{item.value}</dd>
-								</div>
-							))}
-						</dl>
-					</section>
-				) : null}
+				{
+					detailItems.length ? (
+						<section class="content-card">
+							<h2>Project overview</h2>
+							<dl class="detail-list">
+								{detailItems.map((item) => (
+									<div>
+										<dt>{item.label}</dt>
+										<dd>{item.value}</dd>
+									</div>
+								))}
+							</dl>
+						</section>
+					) : null
+				}
 				<article class="content stack gap-4">
 					<Content />
 				</article>
@@ -122,7 +124,7 @@ const jsonLd = {
 			<ContactCTA />
 		</div>
 	</div>
-	<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)}></script>
+	<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
 </BaseLayout>
 
 <style>
