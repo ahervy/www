@@ -104,6 +104,7 @@ aside {
 /* === Accessibility for reduced motion === */
 @media (prefers-reduced-motion: reduce) {
 	* {
+		animation: none !important;
 		transition: none !important;
 	}
 }
@@ -178,6 +179,10 @@ aside {
 	gap: 1rem;
 }
 
+.gap-6 {
+	gap: 1.5rem;
+}
+
 .gap-8 {
 	gap: 2rem;
 }
@@ -207,6 +212,10 @@ aside {
 		gap: 1rem;
 	}
 
+	.lg\:gap-6 {
+		gap: 1.5rem;
+	}
+
 	.lg\:gap-8 {
 		gap: 2rem;
 	}
@@ -232,13 +241,55 @@ aside {
 .skill-grid {
 	display: grid;
 	grid-template-columns: 1fr;
-	gap: 2rem;
+	gap: 1.5rem;
+}
+
+.skill-card {
+	height: 100%;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	padding: 1.25rem;
+	border: 1px solid var(--gray-700);
+	border-radius: 1rem;
+	background: var(--gray-999);
+	box-shadow: var(--shadow-sm);
+}
+
+.skill-header {
+	display: flex;
+	align-items: center;
+	gap: 0.875rem;
+	min-width: 0;
+}
+
+.skill-icon {
+	width: 2.75rem;
+	height: 2.75rem;
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	color: var(--accent-regular);
+	background: var(--accent-subtle-overlay);
+	border: 1px solid var(--gray-700);
+	border-radius: 0.75rem;
+}
+
+.skill-card h3 {
+	margin: 0;
+	font-size: var(--text-xl);
+}
+
+.skill-card p {
+	margin: 0;
 }
 
 @media (min-width: 50em) {
 	.skill-grid {
-		grid-template-columns: repeat(3, 1fr);
-		column-gap: 2.75rem;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1.75rem;
 	}
 }
 
@@ -720,7 +771,8 @@ form.needs-validation {
 	background: var(--gray-999);
 	border: 1px solid var(--gray-700);
 	box-shadow: var(--shadow-md);
-	border-radius: 1.25rem;
+	border-radius: 1rem;
+	gap: 1rem;
 	padding: 1.5rem;
 }
 
@@ -730,7 +782,7 @@ form.needs-validation {
 
 @media (min-width: 50em) {
 	form.needs-validation {
-		padding: 2.5rem 3rem;
+		padding: 2rem;
 	}
 }
 
