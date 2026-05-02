@@ -1,13 +1,13 @@
 ---
-title: How-to guide for managing API keys
+title: Helping users safely manage API keys
 img: /assets/how-to.webp
 img_alt: How-to guide for managing API keys in HTML format
 description: |
-  This case study is about the creation of step-by-step procedures that guide users through tasks related to a new feature.
+  Created documentation for API key management to enable self-service workflows and clarify security implications such as revocation and one-time visibility.
 meta_description: Technical writing case study about the creation of step-by-step procedures that guide users through tasks related to a new feature.
-summary: Wrote a step-by-step guide that enabled developers to self-serve API key management and reduced support tickets.
-audience: API users with admin access and developer operations teams.
-role: Technical writer partnering with product and support.
+summary: Created documentation for API key creation and revocation, with clear warnings about real-world consequences
+audience: API users with admin access and developer operations teams
+role: Technical writer partnering with product and support
 deliverables:
   - How-to guide for creating and revoking API keys
   - UI copy for key management warnings
@@ -15,47 +15,61 @@ tools:
   - Zendesk Guide
   - Postman
 outcomes:
-  - Fewer support requests for key management
-  - Clearer understanding of revocation impacts
+  - Users can create and revoke API keys without contacting support
+  - Clear understanding of revocation impact on integrations
+  - Consistent terminology across UI and documentation
 tags:
   - technical writing
 ---
 
 ## Context
 
-Users had to contact our Support team to manage their API keys, which was not convenient. To improve the user experience, we launched a feature allowing them to manage their API keys.
+The product introduced a feature allowing users to manage their own API keys instead of relying on support.
 
 ## Problem
 
-Key management was a support-heavy workflow, and users lacked clear instructions for safe creation and revocation.
+API key management involves irreversible actions and security implications:
+
+- Revoking a key can break existing integrations
+- Keys are often visible only once at creation
+- Users need to understand consequences before taking action
+
+Without clear guidance, users risk breaking their own systems or contacting support for clarification.
 
 ## My role
 
-To support the launch of this feature, I was tasked with creating clear and concise instructions.
+I created documentation and UI copy to support safe and autonomous API key management.
 
 ## Approach
 
-- Mapped the end-to-end task flow and critical warnings.
-- Wrote a step-by-step guide with consistent terminology.
-- Validated accuracy with product and support.
+- Tested the feature end-to-end to understand real user workflows
+- Identified critical moments requiring warnings (creation, visibility, revocation)
+- Wrote step-by-step instructions focused on safe execution
+- Aligned wording between UI and documentation
 
-## Process
+## Key decisions
 
-1. Understanding the feature and users: I started by reviewing the product brief and user stories. Then, I worked with the product manager and customer success team to understand what users know about API keys. I found out our users were tech-savvy. So, we decided to focus on aspects like one-time visibility, revocation, and impacts.
-2. Exploring the feature: I tested the feature on test platforms, using Postman. From creating the API key to seeing how revocation affects integrations, I explored the whole user journey.
-3. Building the content: I documented all the steps using Zendesk Guide. Then, the product manager reviewed them publishing.
+- Focused on risk-heavy actions rather than full feature coverage
+- Made warnings explicit at the point of action
+- Used real-world consequences (broken integrations) instead of abstract explanations
+- Kept steps minimal to avoid overloading users
 
-## Results
+## What changed
 
-- This content helped users manage API keys themselves, reducing the need for customer support.
-- Reviewing the content with the product manager ensured technically accurate content for users.
+- Users can manage API keys independently without relying on support
+- Critical actions are documented with clear consequences
+- Documentation and UI use consistent terminology
 
-## Impact
+## Evidence
 
-- Reduced support volume by enabling self-service key management.
-- Fewer user mistakes with clearer warnings and revocation guidance.
+No internal metrics were available. Improvements are based on:
+
+- Reduced need for support intervention for key management
+- Clearer understanding of irreversible actions
+- Fewer errors caused by missing or unclear warnings
 
 ## Takeaways
 
-- Work with subject matter experts. This way, you can know users better and tailor your content to their needs.
-- Test features and walk in the users' shoes to create accurate and suitable content.
+- Documentation must highlight risk, not just describe steps
+- Warnings are part of the user experience, not an afterthought
+- Aligning UI and documentation reduces user confusion

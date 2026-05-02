@@ -1,151 +1,150 @@
 <!doctype html>
 <html lang="en-US">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta
-			name="description"
-			content="Sample how-to guide by Arnaud Hervy demonstrating how to manage API keys in a software platform."
-		/>
-		<meta
-			name="keywords"
-			content="technical writing, how-to guide, sample, API keys, instructions, software, documentation"
-		/>
 
-		<link rel="canonical" href="https://arnaudhervy.com/samples/how-to/" />
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description"
+		content="Sample how-to guide by Arnaud Hervy demonstrating how to manage API keys in a software platform." />
+	<meta name="keywords"
+		content="technical writing, how-to guide, sample, API keys, instructions, software, documentation" />
 
-		<meta name="author" content="Arnaud Hervy" />
+	<link rel="canonical" href="https://arnaudhervy.com/samples/how-to/" />
 
-		<meta property="og:title" content="Sample how-to guide by Arnaud Hervy: Manage API keys" />
-		<meta
-			property="og:description"
-			content="Learn how to create and revoke API keys with clear instructions in this sample how-to guide by Arnaud Hervy."
-		/>
-		<meta property="og:image" content="https://arnaudhervy.com/assets/how-to.png" />
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://arnaudhervy.com/samples/how-to/" />
-		<meta name="twitter:card" content="summary_large_image" />
+	<meta name="author" content="Arnaud Hervy" />
 
-		<title>Sample how-to guide: Manage API Keys</title>
+	<meta property="og:title" content="Sample how-to guide by Arnaud Hervy: Manage API keys" />
+	<meta property="og:description"
+		content="Learn how to create and revoke API keys with clear instructions in this sample how-to guide by Arnaud Hervy." />
+	<meta property="og:image" content="https://arnaudhervy.com/assets/how-to.png" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://arnaudhervy.com/samples/how-to/" />
+	<meta name="twitter:card" content="summary_large_image" />
 
-		<style>
-			body {
-				font-family:
-					system-ui,
-					-apple-system,
-					BlinkMacSystemFont,
-					'Segoe UI',
-					Roboto,
-					Oxygen,
-					Ubuntu,
-					Cantarell,
-					'Open Sans',
-					'Helvetica Neue',
-					sans-serif;
-				margin: 20px;
-				background-color: #f8fafc;
-				color: #475569;
-			}
+	<title>Sample how-to guide: Manage API Keys</title>
 
-			main {
-				background-color: #ffffff;
-				padding: 20px;
-				border-radius: 8px;
-				border: 1px solid #cbd5e1;
-				box-shadow: 0 1px 2px rgba(17, 24, 39, 0.08);
-				max-width: 800px;
-				margin: 0 auto;
-				margin-bottom: 20px;
-			}
+	<style>
+		body {
+			font-family:
+				system-ui,
+				-apple-system,
+				BlinkMacSystemFont,
+				'Segoe UI',
+				Roboto,
+				Oxygen,
+				Ubuntu,
+				Cantarell,
+				'Open Sans',
+				'Helvetica Neue',
+				sans-serif;
+			margin: 20px;
+			background-color: #f8fafc;
+			color: #475569;
+		}
 
-			h1,
-			h2 {
-				color: #1d4ed8;
-				margin-top: 20px;
-			}
+		main {
+			background-color: #ffffff;
+			padding: 20px;
+			border-radius: 8px;
+			border: 1px solid #cbd5e1;
+			box-shadow: 0 1px 2px rgba(17, 24, 39, 0.08);
+			max-width: 800px;
+			margin: 0 auto;
+			margin-bottom: 20px;
+		}
 
-			ul,
-			ol {
-				margin-bottom: 10px;
-			}
+		h1,
+		h2 {
+			color: #1d4ed8;
+			margin-top: 20px;
+		}
 
-			li {
-				margin-bottom: 5px;
-			}
+		ul,
+		ol {
+			margin-bottom: 10px;
+		}
 
-			.alert {
-				padding: 10px;
-				margin-bottom: 15px;
-				border-radius: 5px;
-			}
+		li {
+			margin-bottom: 5px;
+		}
 
-			.important {
-				border: 1px solid #1d4ed8;
-				font-weight: bold;
-			}
+		.alert {
+			padding: 10px;
+			margin-bottom: 15px;
+			border-radius: 5px;
+		}
 
-			.warning {
-				border: 1px solid #b91c1c;
-				font-weight: bold;
-			}
-		</style>
-	</head>
+		.important {
+			border: 1px solid #1d4ed8;
+			font-weight: bold;
+		}
 
-	<body>
-		<header>
-			<nav>
-				<a href="https://arnaudhervy.com">Back to arnaudhervy.com</a>
-			</nav>
-		</header>
+		.warning {
+			border: 1px solid #b91c1c;
+			font-weight: bold;
+		}
+	</style>
+</head>
 
-		<main id="main-content">
-			<h1>Manage API Keys</h1>
+<body>
+	<header>
+		<nav>
+			<a href="https://arnaudhervy.com">Back to arnaudhervy.com</a>
+		</nav>
+	</header>
 
-			<p>
-				The Llama API authenticates requests using API Keys. These API keys represent the required
-				credentials to use the Llama API.
-			</p>
-			<p>Only Platform Administrators and Platform Owners can manage API keys.</p>
+	<main id="main-content">
+		<h1>Manage API Keys</h1>
 
-			<h2 id="create-api-key">Create an API Key</h2>
+		<p>
+			Use API keys to authenticate requests to the Llama API. This guide explains how to create and revoke API
+			keys safely.
+		</p>
+		<p>
+			Only Platform Administrators and Platform Owners can manage API keys.
+		</p>
 
-			<p>
-				From your Admin account, you can create up to 10 API keys that carry the same access rights
-				for use with the platform.
-			</p>
-			<ol>
-				<li>Go to your <strong>Admin</strong> account.</li>
-				<li>In the <strong>Platform settings</strong> section, click <strong>API</strong>.</li>
-				<li>Click <strong>Add API key</strong>.</li>
-				<li>
-					When asked, enter a meaningful label for the API key. For example, indicate which
-					integration uses this API key.
-				</li>
-				<li>Click <strong>Create</strong>.</li>
-				<li>
-					Copy your API key somewhere safe.<br />
-					<p class="alert important">
-						You can only view the API key once. If you lose this API key, you need to create a new
-						one.
-					</p>
-				</li>
-				<li>Click <strong>Close</strong>.</li>
-			</ol>
+		<h2 id="create-api-key">Create an API Key</h2>
 
-			<h2 id="revoke-api-key">Revoke an API key</h2>
-			<p>
-				If you no longer use an API or think an API key has been compromised, you can revoke it.
-			</p>
-			<p class="alert warning">
-				Once an API key is revoked, it is permanently deleted. Any associated integration stops
-				working.
-			</p>
-			<ol>
-				<li>Go to your <strong>Admin</strong> account.</li>
-				<li>In the <strong>Platform settings</strong> section, click <strong>API</strong>.</li>
-				<li>Find the API key you want to revoke, then click <strong>Revoke</strong>.</li>
-				<li>When asked, click <strong>Yes, revoke</strong>.</li>
-			</ol>
-		</main>
-	</body>
+		<p>
+			You can create up to 10 API keys. Each key has the same access rights as your account.
+		</p>
+		<ol>
+			<li>Go to your <strong>Admin</strong> account.</li>
+			<li>In the <strong>Platform settings</strong> section, click <strong>API</strong>.</li>
+			<li>Click <strong>Add API key</strong>.</li>
+			<li>
+				When asked, enter a meaningful label for the API key. For example, indicate which
+				integration uses this API key.
+			</li>
+			<li>Click <strong>Create</strong>.</li>
+			<li>
+				Copy your API key and store it securely.
+			</li>
+		</ol>
+
+		<div class="alert important">
+			You can only view the API key once. If you lose it, you must create a new one.
+		</div>
+
+		<ol start="7">
+			<li>Click <strong>Close</strong>.</li>
+		</ol>
+
+		<h2 id="revoke-api-key">Revoke an API key</h2>
+		<p>
+			Revoke an API key if it is no longer needed or if you suspect it has been compromised.
+		</p>
+		<p class="alert warning">
+			Revoking an API key permanently deletes it. Any integration using this key will stop working immediately.
+		</p>
+		<ol>
+			<li>Go to your <strong>Admin</strong> account.</li>
+			<li>In the <strong>Platform settings</strong> section, click <strong>API</strong>.</li>
+			<li>Find the API key you want to revoke, then click <strong>Revoke</strong>.</li>
+			<li>When asked, click <strong>Yes, revoke</strong>.</li>
+		</ol>
+	</main>
+</body>
+
 </html>
