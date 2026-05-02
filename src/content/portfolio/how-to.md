@@ -3,8 +3,11 @@ title: Helping users safely manage API keys
 img: /assets/how-to.webp
 img_alt: How-to guide for managing API keys in HTML format
 description: |
-  Created documentation for API key management to enable self-service workflows and clarify security implications such as revocation and one-time visibility.
-meta_description: Technical writing case study about the creation of step-by-step procedures that guide users through tasks related to a new feature.
+  Created documentation for API key management to enable self-service workflows and clarify security implications such
+  as revocation and one-time visibility.
+meta_description: |
+  API key management documentation covering creation, revocation, one-time visibility, permissions, and security risks
+  for developer operations users.
 summary: Created documentation for API key creation and revocation, with clear warnings about real-world consequences
 audience: API users with admin access and developer operations teams
 role: Technical writer partnering with product and support
@@ -15,8 +18,8 @@ tools:
   - Zendesk Guide
   - Postman
 outcomes:
-  - Users can create and revoke API keys without contacting support
-  - Clear understanding of revocation impact on integrations
+  - Creation and revocation workflows documented end to end
+  - Revocation impact on integrations made explicit before the destructive action
   - Consistent terminology across UI and documentation
 tags:
   - technical writing
@@ -38,7 +41,8 @@ Without clear guidance, users risk breaking their own systems or contacting supp
 
 ## My role
 
-I created documentation and UI copy to support safe and autonomous API key management.
+I defined and documented the API key management workflows, and wrote UI copy to make critical actions and their
+consequences explicit.
 
 ## Approach
 
@@ -56,17 +60,17 @@ I created documentation and UI copy to support safe and autonomous API key manag
 
 ## What changed
 
-- Users can manage API keys independently without relying on support
-- Critical actions are documented with clear consequences
-- Documentation and UI use consistent terminology
+- Users can create and revoke API keys without relying on support
+- Critical actions are documented with explicit consequences before execution
+- Documentation and UI use consistent terminology across the workflow
 
 ## Evidence
 
-No internal metrics were available. Improvements are based on:
+I did not have access to support-ticket or usage metrics. The evidence here is structural:
 
-- Reduced need for support intervention for key management
-- Clearer understanding of irreversible actions
-- Fewer errors caused by missing or unclear warnings
+- End-to-end testing of creation and revocation flows
+- Warnings placed at the moments where users make irreversible decisions
+- Fewer handoffs in the workflow, as users are no longer directed to contact support for key management
 
 ## Takeaways
 

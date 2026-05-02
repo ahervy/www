@@ -25,6 +25,10 @@ const { Content } = await render(entry);
 const site = Astro.site?.toString() ?? 'https://arnaudhervy.com';
 const pageUrl = new URL(`/portfolio/${entry.id}/`, site).toString();
 const imageUrl = entry.data.img ? new URL(entry.data.img, site).toString() : undefined;
+const personId = new URL('/#arnaud-hervy', site).toString();
+const jsonLdDescription = (entry.data.meta_description ?? entry.data.description)
+	.replace(/\s+/g, ' ')
+	.trim();
 
 const detailItems = [
 	{ label: 'Audience', value: entry.data.audience },
@@ -51,11 +55,11 @@ const jsonLd = {
 	'@context': 'https://schema.org',
 	'@type': 'CreativeWork',
 	headline: entry.data.title,
-	description: entry.data.meta_description ?? entry.data.description,
+	description: jsonLdDescription,
 	image: imageUrl,
 	author: {
 		'@type': 'Person',
-		name: 'Arnaud Hervy',
+		'@id': personId,
 	},
 	url: pageUrl,
 	about: entry.data.tags,
@@ -73,7 +77,7 @@ const jsonLd = {
 			<header class="hero hero--no-image">
 				<div class="stack gap-4 lg:gap-6">
 					<a class="back-link" href="/portfolio/">
-						<Icon icon="arrow-left" /> My Portfolio
+						<Icon icon="arrow-left" /> Case studies
 					</a>
 					<h1 class="hero-title">{entry.data.title}</h1>
 					<p class="content">{entry.data.description}</p>
@@ -100,19 +104,21 @@ const jsonLd = {
 		</div>
 		<main class="wrapper" id="main-content" tabindex="-1">
 			<div class="narrow">
-				{detailItems.length ? (
-					<section class="content-card">
-						<h2>Project overview</h2>
-						<dl class="detail-list">
-							{detailItems.map((item) => (
-								<div>
-									<dt>{item.label}</dt>
-									<dd>{item.value}</dd>
-								</div>
-							))}
-						</dl>
-					</section>
-				) : null}
+				{
+					detailItems.length ? (
+						<section class="content-card">
+							<h2>Project overview</h2>
+							<dl class="detail-list">
+								{detailItems.map((item) => (
+									<div>
+										<dt>{item.label}</dt>
+										<dd>{item.value}</dd>
+									</div>
+								))}
+							</dl>
+						</section>
+					) : null
+				}
 				<article class="content stack gap-4">
 					<Content />
 				</article>
@@ -122,7 +128,7 @@ const jsonLd = {
 			<ContactCTA />
 		</div>
 	</div>
-	<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)}></script>
+	<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
 </BaseLayout>
 
 <style>

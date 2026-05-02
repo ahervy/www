@@ -3,10 +3,14 @@ title: Improving onboarding for a weather API
 img: /assets/api-docs.webp
 img_alt: Interactive API documentation and playground for OpenWeather's Current Weather API
 description: |
-  Redesigned API documentation to provide a clear path to first API call, using a task-focused quickstart and OpenAPI-based reference.
-meta_description: API documentation with interactive examples, streamlined onboarding, and a focus on developer experience for OpenWeather's Current Weather API.
+  Redesigned API documentation to provide a clear path to first API call, using a task-focused quickstart and
+  OpenAPI-based reference.
+meta_description: |
+  API documentation with interactive examples, streamlined onboarding, and a focus on developer experience for
+  OpenWeather's Current Weather API.
 summary: |
-  Rebuilt API documentation to provide a clear path to first API call, using an OpenAPI-based reference and task-focused quickstart  
+  Improved API onboarding by creating a clear path to first API call, using an OpenAPI-based reference and task-focused
+  quickstart
 audience: Backend and frontend developers integrating current weather data
 role: Technical writer and documentation strategist
 deliverables:
@@ -22,7 +26,7 @@ tools:
 outcomes:
   - Clear path to first API call through a task-based quickstart
   - Self-serve testing via interactive API playground
-  - Reduced ambiguity around authentication and rate limits
+  - Authentication and rate-limit information separated from task-based onboarding
 sample_url: https://arnaud.mintlify.app/introduction
 tags:
   - API documentation
@@ -32,7 +36,8 @@ tags:
 
 ## Context
 
-OpenWeather provides a widely used API for current weather data. The existing documentation contained all required information, but made it difficult for developers to understand how to make a first successful request.
+OpenWeather provides a widely used API for current weather data. The existing documentation contained all required
+information, but made it difficult for developers to understand how to make a first successful request.
 
 ## Problem
 
@@ -46,7 +51,8 @@ Developers had to piece together information across multiple pages before gettin
 
 ## My role
 
-I restructured the documentation to create a clear onboarding path and a consistent reference system.
+Improved API onboarding by creating a clear path to first API call, using an OpenAPI-based reference and task-focused
+quickstart.
 
 ## Approach
 
@@ -64,17 +70,18 @@ I restructured the documentation to create a clear onboarding path and a consist
 
 ## What changed
 
-- Developers can now make a first API call from a single entry point
+- Developers can make a first API call from a single entry point
 - Reference documentation is generated from a consistent OpenAPI source
 - Examples are aligned with real usage instead of isolated snippets
 
 ## Evidence
 
-No internal metrics were available. Improvements are based on:
+This was a portfolio rewrite, so no internal product metrics were available.
+Evidence is based on observable documentation changes:
 
-- Reduced number of steps to first API call
+- Reduced number of steps and pages needed to reach a working first API request
 - Clearer mapping between tasks and documentation sections
-- Ability to test endpoints directly from the documentation
+- Direct endpoint testing through the interactive playground
 
 ## Takeaways
 
