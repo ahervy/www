@@ -2,10 +2,10 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CallToAction from '../components/CallToAction.astro';
+import ContactCTA from '../components/ContactCTA.astro';
 import Grid from '../components/Grid.astro';
 import Hero from '../components/Hero.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
-import ContactCTA from '../components/ContactCTA.astro';
 import Skills from '../components/Skills.astro';
 import { Picture } from 'astro:assets';
 import profilePicture from '../assets/profile-picture.jpg';
@@ -16,18 +16,21 @@ const projects = (await getCollection('portfolio')).sort((a, b) => {
 });
 ---
 
-<BaseLayout>
+<BaseLayout
+	title="Technical writer for API and developer platform teams"
+	description="Technical writer specializing in API documentation, developer onboarding, and documentation systems."
+>
 	<main class="stack gap-10 lg:gap-20" id="main-content" tabindex="-1">
 		<div class="wrapper stack gap-8 lg:gap-20">
 			<header class="hero">
 				<Hero
-					title="Arnaud Hervy – Technical Writer"
-					tagline="I specialize in developer documentation for SaaS and APIs.\nI help teams ship clear API docs, quickstarts, and developer guides that reduce friction and speed up adoption."
+					title="Technical writer for API and developer platform teams"
+					tagline="I turn unclear developer workflows into documentation developers can ship from:\nAPI references, quickstarts, authentication guides, and migration docs."
 					align="start"
 				>
 					<div class="hero-buttons">
-						<CallToAction href="/portfolio/"> View portfolio </CallToAction>
-						<CallToAction href="/contact/"> Start a docs project </CallToAction>
+						<CallToAction href="/portfolio/"> View case studies </CallToAction>
+						<CallToAction href="/contact/"> Get in touch about roles </CallToAction>
 					</div>
 				</Hero>
 				<Picture
@@ -39,69 +42,51 @@ const projects = (await getCollection('portfolio')).sort((a, b) => {
 					fetchpriority="high"
 				/>
 			</header>
+		</div>
+
+
+
+		<div class="wrapper stack gap-8 lg:gap-20">
 			<Skills />
 		</div>
 		<section class="wrapper stack gap-4">
 			<header class="section-header stack gap-2 lg:gap-4">
-				<h2>Best fit</h2>
-				<p>Teams with a real product and a growing developer audience.</p>
+				<h2>Where I’m most useful</h2>
 			</header>
+			<p class="content">
+				Teams shipping developer-facing products with unclear onboarding or fragmented documentation.
+			</p>
 			<ul class="content">
-				<li>API-first products that need clear reference, examples, and onboarding.</li>
-				<li>Developer platforms with SDKs, integrations, or complex auth flows.</li>
-				<li>SaaS teams seeing rising support load or low developer activation.</li>
+				<li>API and platform teams without a clear developer journey</li>
+				<li>Products with authentication, integrations, or complex setup flows</li>
+				<li>Teams restructuring or migrating documentation (OpenAPI, Mintlify, etc.)</li>
 			</ul>
 		</section>
-		<section class="wrapper stack gap-8">
-			<header class="section-header stack gap-2 lg:gap-4">
-				<h2>How I work</h2>
-			</header>
-			<div class="skill-grid">
-				<div class="stack gap-4 lg:gap-4">
-					<h3>1. Diagnose</h3>
-					<p>
-						I review existing docs, the API surface, and common support questions to identify the
-						highest-friction areas.
-					</p>
-				</div>
-				<div class="stack gap-4 lg:gap-4">
-					<h3>2. Build</h3>
-					<p>
-						I create or overhaul reference, guides, and onboarding flows with clear examples and
-						task-driven structure.
-					</p>
-				</div>
-				<div class="stack gap-4 lg:gap-4">
-					<h3>3. Improve</h3>
-					<p>
-						I measure impact with activation and support signals, then iterate to keep docs aligned
-						with the product.
-					</p>
-				</div>
-			</div>
-		</section>
-		<section class="wrapper stack gap-10 lg:gap-20">
-			<section class="section with-cta">
-				<header class="section-header stack gap-2 lg:gap-4">
-					<h2>Featured work</h2>
-					<p>Explore some of my work samples.</p>
-					<div class="hero-buttons">
-						<CallToAction href="/portfolio/"> View portfolio </CallToAction>
-					</div>
-				</header>
 
-				<div class="gallery">
-					<Grid variant="offset">
-						{
-							projects.map((project) => (
-								<li>
-									<PortfolioPreview project={project} headingLevel="h3" />
-								</li>
-							))
-						}
-					</Grid>
-				</div>
-			</section>
+		<section class="wrapper stack gap-4">
+			<header class="section-header stack gap-2 lg:gap-4">
+				<h2>Case studies</h2>
+				<p>
+					Case studies on API documentation, developer onboarding, and product changes: OpenAPI
+					reference, API key management, and navigation migration.
+				</p>
+			</header>
+
+			<div class="gallery">
+				<Grid variant="offset">
+					{
+						projects.map((project) => (
+							<li>
+								<PortfolioPreview project={project} headingLevel="h3" />
+							</li>
+						))
+					}
+				</Grid>
+			</div>
+
+			<div class="hero-buttons">
+				<CallToAction href="/portfolio/"> View all case studies </CallToAction>
+			</div>
 		</section>
 		<ContactCTA />
 	</main>

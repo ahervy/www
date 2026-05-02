@@ -1,106 +1,94 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CallToAction from '../components/CallToAction.astro';
+import Hero from '../components/Hero.astro';
 ---
 
 <BaseLayout
-	title="Contact Arnaud Hervy - Technical Writer"
-	description="Get in touch with Arnaud, an experienced technical writer based in Nantes, France, for your technical writing needs."
+	title="Contact – Technical writer for developer platforms"
+	description="Contact Arnaud Hervy about technical writing roles for APIs, CLI tools, SDKs, and developer-facing products."
 >
-	<div class="stack gap-15 lg:gap-30">
-		<main class="wrapper" id="main-content" tabindex="-1">
-			<div class="form-container">
-				<form id="contactForm" class="needs-validation" novalidate>
-					<div class="form-intro">
-						<h1>Contact</h1>
-						<p>
-							Tell me about your product, audience, and timeline. I’ll reply within 1–2 business
-							days.
-						</p>
-					</div>
+	<main class="stack gap-6 lg:gap-10" id="main-content" tabindex="-1">
+		<div class="wrapper stack gap-6 lg:gap-10">
+			<header class="hero">
+				<Hero
+					title="Open to technical writing roles"
+					tagline="I’m currently looking for technical writing roles on developer-facing products: APIs,
+				CLI tools, SDKs, platforms, and technical workflows where documentation is part of
+				the product experience."
+					align="start"
+				/>
+			</header>
+		</div>
 
-					<div class="form-row">
-						<div class="form-field">
-							<label for="firstname">First name (required)</label>
-							<input
-								type="text"
-								name="name"
-								id="firstname"
-								autocomplete="given-name"
-								aria-describedby="firstname-error"
-								required
-							/>
-							<div class="invalid-feedback" id="firstname-error" role="alert">
-								Please enter your first name.
-							</div>
-						</div>
-						<div class="form-field">
-							<label for="lastname">Last name (required)</label>
-							<input
-								type="text"
-								name="last_name"
-								id="lastname"
-								autocomplete="family-name"
-								aria-describedby="lastname-error"
-								required
-							/>
-							<div class="invalid-feedback" id="lastname-error" role="alert">
-								Please enter your last name.
-							</div>
-						</div>
-					</div>
+		<div class="form-container wrapper stack gap-4">
+			<form id="contactForm" class="needs-validation stack gap-2" novalidate>
+				<div class="form-intro stack gap-2">
+					<h2>Send a message</h2>
+					<p>
+						Use this form for technical writing roles, recruiter conversations, or relevant
+						developer documentation opportunities.
+					</p>
+				</div>
 
-					<div class="form-row">
-						<div class="form-field">
-							<label for="email">Email address (required)</label>
-							<input
-								type="email"
-								name="email"
-								id="email"
-								autocomplete="email"
-								aria-describedby="email-error"
-								required
-							/>
-							<div class="invalid-feedback" id="email-error" role="alert">
-								Please enter a valid email address.
-							</div>
-						</div>
-						<div class="form-field">
-							<label for="company">Company</label>
-							<input type="text" name="company" id="company" autocomplete="organization" />
-						</div>
-					</div>
+				<div class="form-field">
+					<label for="name">Name (required)</label>
+					<input
+						type="text"
+						name="name"
+						id="name"
+						autocomplete="name"
+						aria-describedby="name-error"
+						required
+					/>
+					<div class="invalid-feedback" id="name-error" role="alert">Please enter your name.</div>
+				</div>
 
+				<div class="form-row">
 					<div class="form-field">
-						<label for="message">Message (required)</label>
-						<textarea
-							rows="5"
-							name="message"
-							id="message"
-							autocomplete="off"
-							aria-describedby="message-error"
+						<label for="email">Email address (required)</label>
+						<input
+							type="email"
+							name="email"
+							id="email"
+							autocomplete="email"
+							aria-describedby="email-error"
 							required
-						></textarea>
-						<div class="invalid-feedback" id="message-error" role="alert">
-							Please enter your message.
+						/>
+						<div class="invalid-feedback" id="email-error" role="alert">
+							Please enter a valid email address.
 						</div>
 					</div>
+				</div>
 
-					<div class="form-field honeypot">
-						<label for="website">Website (leave empty)</label>
-						<input type="text" name="website" id="website" tabindex="-1" autocomplete="off" />
+				<div class="form-field">
+					<label for="message">Message (required)</label>
+					<textarea
+						rows="4"
+						name="message"
+						id="message"
+						autocomplete="off"
+						aria-describedby="message-error"
+						required></textarea>
+					<div class="invalid-feedback" id="message-error" role="alert">
+						Please enter your message.
 					</div>
+				</div>
 
-					<CallToAction type="submit" ariaLabel="Send your message to Arnaud Hervy">
-						<span class="button-text">Send message</span>
-						<span class="button-loading hidden">Sending...</span>
-					</CallToAction>
+				<div class="form-field honeypot">
+					<label for="website">Website (leave empty)</label>
+					<input type="text" name="website" id="website" tabindex="-1" autocomplete="off" />
+				</div>
 
-					<p id="result" role="status" aria-live="polite"></p>
-				</form>
-			</div>
-		</main>
-	</div>
+				<CallToAction type="submit" ariaLabel="Send a message to Arnaud Hervy">
+					<span class="button-text">Send message</span>
+					<span class="button-loading hidden">Sending...</span>
+				</CallToAction>
+
+				<p id="result" role="status" aria-live="polite"></p>
+			</form>
+		</div>
+	</main>
 
 	<script is:inline>
 		(function () {
@@ -216,7 +204,7 @@ import CallToAction from '../components/CallToAction.astro';
 					delete data.website;
 
 					// Additional client-side validation
-					if (!data.name || !data.last_name || !data.email || !data.message) {
+					if (!data.name || !data.email || !data.message) {
 						showMessage(ERROR_MESSAGES.validation);
 						return;
 					}
