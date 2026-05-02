@@ -10,10 +10,7 @@ import Skills from '../components/Skills.astro';
 import { Picture } from 'astro:assets';
 import profilePicture from '../assets/profile-picture.jpg';
 
-const projects = (await getCollection('portfolio')).sort((a, b) => {
-	if (!b.data.publishDate || !a.data.publishDate) return 0;
-	return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
-});
+const projects = await getCollection('portfolio');
 ---
 
 <BaseLayout
