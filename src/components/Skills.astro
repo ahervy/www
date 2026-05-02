@@ -2,23 +2,27 @@
 import Icon from './Icon.astro';
 ---
 
-<section class="skills">
+<section class="skills stack gap-4">
 	<header>
 		<h2>Documentation strengths</h2>
 	</header>
 	<div class="skill-grid">
-		<div class="stack gap-4 lg:gap-4">
+		<div class="skill-card">
 			<div class="skill-header">
-				<Icon icon="article" color="var(--accent-regular)" size="2rem" />
+				<span class="skill-icon">
+					<Icon icon="article" color="currentColor" size="1.5rem" />
+				</span>
 				<h3>Developer onboarding</h3>
 			</div>
 			<p>
 				Help developers reach first success faster with clear quickstarts and task-based guides.
 			</p>
 		</div>
-		<div class="stack gap-2 lg:gap-4">
+		<div class="skill-card">
 			<div class="skill-header">
-				<Icon icon="terminal-window" color="var(--accent-regular)" size="2rem" />
+				<span class="skill-icon">
+					<Icon icon="terminal-window" color="currentColor" size="1.5rem" />
+				</span>
 				<h3>API documentation</h3>
 			</div>
 			<p>
@@ -26,9 +30,11 @@ import Icon from './Icon.astro';
 				and error handling.
 			</p>
 		</div>
-		<div class="stack gap-2 lg:gap-4">
+		<div class="skill-card">
 			<div class="skill-header">
-				<Icon icon="sidebar" color="var(--accent-regular)" size="2rem" />
+				<span class="skill-icon">
+					<Icon icon="sidebar" color="currentColor" size="1.5rem" />
+				</span>
 				<h3>Documentation architecture</h3>
 			</div>
 			<p>Organize content for clarity: navigation, hierarchy, and consistency across docs.</p>
