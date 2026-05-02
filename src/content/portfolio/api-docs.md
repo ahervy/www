@@ -1,5 +1,5 @@
 ---
-title: Improving API onboarding for a weather API
+title: Improving onboarding for a weather API
 img: /assets/api-docs.webp
 img_alt: Interactive API documentation and playground for OpenWeather's Current Weather API
 description: |
