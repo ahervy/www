@@ -4,6 +4,7 @@ interface Props {
 	description: string;
 	keywords: string;
 	canonicalPath: string;
+	backHref: string;
 	ogTitle: string;
 	ogDescription: string;
 	ogImage: string;
@@ -15,6 +16,7 @@ const {
 	description,
 	keywords,
 	canonicalPath,
+	backHref,
 	ogTitle,
 	ogDescription,
 	ogImage,
@@ -51,7 +53,7 @@ const imageUrl = new URL(ogImage, site).toString();
 	<body>
 		<header>
 			<nav>
-				<a href={site}>Back to arnaudhervy.com</a>
+				<a href={backHref}>← Back to case study</a>
 			</nav>
 		</header>
 
