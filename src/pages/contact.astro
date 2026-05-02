@@ -41,9 +41,7 @@ import Hero from '../components/Hero.astro';
 						aria-describedby="name-error"
 						required
 					/>
-					<div class="invalid-feedback" id="name-error" role="alert">
-						Please enter your name.
-					</div>
+					<div class="invalid-feedback" id="name-error" role="alert">Please enter your name.</div>
 				</div>
 
 				<div class="form-row">
@@ -91,191 +89,191 @@ import Hero from '../components/Hero.astro';
 			</form>
 		</div>
 	</main>
-</BaseLayout>
 
-<script is:inline>
-	(function () {
-		'use strict';
+	<script is:inline>
+		(function () {
+			'use strict';
 
-		const form = document.getElementById('contactForm');
-		const result = document.getElementById('result');
-		const submitButton = form.querySelector('button[type="submit"]');
-		const buttonText = submitButton.querySelector('.button-text');
-		const buttonLoading = submitButton.querySelector('.button-loading');
+			const form = document.getElementById('contactForm');
+			const result = document.getElementById('result');
+			const submitButton = form.querySelector('button[type="submit"]');
+			const buttonText = submitButton.querySelector('.button-text');
+			const buttonLoading = submitButton.querySelector('.button-loading');
 
-		const WORKER_URL = 'https://contact-form-handler.arnaud-hervy.workers.dev';
+			const WORKER_URL = 'https://contact-form-handler.arnaud-hervy.workers.dev';
 
-		const ERROR_MESSAGES = {
-			network: 'Connection problem. Check your internet and try again.',
-			server: 'Server error. Please try again in a few minutes.',
-			validation: 'Please check your information and try again.',
-			unknown: 'An unexpected error occurred. Please try again.',
-		};
+			const ERROR_MESSAGES = {
+				network: 'Connection problem. Check your internet and try again.',
+				server: 'Server error. Please try again in a few minutes.',
+				validation: 'Please check your information and try again.',
+				unknown: 'An unexpected error occurred. Please try again.',
+			};
 
-		function showMessage(message, type = 'error') {
-			result.innerHTML = message;
-			if (type === 'success') {
-				result.classList.add('text-green-500');
-				result.classList.remove('text-red-500');
-			} else {
-				result.classList.add('text-red-500');
-				result.classList.remove('text-green-500');
-			}
+			function showMessage(message, type = 'error') {
+				result.innerHTML = message;
+				if (type === 'success') {
+					result.classList.add('text-green-500');
+					result.classList.remove('text-red-500');
+				} else {
+					result.classList.add('text-red-500');
+					result.classList.remove('text-green-500');
+				}
 
-			// Auto-hide after 7s for success, 10s for errors
-			const hideDelay = type === 'success' ? 7000 : 10000;
-			setTimeout(() => {
-				result.style.opacity = '0';
+				// Auto-hide after 7s for success, 10s for errors
+				const hideDelay = type === 'success' ? 7000 : 10000;
 				setTimeout(() => {
-					result.innerHTML = '';
-					result.className = '';
-					result.style.opacity = '1';
-				}, 300);
-			}, hideDelay);
-		}
-
-		function setLoading(isLoading) {
-			submitButton.disabled = isLoading;
-			if (isLoading) {
-				buttonText.classList.add('hidden');
-				buttonText.classList.remove('visible');
-				buttonLoading.classList.add('visible');
-				buttonLoading.classList.remove('hidden');
-			} else {
-				buttonText.classList.add('visible');
-				buttonText.classList.remove('hidden');
-				buttonLoading.classList.add('hidden');
-				buttonLoading.classList.remove('visible');
-			}
-		}
-
-		const fields = Array.from(form.querySelectorAll('input, textarea'));
-		const updateFieldValidity = (field) => {
-			if (field.matches(':invalid')) {
-				field.setAttribute('aria-invalid', 'true');
-			} else {
-				field.removeAttribute('aria-invalid');
-			}
-		};
-
-		fields.forEach((field) => {
-			field.addEventListener('input', () => updateFieldValidity(field));
-			field.addEventListener('blur', () => updateFieldValidity(field));
-		});
-
-		form.addEventListener('submit', async function (event) {
-			event.preventDefault();
-			event.stopPropagation();
-
-			// Client-side validation with error handling
-			fields.forEach((field) => field.removeAttribute('aria-invalid'));
-
-			if (!form.checkValidity()) {
-				const firstInvalid = form.querySelector(':invalid');
-				fields.forEach((field) => {
-					if (field.matches(':invalid')) {
-						field.setAttribute('aria-invalid', 'true');
-					}
-				});
-				if (firstInvalid) {
-					firstInvalid.focus();
-				}
-				form.classList.add('was-validated');
-				return;
+					result.style.opacity = '0';
+					setTimeout(() => {
+						result.innerHTML = '';
+						result.className = '';
+						result.style.opacity = '1';
+					}, 300);
+				}, hideDelay);
 			}
 
-			setLoading(true);
-			result.innerHTML = '';
-			result.className = '';
-
-			let timeoutId;
-
-			try {
-				const formData = new FormData(form);
-				const data = {};
-				formData.forEach((value, key) => {
-					data[key] = value.trim();
-				});
-
-				// Honeypot check - if filled, it's likely a bot
-				if (data.website) {
-					showMessage('Form submission failed. Please try again.');
-					return;
-				}
-
-				// Remove honeypot from data before sending
-				delete data.website;
-
-				// Additional client-side validation
-				if (!data.name || !data.email || !data.message) {
-					showMessage(ERROR_MESSAGES.validation);
-					return;
-				}
-
-				// Send to Worker with timeout
-				const controller = new AbortController();
-				timeoutId = setTimeout(() => controller.abort(), 30000); // 30s timeout
-
-				const response = await fetch(WORKER_URL, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify(data),
-					signal: controller.signal,
-				});
-
-				if (!response.ok) {
-					// Specific error code handling
-					let errorMessage;
-					switch (response.status) {
-						case 400:
-							errorMessage = ERROR_MESSAGES.validation;
-							break;
-						case 429:
-							errorMessage = 'Too many attempts. Please wait before trying again.';
-							break;
-						case 500:
-						case 502:
-						case 503:
-							errorMessage = ERROR_MESSAGES.server;
-							break;
-						default:
-							errorMessage = ERROR_MESSAGES.unknown;
-					}
-					showMessage(errorMessage);
-					return;
-				}
-
-				const responseData = await response.json();
-
-				if (responseData.success) {
-					// Success
-					showMessage(responseData.message || 'Message sent successfully!', 'success');
-					form.reset();
-					form.classList.remove('was-validated');
+			function setLoading(isLoading) {
+				submitButton.disabled = isLoading;
+				if (isLoading) {
+					buttonText.classList.add('hidden');
+					buttonText.classList.remove('visible');
+					buttonLoading.classList.add('visible');
+					buttonLoading.classList.remove('hidden');
 				} else {
-					// Server error with message
-					showMessage(responseData.message || ERROR_MESSAGES.unknown);
+					buttonText.classList.add('visible');
+					buttonText.classList.remove('hidden');
+					buttonLoading.classList.add('hidden');
+					buttonLoading.classList.remove('visible');
 				}
-			} catch (error) {
-				console.error('Error sending form:', error);
-
-				// Handle specific error types
-				if (error.name === 'AbortError') {
-					showMessage('Request timeout. Please try again.');
-				} else if (!navigator.onLine) {
-					showMessage(ERROR_MESSAGES.network);
-				} else {
-					showMessage(ERROR_MESSAGES.unknown);
-				}
-			} finally {
-				// Always cleanup timeout and reset loading state
-				if (timeoutId) {
-					clearTimeout(timeoutId);
-				}
-				setLoading(false);
 			}
-		});
-	})();
-</script>
+
+			const fields = Array.from(form.querySelectorAll('input, textarea'));
+			const updateFieldValidity = (field) => {
+				if (field.matches(':invalid')) {
+					field.setAttribute('aria-invalid', 'true');
+				} else {
+					field.removeAttribute('aria-invalid');
+				}
+			};
+
+			fields.forEach((field) => {
+				field.addEventListener('input', () => updateFieldValidity(field));
+				field.addEventListener('blur', () => updateFieldValidity(field));
+			});
+
+			form.addEventListener('submit', async function (event) {
+				event.preventDefault();
+				event.stopPropagation();
+
+				// Client-side validation with error handling
+				fields.forEach((field) => field.removeAttribute('aria-invalid'));
+
+				if (!form.checkValidity()) {
+					const firstInvalid = form.querySelector(':invalid');
+					fields.forEach((field) => {
+						if (field.matches(':invalid')) {
+							field.setAttribute('aria-invalid', 'true');
+						}
+					});
+					if (firstInvalid) {
+						firstInvalid.focus();
+					}
+					form.classList.add('was-validated');
+					return;
+				}
+
+				setLoading(true);
+				result.innerHTML = '';
+				result.className = '';
+
+				let timeoutId;
+
+				try {
+					const formData = new FormData(form);
+					const data = {};
+					formData.forEach((value, key) => {
+						data[key] = value.trim();
+					});
+
+					// Honeypot check - if filled, it's likely a bot
+					if (data.website) {
+						showMessage('Form submission failed. Please try again.');
+						return;
+					}
+
+					// Remove honeypot from data before sending
+					delete data.website;
+
+					// Additional client-side validation
+					if (!data.name || !data.email || !data.message) {
+						showMessage(ERROR_MESSAGES.validation);
+						return;
+					}
+
+					// Send to Worker with timeout
+					const controller = new AbortController();
+					timeoutId = setTimeout(() => controller.abort(), 30000); // 30s timeout
+
+					const response = await fetch(WORKER_URL, {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify(data),
+						signal: controller.signal,
+					});
+
+					if (!response.ok) {
+						// Specific error code handling
+						let errorMessage;
+						switch (response.status) {
+							case 400:
+								errorMessage = ERROR_MESSAGES.validation;
+								break;
+							case 429:
+								errorMessage = 'Too many attempts. Please wait before trying again.';
+								break;
+							case 500:
+							case 502:
+							case 503:
+								errorMessage = ERROR_MESSAGES.server;
+								break;
+							default:
+								errorMessage = ERROR_MESSAGES.unknown;
+						}
+						showMessage(errorMessage);
+						return;
+					}
+
+					const responseData = await response.json();
+
+					if (responseData.success) {
+						// Success
+						showMessage(responseData.message || 'Message sent successfully!', 'success');
+						form.reset();
+						form.classList.remove('was-validated');
+					} else {
+						// Server error with message
+						showMessage(responseData.message || ERROR_MESSAGES.unknown);
+					}
+				} catch (error) {
+					console.error('Error sending form:', error);
+
+					// Handle specific error types
+					if (error.name === 'AbortError') {
+						showMessage('Request timeout. Please try again.');
+					} else if (!navigator.onLine) {
+						showMessage(ERROR_MESSAGES.network);
+					} else {
+						showMessage(ERROR_MESSAGES.unknown);
+					}
+				} finally {
+					// Always cleanup timeout and reset loading state
+					if (timeoutId) {
+						clearTimeout(timeoutId);
+					}
+					setLoading(false);
+				}
+			});
+		})();
+	</script>
+</BaseLayout>
