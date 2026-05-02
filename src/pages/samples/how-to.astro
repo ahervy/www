@@ -1,0 +1,58 @@
+---
+import SampleLayout from '../../layouts/SampleLayout.astro';
+---
+
+<SampleLayout
+	lang="en-US"
+	title="Sample how-to guide: Manage API Keys"
+	description="Sample how-to guide by Arnaud Hervy demonstrating how to manage API keys in a software platform."
+	keywords="technical writing, how-to guide, sample, API keys, instructions, software, documentation"
+	canonicalPath="/samples/how-to/"
+	ogTitle="Sample how-to guide by Arnaud Hervy: Manage API keys"
+	ogDescription="Learn how to create and revoke API keys with clear instructions in this sample how-to guide by Arnaud Hervy."
+	ogImage="/assets/how-to.webp"
+>
+	<h1>Manage API Keys</h1>
+
+	<p>
+		Use API keys to authenticate requests to the Llama API. This guide explains how to create and
+		revoke API keys safely.
+	</p>
+	<p>Only Platform Administrators and Platform Owners can manage API keys.</p>
+
+	<h2 id="create-api-key">Create an API Key</h2>
+
+	<p>You can create up to 10 API keys. Each key has the same access rights as your account.</p>
+	<ol>
+		<li>Go to your <strong>Admin</strong> account.</li>
+		<li>In the <strong>Platform settings</strong> section, click <strong>API</strong>.</li>
+		<li>Click <strong>Add API key</strong>.</li>
+		<li>
+			When asked, enter a meaningful label for the API key. For example, indicate which integration
+			uses this API key.
+		</li>
+		<li>Click <strong>Create</strong>.</li>
+		<li>Copy your API key and store it securely.</li>
+	</ol>
+
+	<div class="alert important">
+		You can only view the API key once. If you lose it, you must create a new one.
+	</div>
+
+	<ol start="7">
+		<li>Click <strong>Close</strong>.</li>
+	</ol>
+
+	<h2 id="revoke-api-key">Revoke an API key</h2>
+	<p>Revoke an API key if it is no longer needed or if you suspect it has been compromised.</p>
+	<p class="alert warning">
+		Revoking an API key permanently deletes it. Any integration using this key will stop working
+		immediately.
+	</p>
+	<ol>
+		<li>Go to your <strong>Admin</strong> account.</li>
+		<li>In the <strong>Platform settings</strong> section, click <strong>API</strong>.</li>
+		<li>Find the API key you want to revoke, then click <strong>Revoke</strong>.</li>
+		<li>When asked, click <strong>Yes, revoke</strong>.</li>
+	</ol>
+</SampleLayout>
