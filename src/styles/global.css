@@ -31,14 +31,9 @@
 	--gray-900: var(--color-background);
 	--gray-999: var(--color-surface);
 
-	--gray-999-basis: 0, 0%, 100%;
-	--gray-999_40: rgba(255, 255, 255, 0.4);
-
 	--accent-regular: var(--color-accent);
 	--accent-regular-rgb: 29, 78, 216;
-	--accent-light: #dbeafe;
 	--accent-dark: var(--color-accent-hover);
-	--accent-overlay: rgba(29, 78, 216, 0.12);
 	--accent-subtle-overlay: var(--color-accent-soft);
 	--accent-text-over: var(--color-surface);
 
@@ -273,11 +268,6 @@ aside {
 	.grid.small,
 	.grid.offset {
 		gap: 1.75rem;
-	}
-
-	/* Shift first item in each row vertically to create staggered effect. */
-	.grid.offset > :nth-child(odd) {
-		transform: translateY(var(--row-offset));
 	}
 }
 
@@ -807,10 +797,6 @@ form {
 		width: 100%;
 		max-width: 18rem;
 		justify-self: end;
-	}
-
-	.section {
-		gap: 3.5rem;
 	}
 }
 
