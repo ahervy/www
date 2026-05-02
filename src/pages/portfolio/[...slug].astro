@@ -25,6 +25,10 @@ const { Content } = await render(entry);
 const site = Astro.site?.toString() ?? 'https://arnaudhervy.com';
 const pageUrl = new URL(`/portfolio/${entry.id}/`, site).toString();
 const imageUrl = entry.data.img ? new URL(entry.data.img, site).toString() : undefined;
+const personId = new URL('/#arnaud-hervy', site).toString();
+const jsonLdDescription = (entry.data.meta_description ?? entry.data.description)
+	.replace(/\s+/g, ' ')
+	.trim();
 
 const detailItems = [
 	{ label: 'Audience', value: entry.data.audience },
@@ -51,11 +55,11 @@ const jsonLd = {
 	'@context': 'https://schema.org',
 	'@type': 'CreativeWork',
 	headline: entry.data.title,
-	description: entry.data.meta_description ?? entry.data.description,
+	description: jsonLdDescription,
 	image: imageUrl,
 	author: {
 		'@type': 'Person',
-		name: 'Arnaud Hervy',
+		'@id': personId,
 	},
 	url: pageUrl,
 	about: entry.data.tags,
