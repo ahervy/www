@@ -203,10 +203,6 @@ aside {
 	gap: 7.5rem;
 }
 
-.gap-48 {
-	gap: 12rem;
-}
-
 @media (min-width: 50em) {
 	.lg\:gap-2 {
 		gap: 0.5rem;
@@ -234,10 +230,6 @@ aside {
 
 	.lg\:gap-30 {
 		gap: 7.5rem;
-	}
-
-	.lg\:gap-48 {
-		gap: 12rem;
 	}
 }
 
@@ -712,23 +704,17 @@ button[type='submit']:disabled {
 	border-color: var(--color-success);
 }
 
-.invalid-feedback,
-.empty-feedback {
+.invalid-feedback {
 	display: none;
 	font-size: var(--text-sm);
 	color: var(--color-danger);
 	margin-bottom: 1.5rem;
 }
 
-.was-validated :placeholder-shown:invalid ~ .empty-feedback {
-	display: block;
-}
-
 .was-validated :not(:placeholder-shown):invalid ~ .invalid-feedback {
 	display: block;
 }
 
-.is-invalid,
 .was-validated :invalid {
 	border-color: var(--color-danger);
 }
@@ -809,39 +795,6 @@ form {
 	width: min(100%, 14rem);
 	object-fit: cover;
 	border-radius: 1.5rem;
-}
-
-.section {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-template-areas:
-		'header header header header'
-		'gallery gallery gallery gallery';
-	gap: 2rem;
-}
-
-.section.with-cta {
-	grid-template-areas:
-		'header header header cta'
-		'gallery gallery gallery gallery';
-}
-
-.section-header {
-	grid-area: header;
-}
-
-.with-cta .section-header {
-	justify-self: start;
-	text-align: left;
-}
-
-.gallery {
-	grid-area: gallery;
-}
-
-.cta {
-	grid-area: cta;
-	place-items: center;
 }
 
 @media (min-width: 50em) {
