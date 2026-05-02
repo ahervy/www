@@ -5,9 +5,9 @@ img_alt: How-to guide for managing API keys in HTML format
 description: |
   Created documentation for API key management to enable self-service workflows and clarify security implications such as revocation and one-time visibility.
 meta_description: Technical writing case study about the creation of step-by-step procedures that guide users through tasks related to a new feature.
-summary: Created documentation for API key creation and revocation, with clear warnings about real-world consequences.
-audience: API users with admin access and developer operations teams.
-role: Technical writer partnering with product and support.
+summary: Created documentation for API key creation and revocation, with clear warnings about real-world consequences
+audience: API users with admin access and developer operations teams
+role: Technical writer partnering with product and support
 deliverables:
   - How-to guide for creating and revoking API keys
   - UI copy for key management warnings
