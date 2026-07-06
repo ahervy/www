@@ -26,6 +26,7 @@ const site = Astro.site?.toString() ?? 'https://arnaudhervy.com';
 const pageUrl = new URL(`/portfolio/${entry.id}/`, site).toString();
 const imageUrl = entry.data.img ? new URL(entry.data.img, site).toString() : undefined;
 const personId = new URL('/#arnaud-hervy', site).toString();
+const sampleHref = entry.data.sample_url ?? entry.data.sample_path;
 const jsonLdDescription = (entry.data.meta_description ?? entry.data.description)
 	.replace(/\s+/g, ' ')
 	.trim();
@@ -40,6 +41,10 @@ const detailItems = [
 	{
 		label: 'Tools',
 		value: entry.data.tools?.length ? entry.data.tools.join(', ') : undefined,
+	},
+	{
+		label: 'Constraints',
+		value: entry.data.constraints?.length ? entry.data.constraints.join(', ') : undefined,
 	},
 	{
 		label: 'Outcomes',
@@ -84,20 +89,16 @@ const jsonLd = {
 						<p class="content">{entry.data.description}</p>
 						<div class="hero-buttons">
 							{
-								entry.data.sample_url ? (
+								sampleHref ? (
 									<CallToAction
-										href={entry.data.sample_url}
-										target="_blank"
-										rel="noopener noreferrer"
+										href={sampleHref}
+										target={entry.data.sample_url ? '_blank' : undefined}
+										rel={entry.data.sample_url ? 'noopener noreferrer' : undefined}
 										class="sample-pill"
 									>
 										View sample
 									</CallToAction>
-								) : (
-									<CallToAction href={`/samples/${entry.id}/`} class="sample-pill">
-										View sample
-									</CallToAction>
-								)
+								) : null
 							}
 						</div>
 					</div>
