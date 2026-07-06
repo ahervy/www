@@ -27,6 +27,9 @@ outcomes:
   - Clear path to first API call through a task-based quickstart
   - Self-serve testing via interactive API playground
   - Authentication and rate-limit information separated from task-based onboarding
+constraints:
+  - No internal product metrics were available for the portfolio rewrite
+  - Existing information was complete but fragmented across multiple pages
 sample_url: https://arnaud.mintlify.app/introduction
 tags:
   - API documentation

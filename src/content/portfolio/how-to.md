@@ -21,6 +21,10 @@ outcomes:
   - Creation and revocation workflows documented end to end
   - Revocation impact on integrations made explicit before the destructive action
   - Consistent terminology across UI and documentation
+constraints:
+  - No support-ticket or usage metrics were available
+  - Revoking an API key could break existing integrations immediately
+sample_path: /samples/how-to/
 tags:
   - technical writing
 ---
