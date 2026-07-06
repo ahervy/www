@@ -24,6 +24,10 @@ outcomes:
   - Clear mapping from old to new navigation for common tasks
   - Single reference used by support, product, and customers
   - Pre-release guidance available for changed task paths
+constraints:
+  - No rollout analytics or support-volume metrics were available
+  - Existing users relied on established paths and muscle memory
+sample_path: /samples/user-guide/
 tags:
   - technical writing
 ---

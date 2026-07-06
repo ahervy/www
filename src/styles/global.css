@@ -805,7 +805,7 @@ button[type='submit']:disabled {
 	margin-bottom: var(--space-6);
 }
 
-.was-validated :not(:placeholder-shown):invalid ~ .invalid-feedback {
+.was-validated :invalid ~ .invalid-feedback {
 	display: block;
 }
 

@@ -2,23 +2,27 @@ import { glob } from 'astro/loaders';
 import { defineCollection } from 'astro:content';
 import { z } from 'astro/zod';
 
+const normalizedString = z.string().transform((value) => value.replace(/\s+/g, ' ').trim());
+
 export const collections = {
 	portfolio: defineCollection({
 		loader: glob({ pattern: '**/*.md', base: './src/content/portfolio' }),
 		schema: z.object({
-			title: z.string(),
-			description: z.string(),
-			meta_description: z.string().optional(),
-			summary: z.string(),
+			title: normalizedString,
+			description: normalizedString,
+			meta_description: normalizedString.optional(),
+			summary: normalizedString,
 			tags: z.array(z.string()),
 			img: z.string(),
-			img_alt: z.string().optional(),
+			img_alt: normalizedString.optional(),
 			sample_url: z.string().optional(),
-			audience: z.string().optional(),
-			role: z.string().optional(),
-			deliverables: z.array(z.string()).optional(),
-			tools: z.array(z.string()).optional(),
-			outcomes: z.array(z.string()).optional(),
+			sample_path: z.string().optional(),
+			audience: normalizedString.optional(),
+			role: normalizedString.optional(),
+			deliverables: z.array(normalizedString).optional(),
+			tools: z.array(normalizedString).optional(),
+			constraints: z.array(normalizedString).optional(),
+			outcomes: z.array(normalizedString).optional(),
 		}),
 	}),
 };

@@ -10,6 +10,10 @@ interface Props {
 	entry: CollectionEntry<'portfolio'>;
 }
 
+type DetailItem =
+	| { label: string; type: 'text'; value: string | undefined }
+	| { label: string; type: 'list' | 'tags'; value: string[] | undefined };
+
 export async function getStaticPaths() {
 	const portfolio = await getCollection('portfolio');
 	return portfolio.map((entry) => ({
@@ -26,30 +30,28 @@ const site = Astro.site?.toString() ?? 'https://arnaudhervy.com';
 const pageUrl = new URL(`/portfolio/${entry.id}/`, site).toString();
 const imageUrl = entry.data.img ? new URL(entry.data.img, site).toString() : undefined;
 const personId = new URL('/#arnaud-hervy', site).toString();
+const sampleHref = entry.data.sample_url ?? entry.data.sample_path;
 const jsonLdDescription = (entry.data.meta_description ?? entry.data.description)
 	.replace(/\s+/g, ' ')
 	.trim();
 
-const detailItems = [
-	{ label: 'Audience', value: entry.data.audience },
-	{ label: 'Role', value: entry.data.role },
-	{
-		label: 'Deliverables',
-		value: entry.data.deliverables?.length ? entry.data.deliverables.join(', ') : undefined,
-	},
-	{
-		label: 'Tools',
-		value: entry.data.tools?.length ? entry.data.tools.join(', ') : undefined,
-	},
-	{
-		label: 'Outcomes',
-		value: entry.data.outcomes?.length ? entry.data.outcomes.join(', ') : undefined,
-	},
-	{
-		label: 'Tags',
-		value: entry.data.tags?.length ? entry.data.tags.join(', ') : undefined,
-	},
-].filter((item) => item.value);
+const overviewItems: DetailItem[] = [
+	{ label: 'Audience', type: 'text', value: entry.data.audience },
+	{ label: 'Role', type: 'text', value: entry.data.role },
+	{ label: 'Deliverables', type: 'list', value: entry.data.deliverables },
+	{ label: 'Tools', type: 'list', value: entry.data.tools },
+	{ label: 'Constraints', type: 'list', value: entry.data.constraints },
+	{ label: 'Outcomes', type: 'list', value: entry.data.outcomes },
+	{ label: 'Tags', type: 'tags', value: entry.data.tags },
+];
+
+const detailItems = overviewItems.filter((item) => {
+	if (Array.isArray(item.value)) {
+		return item.value.length > 0;
+	}
+
+	return Boolean(item.value);
+});
 
 const jsonLd = {
 	'@context': 'https://schema.org',
@@ -84,20 +86,16 @@ const jsonLd = {
 						<p class="content">{entry.data.description}</p>
 						<div class="hero-buttons">
 							{
-								entry.data.sample_url ? (
+								sampleHref ? (
 									<CallToAction
-										href={entry.data.sample_url}
-										target="_blank"
-										rel="noopener noreferrer"
+										href={sampleHref}
+										target={entry.data.sample_url ? '_blank' : undefined}
+										rel={entry.data.sample_url ? 'noopener noreferrer' : undefined}
 										class="sample-pill"
 									>
 										View sample
 									</CallToAction>
-								) : (
-									<CallToAction href={`/samples/${entry.id}/`} class="sample-pill">
-										View sample
-									</CallToAction>
-								)
+								) : null
 							}
 						</div>
 					</div>
@@ -113,7 +111,23 @@ const jsonLd = {
 									{detailItems.map((item) => (
 										<div>
 											<dt>{item.label}</dt>
-											<dd>{item.value}</dd>
+											<dd>
+												{item.type === 'text' ? item.value : null}
+												{item.type === 'list' && Array.isArray(item.value) ? (
+													<ul class="detail-item-list">
+														{item.value.map((value) => (
+															<li>{value}</li>
+														))}
+													</ul>
+												) : null}
+												{item.type === 'tags' && Array.isArray(item.value) ? (
+													<ul class="tag-list" aria-label="Project tags">
+														{item.value.map((value) => (
+															<li>{value}</li>
+														))}
+													</ul>
+												) : null}
+											</dd>
 										</div>
 									))}
 								</dl>
@@ -166,6 +180,36 @@ const jsonLd = {
 	.detail-list dd {
 		margin: 0;
 		color: var(--gray-300);
+	}
+
+	.detail-item-list,
+	.tag-list {
+		margin: 0;
+		padding: 0;
+	}
+
+	.detail-item-list {
+		display: grid;
+		gap: var(--space-1);
+		padding-left: var(--space-5);
+	}
+
+	.tag-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-2);
+		list-style: none;
+	}
+
+	.tag-list li {
+		display: inline-flex;
+		padding: 0.125rem var(--space-2);
+		color: var(--accent-regular);
+		background: var(--surface-card-background);
+		border: var(--surface-card-border);
+		border-radius: var(--radius-pill);
+		font-size: var(--text-sm);
+		font-weight: 600;
 	}
 
 	.project-cta {
