@@ -1,31 +1,17 @@
 ---
-// Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-// Component Imports
-import Hero from '../components/Hero.astro';
 ---
 
-<BaseLayout title="Page not found" description="404 Error — this page was not found">
-	<main id="main-content" tabindex="-1">
-		<Hero
-			title="This page was not found"
-			tagline="Maybe you can find what you need from the homepage."
-		>
-			<div class="cta-wrapper">
-				<a href="/" class="cta">Go back home</a>
-			</div>
-		</Hero>
+<BaseLayout
+	title="Page not found | Arnaud Hervy"
+	description="The requested page was not found."
+	noindex
+>
+	<main class="not-found" id="main-content" tabindex="-1">
+		<div class="content-column">
+			<h1>Page not found</h1>
+			<p>The page you’re looking for doesn’t exist.</p>
+			<p><a href="/">Return home</a></p>
+		</div>
 	</main>
 </BaseLayout>
-
-<style>
-	.cta-wrapper {
-		display: flex;
-		justify-content: center;
-	}
-
-	:global(.tagline) {
-		max-width: none !important;
-	}
-</style>

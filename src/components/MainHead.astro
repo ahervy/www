@@ -2,92 +2,56 @@
 import '../styles/global.css';
 
 interface Props {
-	title?: string | undefined;
-	description?: string | undefined;
-	ogType?: string | undefined;
-	ogImage?: string | undefined;
+	title?: string;
+	description?: string;
+	noindex?: boolean;
 }
 
 const {
-	title = 'Arnaud Hervy - Technical Writer',
-	description = 'Technical writer specializing in developer documentation. I turn complex software into clear API docs, guides, and onboarding that help devs succeed.',
-	ogType = 'website',
-	ogImage,
+	title = 'Arnaud Hervy',
+	description = 'Developer documentation, content architecture, and tooling.',
+	noindex = false,
 } = Astro.props;
 
-const url = Astro.url?.href ?? 'https://arnaudhervy.com';
+const url = Astro.url?.href ?? 'https://arnaudhervy.com/';
 const origin = Astro.url?.origin ?? 'https://arnaudhervy.com';
-const personId = `${origin}/#arnaud-hervy`;
-const imageUrl = ogImage ?? `${origin}/assets/profile-picture.jpg`;
+
+const structuredData = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: 'Arnaud Hervy',
+	url: origin,
+	sameAs: ['https://www.linkedin.com/in/arnaudhervy/', 'https://github.com/ahervy'],
+};
 ---
 
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content={description} />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="generator" content={Astro.generator} />
+{noindex && <meta name="robots" content="noindex" />}
 <title>{title}</title>
 
-<link rel="canonical" href={url} />
+{!noindex && <link rel="canonical" href={url} />}
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="shortcut icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<meta name="apple-mobile-web-app-title" content="Arnaud Hervy - Technical Writer" />
 <link rel="manifest" href="/site.webmanifest" />
 
-<!-- Open Graph and Twitter meta tags -->
-<meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
-<meta property="og:type" content={ogType} />
-<meta property="og:url" content={url} />
-<meta property="og:image" content={imageUrl} />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content={title} />
-<meta name="twitter:description" content={description} />
-<meta name="twitter:url" content={url} />
-<meta name="twitter:image" content={imageUrl} />
-
-<script
-	type="application/ld+json"
-	set:html={JSON.stringify({
-		'@context': 'https://schema.org',
-		'@type': 'Person',
-		'@id': personId,
-		name: 'Arnaud Hervy',
-		jobTitle: 'Technical Writer',
-		url: origin,
-		address: {
-			'@type': 'PostalAddress',
-			addressLocality: 'Saint-Nazaire',
-			addressCountry: 'France',
-		},
-		sameAs: ['https://github.com/ahervy', 'https://www.linkedin.com/in/arnaudhervy/'],
-		knowsAbout: [
-			'API documentation',
-			'Developer documentation',
-			'Developer onboarding',
-			'OpenAPI',
-			'CLI documentation',
-			'SDK documentation',
-			'Documentation architecture',
-		],
-		hasOccupation: {
-			'@type': 'Occupation',
-			name: 'Technical Writer',
-			occupationLocation: {
-				'@type': 'Country',
-				name: 'France',
-			},
-			skills: [
-				'API documentation',
-				'Developer onboarding',
-				'Technical writing',
-				'OpenAPI documentation',
-				'Documentation architecture',
-			],
-		},
-		image: `${origin}/assets/profile-picture.jpg`,
-	})}
-	is:inline
-/>
+<meta name="apple-mobile-web-app-title" content="Arnaud Hervy" />
+{
+	!noindex && (
+		<>
+			<meta property="og:title" content={title} />
+			<meta property="og:description" content={description} />
+			<meta property="og:type" content="website" />
+			<meta property="og:url" content={url} />
+			<meta name="twitter:card" content="summary" />
+			<meta name="twitter:title" content={title} />
+			<meta name="twitter:description" content={description} />
+			<script type="application/ld+json" set:html={JSON.stringify(structuredData)} is:inline />
+		</>
+	)
+}

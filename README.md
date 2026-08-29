@@ -1,19 +1,11 @@
 # arnaudhervy.com
 
-Personal portfolio website built with Astro.
-
-This site presents my work as a technical writer focused on developer-facing products: APIs, CLI tools, SDKs, and SaaS platforms.
-
-## What this repository contains
-
-- Case studies showing how I approach documentation problems
-- Documentation samples supporting these case studies
+Minimal personal website for Arnaud Hervy.
 
 ## Stack
 
 - Astro
-- Content collections (Markdown)
-- Minimal client-side JavaScript
+- Static HTML and CSS
 - Cloudflare Pages deployment
 
 ## Development
