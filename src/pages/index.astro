@@ -1,89 +1,25 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import CallToAction from '../components/CallToAction.astro';
-import ContactCTA from '../components/ContactCTA.astro';
-import Grid from '../components/Grid.astro';
-import Hero from '../components/Hero.astro';
-import PortfolioPreview from '../components/PortfolioPreview.astro';
-import Skills from '../components/Skills.astro';
-import { Picture } from 'astro:assets';
-import profilePicture from '../assets/profile-picture.jpg';
-
-const projects = await getCollection('portfolio');
 ---
 
 <BaseLayout
-	title="Technical writer for API and developer platform teams"
-	description="Technical writer specializing in API documentation, developer onboarding, and documentation systems."
+	title="Arnaud Hervy"
+	description="Developer documentation, content architecture, and tooling."
 >
-	<main class="stack gap-10 lg:gap-20" id="main-content" tabindex="-1">
-		<div class="wrapper stack gap-8 lg:gap-20">
-			<header class="hero">
-				<Hero
-					title="Technical writer for API and developer platform teams"
-					tagline="I turn unclear developer workflows into documentation developers can ship from: API references, quickstarts, authentication guides, and migration docs."
-					align="start"
-				>
-					<div class="hero-buttons">
-						<CallToAction href="/portfolio/"> View case studies </CallToAction>
-						<CallToAction href="/contact/"> Get in touch about roles </CallToAction>
-					</div>
-				</Hero>
-				<Picture
-					src={profilePicture}
-					formats={['avif', 'webp']}
-					alt="Profile picture of Arnaud Hervy, technical writer"
-					class="profile-img"
-					loading="eager"
-					fetchpriority="high"
-				/>
-			</header>
-		</div>
-
-		<div class="wrapper stack gap-8 lg:gap-20">
-			<Skills />
-		</div>
-		<section class="wrapper stack gap-4">
-			<header class="section-header stack gap-2 lg:gap-4">
-				<h2>Where I’m most useful</h2>
-			</header>
-			<p class="content">
-				Teams shipping developer-facing products with unclear onboarding or fragmented
-				documentation.
+	<main class="landing" id="main-content" tabindex="-1">
+		<div class="content-column">
+			<h1>Arnaud Hervy</h1>
+			<p class="positioning">Developer documentation, content architecture, and tooling</p>
+			<p class="introduction">
+				I work on developer documentation and the systems around it, including information
+				architecture, API and platform content, and documentation workflows. My work increasingly
+				focuses on how developer content is structured, created, and maintained.
 			</p>
-			<ul class="content">
-				<li>API and platform teams without a clear developer journey</li>
-				<li>Products with authentication, integrations, or complex setup flows</li>
-				<li>Teams restructuring or migrating documentation (OpenAPI, Mintlify, etc.)</li>
-			</ul>
-		</section>
 
-		<section class="wrapper stack gap-4">
-			<header class="section-header stack gap-2 lg:gap-4">
-				<h2>Case studies</h2>
-				<p>
-					Case studies on API documentation, developer onboarding, and product changes: OpenAPI
-					reference, API key management, and navigation migration.
-				</p>
-			</header>
-
-			<div class="gallery">
-				<Grid variant="offset">
-					{
-						projects.map((project) => (
-							<li>
-								<PortfolioPreview project={project} headingLevel="h3" />
-							</li>
-						))
-					}
-				</Grid>
-			</div>
-
-			<div class="hero-buttons">
-				<CallToAction href="/portfolio/"> View all case studies </CallToAction>
-			</div>
-		</section>
-		<ContactCTA />
+			<nav class="profile-links" aria-label="Profile links">
+				<a href="https://www.linkedin.com/in/arnaudhervy/">LinkedIn</a>
+				<a href="https://github.com/ahervy">GitHub</a>
+			</nav>
+		</div>
 	</main>
 </BaseLayout>

@@ -1,37 +1,26 @@
 ---
-// Learn about using Astro layouts:
-// https://docs.astro.build/en/core-concepts/layouts/
-
-// Component Imports
-import MainHead from '../components/MainHead.astro';
-import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import MainHead from '../components/MainHead.astro';
 
 interface Props {
-	title?: string | undefined;
-	description?: string | undefined;
-	ogType?: string | undefined;
-	ogImage?: string | undefined;
+	title?: string;
+	description?: string;
+	noindex?: boolean;
 }
 
-const { title, description, ogType, ogImage } = Astro.props;
+const { title, description, noindex = false } = Astro.props;
 ---
 
+<!doctype html>
 <html lang="en">
 	<head>
-		<MainHead title={title} description={description} ogType={ogType} ogImage={ogImage} />
+		<MainHead title={title} description={description} noindex={noindex} />
 	</head>
 	<body>
-		<a href="#main-content" class="sr-only sr-only-focusable" tabindex="0">Skip to main content</a>
-		<div>
-			<Nav />
+		<a href="#main-content" class="skip-link">Skip to main content</a>
+		<div class="site-shell">
 			<slot />
 			<Footer />
 		</div>
-
-		<script>
-			// Add “loaded” class once the document has completely loaded.
-			addEventListener('load', () => document.documentElement.classList.add('loaded'));
-		</script>
 	</body>
 </html>
