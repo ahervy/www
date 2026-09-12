@@ -119,15 +119,14 @@ h1 {
 }
 
 footer {
-	width: min(100%, 44rem);
-	margin-inline: auto;
 	padding: 0 clamp(1.5rem, 6vw, 5rem) 2rem;
 	color: var(--muted);
 	font-size: 0.875rem;
 }
 
 footer p {
-	margin: 0;
+	width: min(100%, 44rem);
+	margin: 0 auto;
 }
 
 @media (max-width: 32rem) {

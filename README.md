@@ -10,6 +10,8 @@ Minimal personal website for Arnaud Hervy.
 
 ## Development
 
+Requires Node.js 24.16.0 or later within the Node 24 release line.
+
     npm install
     npm run dev
 
