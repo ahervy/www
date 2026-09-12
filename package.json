@@ -1,7 +1,11 @@
 {
 	"name": "www",
+	"private": true,
 	"type": "module",
 	"version": "0.1.0",
+	"engines": {
+		"node": ">=24.16.0 <25"
+	},
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
