@@ -40,17 +40,15 @@ const structuredData = {
 <link rel="manifest" href="/site.webmanifest" />
 
 <meta name="apple-mobile-web-app-title" content="Arnaud Hervy" />
-{
-	!noindex && (
-		<>
-			<meta property="og:title" content={title} />
-			<meta property="og:description" content={description} />
-			<meta property="og:type" content="website" />
-			<meta property="og:url" content={url} />
-			<meta name="twitter:card" content="summary" />
-			<meta name="twitter:title" content={title} />
-			<meta name="twitter:description" content={description} />
-			<script type="application/ld+json" set:html={JSON.stringify(structuredData)} is:inline />
-		</>
-	)
-}
+{!noindex && (
+	<>
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={url} />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<script type="application/ld+json" set:html={JSON.stringify(structuredData)} is:inline />
+	</>
+)}
