@@ -3,7 +3,7 @@ name: Dependabot auto-merge
 on:
   pull_request_target:
     branches: [main]
-    types: [opened, reopened, synchronize, ready_for_review]
+    types: [opened, reopened, synchronize, ready_for_review, converted_to_draft]
 
 permissions: {}
 
@@ -16,8 +16,7 @@ jobs:
     if: >-
       github.repository == 'ahervy/www' &&
       github.event.pull_request.user.login == 'dependabot[bot]' &&
-      github.event.pull_request.head.repo.full_name == github.repository &&
-      !github.event.pull_request.draft
+      github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     permissions:
@@ -31,10 +30,12 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Enable squash auto-merge for eligible patches
+      - name: Reconcile squash auto-merge eligibility
+        if: ${{ !cancelled() }}
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         env:
           DEPENDENCIES: ${{ steps.metadata.outputs.updated-dependencies-json }}
+          METADATA_OUTCOME: ${{ steps.metadata.outcome }}
         with:
           script: |
             // Lint-only devDependencies; formatters and site/build tooling stay manual.
@@ -45,8 +46,14 @@ jobs:
               'eslint',
               'globals',
             ]);
-            const dependencies = JSON.parse(process.env.DEPENDENCIES);
-            const eligible = Array.isArray(dependencies) && dependencies.length > 0 &&
+            let dependencies;
+            try {
+              dependencies = JSON.parse(process.env.DEPENDENCIES);
+            } catch {
+              dependencies = [];
+            }
+            const eligible = process.env.METADATA_OUTCOME === 'success' &&
+              Array.isArray(dependencies) && dependencies.length > 0 &&
               dependencies.every((dependency) => {
                 if (!dependency || !allowlist.has(dependency.dependencyName) ||
                     dependency.dependencyType !== 'direct:development' ||
@@ -63,22 +70,43 @@ jobs:
                   previous[1] === next[1] && previous[2] === next[2] &&
                   BigInt(next[3]) > BigInt(previous[3]);
               });
-            if (!eligible) {
-              core.info('Manual review: not every dependency is an allowlisted development patch.');
-              return;
-            }
             const { data: pr } = await github.rest.pulls.get({
               ...context.repo,
               pull_number: context.payload.pull_request.number,
             });
-            // fetch-metadata verifies the first commit; reject any additional commits.
-            if (pr.commits !== 1 || pr.state !== 'open' || pr.draft || pr.base.ref !== 'main' ||
+            if (pr.state !== 'open' || pr.base.ref !== 'main' ||
                 pr.user.login !== 'dependabot[bot]' ||
                 pr.head.repo?.full_name !== context.payload.repository.full_name ||
-                pr.head.sha !== context.payload.pull_request.head.sha || pr.auto_merge) {
-              core.info('Skipping stale, ineligible, or already queued PR.');
+                pr.head.sha !== context.payload.pull_request.head.sha) {
+              core.info('Skipping stale or out-of-scope PR.');
               return;
             }
+            // fetch-metadata verifies the first commit; reject any additional commits.
+            if (!eligible || pr.commits !== 1 || pr.draft) {
+              // GitHub records who enabled auto-merge; preserve human decisions.
+              if (pr.auto_merge?.enabled_by?.login === 'github-actions[bot]') {
+                // Disable has no expectedHeadOid: recheck head and actor immediately.
+                const { data: current } = await github.rest.pulls.get({
+                  ...context.repo,
+                  pull_number: pr.number,
+                });
+                if (current.head.sha !== pr.head.sha || current.state !== 'open' ||
+                    current.auto_merge?.enabled_by?.login !== 'github-actions[bot]') {
+                  core.info('Skipping changed revision or auto-merge actor.');
+                  return;
+                }
+                await github.graphql(`
+                  mutation($id: ID!) {
+                    disablePullRequestAutoMerge(input: { pullRequestId: $id }) {
+                      pullRequest { number }
+                    }
+                  }
+                `, { id: pr.node_id });
+              }
+              core.info('Manual review: eligibility or Dependabot verification failed.');
+              return;
+            }
+            if (pr.auto_merge) return;
             // Only queue auto-merge: GitHub enforces required checks and protections.
             await github.graphql(`
               mutation($id: ID!, $head: GitObjectID!) {
