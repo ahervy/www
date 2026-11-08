@@ -161,6 +161,8 @@ test('Cloudflare header and redirect files are copied without changes', async ()
 });
 
 test('output remains static with JSON-LD only and no executable application JavaScript', async () => {
+	// Pages compiles this directory separately; Astro's dist output alone cannot detect it.
+	await assert.rejects(stat(new URL('functions/', root)), { code: 'ENOENT' });
 	const output = await files();
 	assert.ok(
 		!output.some((name) =>
