@@ -14,8 +14,10 @@
 		"astro": "astro",
 		"lint": "eslint . --ext .js,.ts,.astro",
 		"lint:fix": "eslint . --ext .js,.ts,.astro --fix",
-		"format": "prettier --write \"**/*.{js,ts,astro,json,md,css}\"",
-		"format:check": "prettier --check \"**/*.{js,ts,astro,json,md,css}\""
+		"format": "prettier --write \"**/*.{js,mjs,ts,astro,json,md,css}\" \".github/workflows/*.{yml,yaml}\"",
+		"format:check": "prettier --check \"**/*.{js,mjs,ts,astro,json,md,css}\" \".github/workflows/*.{yml,yaml}\"",
+		"test": "node --test tests/generated-site.test.js",
+		"test:browser": "playwright test"
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.9.12",
@@ -25,6 +27,7 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
+		"@playwright/test": "1.65.0",
 		"@typescript-eslint/eslint-plugin": "^8.72.1",
 		"@typescript-eslint/parser": "^8.56.1",
 		"eslint": "^10.13.0",
