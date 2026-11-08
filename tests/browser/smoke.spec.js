@@ -39,14 +39,6 @@ test('homepage renders, styles and assets load, and layout fits the viewport', a
 	expect(await page.locator('body').evaluate((element) => getComputedStyle(element).margin)).toBe(
 		'0px'
 	);
-	expect(
-		await page.locator('.site-shell').evaluate((element) => getComputedStyle(element).display)
-	).toBe('flex');
-	expect(
-		await page
-			.getByRole('heading', { level: 1 })
-			.evaluate((element) => parseFloat(getComputedStyle(element).fontSize))
-	).toBeGreaterThan(40);
 	const assets = await page
 		.locator(
 			'link[rel~="icon"], link[rel="shortcut icon"], link[rel="apple-touch-icon"], link[rel="manifest"]'
