@@ -38,14 +38,6 @@ jobs:
           METADATA_OUTCOME: ${{ steps.metadata.outcome }}
         with:
           script: |
-            // Lint-only devDependencies; formatters and site/build tooling stay manual.
-            const allowlist = new Set([
-              '@eslint/js',
-              '@typescript-eslint/eslint-plugin',
-              '@typescript-eslint/parser',
-              'eslint',
-              'globals',
-            ]);
             let dependencies;
             try {
               dependencies = JSON.parse(process.env.DEPENDENCIES);
@@ -55,9 +47,10 @@ jobs:
             const eligible = process.env.METADATA_OUTCOME === 'success' &&
               Array.isArray(dependencies) && dependencies.length > 0 &&
               dependencies.every((dependency) => {
-                if (!dependency || !allowlist.has(dependency.dependencyName) ||
-                    dependency.dependencyType !== 'direct:development' ||
-                    dependency.updateType !== 'version-update:semver-patch' ||
+                if (!dependency || typeof dependency.dependencyName !== 'string' ||
+                    dependency.dependencyName.trim() === '' ||
+                    !['direct:production', 'direct:development', 'indirect'].includes(dependency.dependencyType) ||
+                    !['version-update:semver-patch', 'version-update:semver-minor'].includes(dependency.updateType) ||
                     dependency.packageEcosystem !== 'npm_and_yarn' ||
                     dependency.directory !== '/' || dependency.targetBranch !== 'main') {
                   return false;
@@ -66,9 +59,10 @@ jobs:
                 const stable = /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/;
                 const previous = stable.exec(dependency.prevVersion);
                 const next = stable.exec(dependency.newVersion);
-                return previous !== null && next !== null &&
-                  previous[1] === next[1] && previous[2] === next[2] &&
-                  BigInt(next[3]) > BigInt(previous[3]);
+                return previous !== null && next !== null && previous[1] === next[1] &&
+                  (dependency.updateType === 'version-update:semver-minor'
+                    ? BigInt(next[2]) > BigInt(previous[2])
+                    : previous[2] === next[2] && BigInt(next[3]) > BigInt(previous[3]));
               });
             const { data: pr } = await github.rest.pulls.get({
               ...context.repo,
