@@ -29,6 +29,65 @@ function text(html) {
 		.trim();
 }
 
+function assertHomepageIndexable(html) {
+	for (const tag of tags(html, 'meta')) {
+		if (tag.name?.trim().toLowerCase() !== 'robots') continue;
+		const directives = (tag.content ?? '').toLowerCase().split(/[\s,]+/);
+		assert.ok(
+			!directives.some((directive) => directive === 'noindex' || directive === 'none'),
+			'Homepage must not contain a restrictive robots indexing directive'
+		);
+	}
+}
+
+function assertRobotsPolicy(robots) {
+	// This site has one wildcard group. Compare its complete policy so an Allow
+	// in another user-agent group cannot hide a restriction on general crawlers.
+	const lines = robots
+		.split(/\r?\n/)
+		.map((line) => line.split('#')[0].trim())
+		.filter(Boolean)
+		.map((line) => line.replace(/^([^:]+):\s*/, (_, field) => `${field.trim().toLowerCase()}: `));
+	assert.deepEqual(lines, ['user-agent: *', 'allow: /', `sitemap: ${site}sitemap-index.xml`]);
+}
+
+test('homepage indexing guard handles directive case, separators and duplicate tags', () => {
+	for (const html of [
+		'',
+		'<meta name="ROBOTS" content="INDEX, follow">',
+		'<meta name="robots" content="index"><meta name="Robots" content="follow">',
+	])
+		assertHomepageIndexable(html);
+	for (const html of [
+		'<meta name="robots" content="NoIndex">',
+		'<meta name="ROBOTS" content="index, NoNe">',
+		'<meta name="robots" content="follow\tNOINDEX">',
+		'<meta name="robots" content="noindex"><meta name="robots" content="index">',
+		'<meta name="robots" content="index"><meta name="robots" content="noindex">',
+	])
+		assert.throws(() => assertHomepageIndexable(html), assert.AssertionError, html);
+});
+
+test('robots policy guard accepts comments, whitespace and field-name case', () => {
+	assertRobotsPolicy(
+		`# Public site\r\n USER-AGENT:  * \r\n Allow:\t/ # All paths\r\n\r\n Sitemap: ${site}sitemap-index.xml\r\n`
+	);
+});
+
+test('robots policy guard rejects blocked wildcard groups and unexpected directives', () => {
+	for (const policy of [
+		'User-agent: *\nDisallow: /\n\nUser-agent: SpecificBot\nAllow: /',
+		'User-agent: *\nAllow: /\nDisallow: /private/',
+		'User-agent: SpecificBot\nAllow: /',
+		'User-agent: *\nAllow: /\n\nUser-agent: Googlebot\nDisallow: /',
+	])
+		assert.throws(
+			() => assertRobotsPolicy(`${policy}\nSitemap: ${site}sitemap-index.xml`),
+			assert.AssertionError,
+			policy
+		);
+});
+
 async function files(directory = dist, prefix = '') {
 	const result = [];
 	for (const entry of await readdir(directory, { withFileTypes: true })) {
@@ -75,7 +134,7 @@ test('homepage content, production canonical and social metadata', async () => {
 	assert.equal(meta['twitter:card'], 'summary');
 	assert.equal(meta['twitter:title'], 'Arnaud Hervy');
 	assert.equal(meta['twitter:description'], description);
-	assert.ok(!meta.robots?.includes('noindex'));
+	assertHomepageIndexable(html);
 	for (const href of profiles) assert.ok(tags(html, 'a').some((tag) => tag.href === href));
 });
 
@@ -106,9 +165,7 @@ test('custom 404 is noindex and has no canonical', async () => {
 
 test('robots and sitemap form a production-only index excluding the 404', async () => {
 	const robots = await read('robots.txt');
-	assert.match(robots, /^User-agent:\s*\*\s*$/m);
-	assert.match(robots, /^Allow:\s*\/\s*$/m);
-	assert.match(robots, /^Sitemap:\s*https:\/\/arnaudhervy\.com\/sitemap-index\.xml\s*$/m);
+	assertRobotsPolicy(robots);
 	const locations = (xml) =>
 		[...xml.matchAll(/<loc>\s*([^<]+?)\s*<\/loc>/g)].map((match) => match[1]);
 	const sitemapFiles = locations(await read('sitemap-index.xml'));
