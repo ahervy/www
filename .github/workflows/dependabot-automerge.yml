@@ -44,7 +44,7 @@ jobs:
             } catch {
               dependencies = [];
             }
-            const eligible = process.env.METADATA_OUTCOME === 'success' &&
+            let eligible = process.env.METADATA_OUTCOME === 'success' &&
               Array.isArray(dependencies) && dependencies.length > 0 &&
               dependencies.every((dependency) => {
                 if (!dependency || typeof dependency.dependencyName !== 'string' ||
@@ -52,7 +52,8 @@ jobs:
                     !['direct:production', 'direct:development', 'indirect'].includes(dependency.dependencyType) ||
                     !['version-update:semver-patch', 'version-update:semver-minor'].includes(dependency.updateType) ||
                     dependency.packageEcosystem !== 'npm_and_yarn' ||
-                    dependency.directory !== '/' || dependency.targetBranch !== 'main') {
+                    // The pinned action misreads the explicit target branch as a directory.
+                    !['/', '/main'].includes(dependency.directory) || dependency.targetBranch !== 'main') {
                   return false;
                 }
                 // Reject missing/ambiguous versions, prereleases, and downgrades too.
@@ -74,6 +75,17 @@ jobs:
                 pr.head.sha !== context.payload.pull_request.head.sha) {
               core.info('Skipping stale or out-of-scope PR.');
               return;
+            }
+            if (eligible) {
+              // Confirm root npm files through the API rather than trusting that directory alias.
+              const files = await github.paginate(github.rest.pulls.listFiles, {
+                ...context.repo,
+                pull_number: pr.number,
+                per_page: 100,
+              });
+              eligible = files.length > 0 && files.every((file) =>
+                file.status === 'modified' &&
+                ['package.json', 'package-lock.json'].includes(file.filename));
             }
             // fetch-metadata verifies the first commit; reject any additional commits.
             if (!eligible || pr.commits !== 1 || pr.draft) {
